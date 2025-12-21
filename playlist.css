@@ -16,18 +16,26 @@ h1 {
 
 p {
     color: #000000;
-    font-size: 18px;   /* aquí se usa px y es correcto */
+    font-size: 18px;
     font-family: Arial, sans-serif;
     text-align: center;
     letter-spacing: 1px;
 }
 
-/* NUEVO: rectángulo para el párrafo */
+/* Rectángulo para el párrafo */
 .cuadro-texto {
-    background-color: #ffffff;  /* color del rectángulo */
-    padding: 20px;              /* espacio dentro del rectángulo */
-    border-radius: 10px;         /* bordes redondeados */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* sombra opcional */
-    width: 60%;                  /* ancho del rectángulo */
-    margin: 20px auto;           /* centrado horizontal */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 60%;
+    margin: 20px auto;
+}
+
+/* Imagen centrada y tamaño flexible */
+.imagen {
+    display: block;          /* obliga a ser bloque para centrar */
+    margin: 20px auto 0 auto; /* margen arriba y centrado horizontal */
+    max-width: 80%;          /* tamaño máximo relativo al contenedor */
+    height: auto;            /* mantiene proporción */
 }
