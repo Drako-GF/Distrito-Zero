@@ -1,0 +1,111 @@
+body {
+    background-color: #d3cfcf;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+}
+
+.titulo {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #2f7668;
+    letter-spacing: 1px;
+     margin-top: 40px; /* Ajusta este valor a tu gusto */
+     font-size: 50px;    /* Ajusta este valor a tu gusto */
+}
+
+.subtitulo-contenido {
+    display: flex;
+    flex-direction: column; /* subtítulo arriba, contenido debajo */
+    align-items: center;    /* centra todo horizontalmente */
+}
+
+.subtitulo {
+    background-color: rgb(126, 0, 0);
+    color: rgb(221, 221, 164);
+    padding: 15px;
+    border-radius: 8px;
+    width: 60%;
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 1px;
+    margin-bottom: 10px; /* pequeño espacio entre subtítulo y contenido */
+}
+
+.contenido {
+    display: flex;
+    gap: 20px;              
+    width: 60%;             
+    margin-top: 10px;
+    align-items: stretch;   /* imagen y cuadro con la misma altura */
+}
+
+.imagen {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.subpaginas {
+    flex: 1; 
+    color: #0e231f;                
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 1px;
+
+    background-color: #ffffff;      
+    padding: 15px;                  
+    border-radius: 8px;             
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+
+    display: flex;                  
+    flex-direction: column;         
+    justify-content: flex-start;    /* contenido desde arriba */
+    align-items: center;            /* centra horizontalmente */
+}
+
+.subpaginas .frase {
+    font-size: 18px;        /* tamaño de la frase */
+    margin-bottom: 15px;    /* espacio entre frase y subpáginas */
+    font-weight: bold;
+}
+
+.subpaginas h3 {
+    font-size: 24px;       /* más grande */
+    margin-bottom: 10px;
+}
+
+.subpaginas ul {
+    list-style-type: none;  
+    padding: 0;
+}
+
+.subpaginas li {
+    margin-bottom: 10px;   /* un poco más de espacio */
+}
+
+.subpaginas a {
+    text-decoration: none;
+    color: #1abc9c;        
+    font-size: 20px;       /* enlaces más grandes */
+    font-weight: bold;
+}
+
+.subpaginas a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 768px) {
+    .contenido {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .subtitulo {
+        width: 90%;
+    }
+}
