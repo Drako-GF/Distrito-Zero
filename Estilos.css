@@ -109,3 +109,15 @@ p {
         width: 90%;
     }
 }
+/* Nuevo rectángulo de texto debajo */
+.rectangulo-texto {
+    background-color: #ffffff;        /* color de fondo */
+    color: #0e231f;                   /* color del texto */
+    padding: 20px;                     /* espacio interno */
+    border-radius: 10px;               /* bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* sombra */
+    width: 60%;                        /* ancho del rectángulo */
+    margin: 20px auto;                 /* centrado y separación de otros elementos */
+    font-family: Georgia, "Times New Roman", serif;
+    text-align: center;
+}
