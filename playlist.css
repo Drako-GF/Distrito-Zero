@@ -36,8 +36,16 @@ p {
 /* Imagen centrada y tamaño flexible */
 .imagen {
     display: block;
-    margin: 20px auto 0 auto; /* margen superior y centrado horizontal */
-    max-width: 80%;           /* ancho máximo relativo al contenedor */
+    margin: 20px auto 0 auto; /* centrada horizontalmente y margen arriba */
+    max-width: 80%;           /* tamaño máximo */
     height: auto;             /* mantiene proporción */
+    transition: all 0.3s ease; /* transición suave para el efecto hover */
 }
 
+/* Efecto al pasar el ratón */
+a:hover .imagen {
+    border: 3px solid #1abc9c; /* borde de color para indicar clicable */
+    border-radius: 10px;        /* bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* sombra para resaltar */
+    transform: scale(1.05);     /* pequeño zoom */
+}
