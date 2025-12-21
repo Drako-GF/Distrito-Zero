@@ -1,21 +1,26 @@
 body {
-    background-color: #edd3d3;
+    background-color: #b0f8ee;
     font-family: Arial, sans-serif;
     text-align: center;
 }
 h1 {
-    color: #2c3e50;
+    color: #8f0000;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 p {
-    color: #555;
+    color: #000000;
     font-size: 18px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
 .titulo {
     font-family: Georgia, "Times New Roman", serif;
-    color: #2f7668;
+    color: #000000;
     letter-spacing: 1px;
-     margin-top: 40px; /* Ajusta este valor a tu gusto */
-     font-size: 50px;    /* Ajusta este valor a tu gusto */
 }
+
