@@ -23,13 +23,17 @@ p {
     letter-spacing: 1px;
 }
 
-/* Rectángulo para el párrafo */
+/* Cuadros de texto ya existentes */
 .cuadro-texto {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     width: 60%;
-    margin: 20px auto;
+    margin: 20px auto; /* distancia entre cuadros y margen superior/inferior */
 }
 
+/* Separación menor para cuadros secundarios */
+.cuadro-secundario {
+    margin-top: 10px; /* poca distancia respecto al cuadro anterior */
+}
