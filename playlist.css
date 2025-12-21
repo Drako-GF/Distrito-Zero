@@ -2,25 +2,32 @@ body {
     background-color: #b0f8ee;
     font-family: Arial, sans-serif;
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
+
 h1 {
     color: #8f0000;
     font-family: Arial, sans-serif;
     text-align: center;
     letter-spacing: 1px;
+    margin-top: 30px;
 }
 
 p {
     color: #000000;
-    font-size: 18px;
+    font-size: 18px;   /* aquí se usa px y es correcto */
     font-family: Arial, sans-serif;
     text-align: center;
     letter-spacing: 1px;
 }
 
-.titulo {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #000000;
-    letter-spacing: 1px;
+/* NUEVO: rectángulo para el párrafo */
+.cuadro-texto {
+    background-color: #ffffff;  /* color del rectángulo */
+    padding: 20px;              /* espacio dentro del rectángulo */
+    border-radius: 10px;         /* bordes redondeados */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* sombra opcional */
+    width: 60%;                  /* ancho del rectángulo */
+    margin: 20px auto;           /* centrado horizontal */
 }
-
