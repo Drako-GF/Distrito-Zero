@@ -1,5 +1,51 @@
+/* Estilos generales */
 body {
-    background-color: #c2f3ea;
-    font-family: Arial, sans-serif;
+    background-color: #b0f8ee;
+    font-family: Georgia, "Times New Roman", serif; /* Fuente principal */
     text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #8f0000;
+    font-family: Georgia, "Times New Roman", serif; /* Asegura consistencia */
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 30px;
+}
+
+p {
+    color: #000000;
+    font-size: 18px;
+    font-family: Georgia, "Times New Roman", serif; /* Texto dentro del rectángulo */
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Rectángulo para el párrafo */
+.cuadro-texto {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 60%;
+    margin: 20px auto;
+}
+
+/* Imagen centrada y tamaño flexible */
+.imagen {
+    display: block;
+    margin: 20px auto 0 auto; /* centrada horizontalmente y margen arriba */
+    max-width: 80%;           /* tamaño máximo */
+    height: auto;             /* mantiene proporción */
+    transition: all 0.3s ease; /* transición suave para el efecto hover */
+}
+
+/* Efecto al pasar el ratón */
+a:hover .imagen {
+    border: 3px solid #1abc9c; /* borde de color para indicar clicable */
+    border-radius: 10px;        /* bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* sombra para resaltar */
+    transform: scale(1.05);     /* pequeño zoom */
 }
