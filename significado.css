@@ -1,5 +1,34 @@
+/* Estilos generales */
 body {
-    background-color: #d2f3b4;
-    font-family: Arial, sans-serif;
+    background-color: #b0f8ee;
+    font-family: Georgia, "Times New Roman", serif; /* Fuente principal */
     text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #8f0000;
+    font-family: Georgia, "Times New Roman", serif; /* Asegura consistencia */
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 30px;
+}
+
+p {
+    color: #000000;
+    font-size: 18px;
+    font-family: Georgia, "Times New Roman", serif; /* Texto dentro del rectángulo */
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* Rectángulo para el párrafo */
+.cuadro-texto {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 60%;
+    margin: 20px auto;
 }
