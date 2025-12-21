@@ -3,3 +3,19 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
 }
+h1 {
+    color: #2c3e50;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+}
+
+.titulo {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #2f7668;
+    letter-spacing: 1px;
+     margin-top: 40px; /* Ajusta este valor a tu gusto */
+     font-size: 50px;    /* Ajusta este valor a tu gusto */
+}
