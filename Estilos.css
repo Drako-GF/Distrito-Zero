@@ -46,15 +46,20 @@ p {
     gap: 20px;
     width: 60%;
     margin-top: 10px;
-    align-items: flex-start; /* <<< evita que la imagen se estire */
+
+    /* 👇 hace que el cuadro derecha iguale la altura de la imagen */
+    align-items: stretch;
 }
 
 .imagen {
-    width: 200px;     /* ancho base */
+    width: 200px;
     max-width: 100%;
-    height: auto;     /* mantiene proporción */
+    height: auto;  /* mantiene proporción */
     border-radius: 8px;
     object-fit: contain;
+
+    /* 👇 evita que la imagen se estire con stretch */
+    align-self: flex-start;
 }
 
 /* ===== CUADROS BLANCOS (ESTILO COMÚN) ===== */
@@ -73,6 +78,9 @@ p {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    /* 👇 tamaño de letra igual en ambos */
+    font-size: 20px;
 }
 
 /* ===== TÍTULOS DE LOS CUADROS ===== */
@@ -113,7 +121,7 @@ p {
     .contenido {
         flex-direction: column;
         width: 90%;
-        align-items: center; /* más limpio visualmente */
+        align-items: center;
     }
 
     .subtitulo {
@@ -125,8 +133,8 @@ p {
     }
 
     .imagen {
-        width: 100%;      /* usa el ancho disponible */
-        max-width: 300px; /* límite para que no crezca demasiado */
+        width: 100%;
+        max-width: 300px;
     }
 }
 
@@ -135,6 +143,3 @@ p {
     width: 60%;
     margin: 20px auto;
 }
-
-
-
