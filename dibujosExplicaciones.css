@@ -1,7 +1,7 @@
 /* Estilos generales */
 body {
     background-color: #b0f8ee;
-    font-family: Georgia, "Times New Roman", serif; /* Fuente principal */
+    font-family: Georgia, "Times New Roman", serif;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ body {
 
 h1 {
     color: #8f0000;
-    font-family: Georgia, "Times New Roman", serif; /* Asegura consistencia */
+    font-family: Georgia, "Times New Roman", serif;
     text-align: center;
     letter-spacing: 1px;
     margin-top: 30px;
@@ -18,7 +18,7 @@ h1 {
 p {
     color: #000000;
     font-size: 18px;
-    font-family: Georgia, "Times New Roman", serif; /* Texto dentro del rectángulo */
+    font-family: Georgia, "Times New Roman", serif;
     text-align: center;
     letter-spacing: 1px;
 }
@@ -31,4 +31,13 @@ p {
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     width: 60%;
     margin: 20px auto;
+}
+
+/* ===== Ajustar imágenes al cuadro ===== */
+.cuadro-texto img {
+    width: 100%;     /* ocupa todo el ancho del cuadro */
+    height: auto;    /* mantiene proporción */
+    display: block;  /* elimina espacios debajo de la imagen */
+    border-radius: 5px; /* opcional, bordes suaves */
+    margin: 10px 0;  /* espacio arriba y abajo */
 }
