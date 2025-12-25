@@ -46,13 +46,15 @@ p {
     gap: 20px;
     width: 60%;
     margin-top: 10px;
-    align-items: stretch;
+    align-items: flex-start; /* <<< evita que la imagen se estire */
 }
 
 .imagen {
-    width: 200px;
-    height: auto;
+    width: 200px;     /* ancho base */
+    max-width: 100%;
+    height: auto;     /* mantiene proporción */
     border-radius: 8px;
+    object-fit: contain;
 }
 
 /* ===== CUADROS BLANCOS (ESTILO COMÚN) ===== */
@@ -111,6 +113,7 @@ p {
     .contenido {
         flex-direction: column;
         width: 90%;
+        align-items: center; /* más limpio visualmente */
     }
 
     .subtitulo {
@@ -120,6 +123,11 @@ p {
     .rectangulo-texto {
         width: 90%;
     }
+
+    .imagen {
+        width: 100%;      /* usa el ancho disponible */
+        max-width: 300px; /* límite para que no crezca demasiado */
+    }
 }
 
 /* ===== RECTÁNGULO INFERIOR ===== */
@@ -127,5 +135,6 @@ p {
     width: 60%;
     margin: 20px auto;
 }
+
 
 
