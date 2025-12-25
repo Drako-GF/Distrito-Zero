@@ -23,21 +23,25 @@ p {
     letter-spacing: 1px;
 }
 
-/* Rectángulo para el párrafo */
+/* Rectángulo para cada bloque */
 .cuadro-texto {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     width: 60%;
+    height: 400px;               /* altura fija para el cuadro */
     margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;     /* centra verticalmente la imagen */
 }
 
-/* ===== Ajustar imágenes al cuadro ===== */
+/* Imagen que se ajusta al cuadro */
 .cuadro-texto img {
-    width: 100%;     /* ocupa todo el ancho del cuadro */
-    height: auto;    /* mantiene proporción */
-    display: block;  /* elimina espacios debajo de la imagen */
-    border-radius: 5px; /* opcional, bordes suaves */
-    margin: 10px 0;  /* espacio arriba y abajo */
+    width: 100%;
+    height: 100%;                /* ocupa toda la altura del cuadro */
+    object-fit: contain;         /* mantiene proporción, no se deforma */
+    border-radius: 5px;          /* opcional, bordes redondeados */
 }
