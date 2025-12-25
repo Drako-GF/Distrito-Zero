@@ -41,28 +41,25 @@ p {
 }
 
 /* ===== CONTENIDO CENTRAL ===== */
+/* AHORA CON GRID */
 .contenido {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr; /* imagen | cuadro */
     gap: 20px;
     width: 60%;
     margin-top: 10px;
-
-    /* 👇 hace que el cuadro derecha iguale la altura de la imagen */
-    align-items: stretch;
+    align-items: start; /* evita que la imagen se estire */
 }
 
+/* ===== IMAGEN ===== */
 .imagen {
     width: 200px;
-    max-width: 100%;
-    height: auto;  /* mantiene proporción */
+    height: auto;      /* mantiene proporción */
     border-radius: 8px;
-    object-fit: contain;
-
-    /* 👇 evita que la imagen se estire con stretch */
-    align-self: flex-start;
+    display: block;
 }
 
-/* ===== CUADROS BLANCOS (ESTILO COMÚN) ===== */
+/* ===== CUADROS BLANCOS (COMÚN) ===== */
 .subpaginas,
 .rectangulo-texto {
     background-color: #ffffff;
@@ -76,10 +73,8 @@ p {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
 
-    /* 👇 tamaño de letra igual en ambos */
     font-size: 20px;
 }
 
@@ -116,12 +111,18 @@ p {
     text-decoration: underline;
 }
 
+/* ===== RECTÁNGULO INFERIOR ===== */
+.rectangulo-texto {
+    width: 60%;
+    margin: 20px auto;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+
     .contenido {
-        flex-direction: column;
+        grid-template-columns: 1fr;  /* una sola columna */
         width: 90%;
-        align-items: center;
     }
 
     .subtitulo {
@@ -135,12 +136,6 @@ p {
     .imagen {
         width: 100%;
         max-width: 300px;
+        margin: 0 auto;
     }
 }
-
-/* ===== RECTÁNGULO INFERIOR ===== */
-.rectangulo-texto {
-    width: 60%;
-    margin: 20px auto;
-}
-
