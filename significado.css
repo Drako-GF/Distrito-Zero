@@ -1,7 +1,7 @@
 /* Estilos generales */
 body {
     background-color: #b0f8ee;
-    font-family: Georgia, "Times New Roman", serif; /* Fuente principal */
+    font-family: Georgia, "Times New Roman", serif;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -9,26 +9,30 @@ body {
 
 h1 {
     color: #8f0000;
-    font-family: Georgia, "Times New Roman", serif; /* Asegura consistencia */
+    font-family: Georgia, "Times New Roman", serif;
     text-align: center;
     letter-spacing: 1px;
     margin-top: 30px;
 }
 
-p {
-    color: #000000;
-    font-size: 18px;
-    font-family: Georgia, "Times New Roman", serif; /* Texto dentro del rectángulo */
-    text-align: center;
-    letter-spacing: 1px;
-}
-
-/* Rectángulo para el párrafo */
+/* Rectángulo para el texto */
 .cuadro-texto {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 20px 30px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     width: 60%;
     margin: 20px auto;
+    text-align: justify;  /* 👈 justifica todo el texto */
+}
+
+/* Texto del interior */
+.cuadro-texto p {
+    color: #000000;
+    font-size: 18px;
+    line-height: 1.5;     /* 👈 separación entre líneas */
+    text-indent: 0.5em;   /* 👈 sangría primera línea */
+    margin-top: 0;
+    margin-bottom: 18px;  /* 👈 separa párrafos */
+    letter-spacing: 1px;
 }
