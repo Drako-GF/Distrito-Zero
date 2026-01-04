@@ -10,7 +10,11 @@ h1 {
 }
 
 .titulo {
-    color: #111111;
+     font-family: Georgia, "Times New Roman", serif;
+     color: #111111;
+    letter-spacing: 1px;
+    margin-top: 40px;
+    font-size: 50px;
 }
 
 /* ===== SUBTÍTULO ===== */
@@ -136,6 +140,7 @@ p {
         margin: 0 auto;
     }
 }
+
 
 
 
