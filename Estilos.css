@@ -5,9 +5,9 @@ body {
 }
 
 /* ===== TÍTULO ===== */
-h1 {
+/* h1 {
     color: #ffffff;
-}
+} */
 
 .titulo {
      font-family: Georgia, "Times New Roman", serif;
@@ -140,6 +140,7 @@ p {
         margin: 0 auto;
     }
 }
+
 
 
 
