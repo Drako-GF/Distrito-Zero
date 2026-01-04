@@ -10,8 +10,8 @@ body {
 } */
 
 .titulo {
-     font-family: Georgia, "Times New Roman", serif;
-     color: #111111;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #111111;
     letter-spacing: 1px;
     margin-top: 40px;
     font-size: 50px;
@@ -61,8 +61,7 @@ p {
 }
 
 /* ===== CUADROS ===== */
-.subpaginas,
-.rectangulo-texto {
+.subpaginas, .rectangulo-texto {
     background-color: #ffffff;  /* como banda inferior del libro */
     color: #1c1c1c;
     padding: 20px;
@@ -75,11 +74,18 @@ p {
     flex-direction: column;
     align-items: center;
     font-size: 20px;
+
+    /* ===== TRANSICIÓN DE HOVER ===== */
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.subpaginas:hover, .rectangulo-texto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* ===== TÍTULOS ===== */
-.subpaginas h3,
-.rectangulo-texto h3 {
+.subpaginas h3, .rectangulo-texto h3 {
     font-size: 24px;
     margin-bottom: 15px;
     color: #000000;
@@ -98,8 +104,7 @@ p {
 }
 
 /* ===== ENLACES ===== */
-.subpaginas a,
-.rectangulo-texto a {
+.subpaginas a, .rectangulo-texto a {
     text-decoration: none;
     color: #1e8acb;  /* azul inspirado en la O */
     font-size: 20px;
@@ -140,6 +145,7 @@ p {
         margin: 0 auto;
     }
 }
+
 
 
 
