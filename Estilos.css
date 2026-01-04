@@ -1,14 +1,17 @@
 body {
-    background-color: #1a1d21;
+    background-color: #e4e4e4;   /* gris muy claro */
     font-family: Arial, sans-serif;
     text-align: center;
-    color: #e8e8e8;
 }
 
 /* ===== TÍTULO ===== */
+h1 {
+    color: #ffffff;
+}
+
 .titulo {
     font-family: Georgia, "Times New Roman", serif;
-    color: #ffffff; /* como el título del libro */
+    color: #ffffff;     /* blanco como en la portada */
     letter-spacing: 1px;
     margin-top: 40px;
     font-size: 50px;
@@ -16,13 +19,19 @@ body {
 
 /* ===== SUBTÍTULO ===== */
 p {
-    color: #e0e0e0;
+    color: #2c2c2c;   /* gris oscuro legible */
     font-size: 18px;
 }
 
+.subtitulo-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .subtitulo {
-    background-color: #2b2f34;  /* gris elegante */
-    color: #f5f5f2;              /* blanco marfil */
+    background-color: #2b2f34;   /* gris oscuro elegante */
+    color: #f5f5f5;              /* blanco suave */
     padding: 15px;
     border-radius: 8px;
     width: 60%;
@@ -31,40 +40,104 @@ p {
     margin-bottom: 10px;
 }
 
-/* ===== CUADROS DE CONTENIDO ===== */
+/* ===== CONTENIDO CENTRAL ===== */
+.contenido {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 20px;
+    width: 60%;
+    margin-top: 10px;
+    align-items: start;
+    margin-left: auto;
+    margin-right: auto;  /* 🔹 asegura centrado */
+}
+
+/* ===== IMAGEN ===== */
+.imagen {
+    width: 200px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* ===== CUADROS ===== */
 .subpaginas,
 .rectangulo-texto {
-    background-color: #f4f3ef;   /* igual a banda inferior */
-    color: #222;
+    background-color: #ffffff;  /* como banda inferior del libro */
+    color: #1c1c1c;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
-    border: 1px solid #d9d6cf;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     font-family: Georgia, "Times New Roman", serif;
     letter-spacing: 1px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-size: 20px;
 }
 
-/* ===== TÍTULOS DE BLOQUES ===== */
+/* ===== TÍTULOS ===== */
 .subpaginas h3,
 .rectangulo-texto h3 {
-    color: #000000;  /* negro intenso */
     font-size: 24px;
     margin-bottom: 15px;
+    color: #000000;
+}
+
+/* ===== LISTAS ===== */
+.subpaginas ul,
+.rectangulo-texto ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.subpaginas li,
+.rectangulo-texto li {
+    margin-bottom: 10px;
 }
 
 /* ===== ENLACES ===== */
 .subpaginas a,
 .rectangulo-texto a {
     text-decoration: none;
-    color: #1e8acb;   /* azul de la O */
+    color: #1e8acb;  /* azul inspirado en la O */
     font-size: 20px;
     font-weight: bold;
-    transition: color .2s ease;
 }
 
 .subpaginas a:hover,
 .rectangulo-texto a:hover {
-    color: #0f5c8d;   /* azul oscuro */
     text-decoration: underline;
+    color: #0f5c8d;
 }
+
+/* ===== RECTÁNGULO INFERIOR ===== */
+.rectangulo-texto {
+    width: 60%;
+    margin: 20px auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+    .contenido {
+        grid-template-columns: 1fr;
+        width: 90%;
+    }
+
+    .subtitulo {
+        width: 90%;
+    }
+
+    .rectangulo-texto {
+        width: 90%;
+    }
+
+    .imagen {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
