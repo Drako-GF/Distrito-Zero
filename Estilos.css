@@ -10,11 +10,7 @@ h1 {
 }
 
 .titulo {
-    color: #ffffff;         /* blanco */
-    background-color: #1c1f23;   /* gris muy oscuro */
-    padding: 10px 20px;     /* para que respire */
-    border-radius: 10px;    /* suave y elegante */
-    display: inline-block;  /* para que no ocupe toda la línea */
+    color: #111111;
 }
 
 /* ===== SUBTÍTULO ===== */
@@ -140,5 +136,6 @@ p {
         margin: 0 auto;
     }
 }
+
 
 
