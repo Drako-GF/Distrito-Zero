@@ -63,8 +63,8 @@
 
   // Cubos
   const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const materialOuter = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
-  const materialInner = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
+  const materialOuter = new THREE.MeshBasicMaterial({ color: 0x00aaff, wireframe: true });
+  const materialInner = new THREE.MeshBasicMaterial({ color: 0x00aaff, wireframe: true });
 
   const cubeOuter = new THREE.Mesh(geometry, materialOuter);
   const cubeInner = new THREE.Mesh(geometry.clone(), materialInner);
@@ -73,10 +73,9 @@
   scene.add(cubeOuter);
   scene.add(cubeInner);
 
-  // Variables animación cubo
+  // Variables animación cubo (solo tamaño)
   let grow = true;
   let scale = 1;
-  let colorToggle = true;
 
   function animate() {
     requestAnimationFrame(animate);
@@ -94,12 +93,6 @@
     if (scale < 0.8) grow = true;
     cubeOuter.scale.set(scale, scale, scale);
     cubeInner.scale.set(scale * 0.6, scale * 0.6, scale * 0.6);
-
-    // Alternar color
-    const color = colorToggle ? 0xff0000 : 0x0000ff;
-    materialOuter.color.setHex(color);
-    materialInner.color.setHex(color);
-    colorToggle = !colorToggle;
 
     renderer.render(scene, camera);
   }
