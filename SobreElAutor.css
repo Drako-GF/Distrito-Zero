@@ -1,47 +1,76 @@
-/* Estilos generales */
+/* ===== Estilos generales ===== */
 body {
-    background-color: #b0f8ee;
-    font-family: Georgia, "Times New Roman", serif;
+    background-color: #e4e4e4;   /* gris muy claro */
+    font-family: Arial, sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
+/* ===== TÍTULO ===== */
 h1 {
-    color: #8f0000;
     font-family: Georgia, "Times New Roman", serif;
-    text-align: center;
+    color: #111111;
     letter-spacing: 1px;
-    margin-top: 30px;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 50px;
 }
 
+/* ===== PÁRRAFOS ===== */
 p {
-    color: #000000;
+    color: #2c2c2c;  /* gris oscuro legible */
     font-size: 18px;
-    font-family: Georgia, "Times New Roman", serif;
     text-align: center;
-    letter-spacing: 1px;
 }
 
-/* Rectángulo para el párrafo */
+/* ===== CUADRO DE TEXTO ===== */
 .cuadro-texto {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     width: 60%;
     margin: 20px auto;
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: Georgia, "Times New Roman", serif;
+    letter-spacing: 1px;
+    font-size: 20px;
+
+    /* Transición para hover */
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
-/* Ajuste de imágenes dentro del cuadro */
+.cuadro-texto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ===== IMÁGENES DENTRO DEL CUADRO ===== */
 .cuadro-texto img {
-    max-width: 100%;   /* nunca excede el ancho del cuadro */
-    height: auto;      /* mantiene proporción */
-    display: block;    /* elimina espacio extra debajo de la imagen */
-    margin: 10px 0;    /* espacio arriba y abajo */
-    border-radius: 5px; /* opcional */
+    width: 50%;          /* como en el contenido principal */
+    max-width: 300px;
+    height: auto;
+    display: block;
+    margin: 10px 0;
+    border-radius: 8px;
+    transition: transform 0.3s;
 }
 
+.cuadro-texto img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .cuadro-texto {
+        width: 90%;
+        font-size: 18px;
+    }
+    .cuadro-texto img {
+        width: 80%;
+        max-width: 300px;
+    }
+}
