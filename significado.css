@@ -1,38 +1,42 @@
-/* Estilos generales */
+/* ===== Estilos generales ===== */
 body {
-    background-color: #b0f8ee;
-    font-family: Georgia, "Times New Roman", serif;
+    background-color: #e4e4e4;       /* gris muy claro */
+    font-family: Arial, sans-serif;  /* cuerpo en Arial */
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
 h1 {
-    color: #8f0000;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: Georgia, "Times New Roman", serif;  /* títulos en Georgia */
+    color: #111111;                                  /* negro elegante */
     text-align: center;
     letter-spacing: 1px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
-/* Rectángulo para el texto */
+/* ===== CUADRO DE TEXTO ===== */
 .cuadro-texto {
-    background-color: #ffffff;
+    background-color: #ffffff;       /* blanco elegante */
     padding: 20px 30px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     width: 60%;
     margin: 20px auto;
-    text-align: justify;  /* 👈 justifica todo el texto */
+    text-align: justify;             /* mantiene justificado */
+    font-family: Georgia, "Times New Roman", serif;  /* contenido en Georgia */
+    letter-spacing: 1px;
+    font-size: 20px;
 }
 
-/* Texto del interior */
+/* ===== TEXTO DENTRO DEL CUADRO ===== */
 .cuadro-texto p {
-    color: #000000;
+    color: #2c2c2c;                 /* gris oscuro legible */
     font-size: 18px;
-    line-height: 1.5;     /* 👈 separación entre líneas */
-    text-indent: 0.5em;   /* 👈 sangría primera línea */
+    line-height: 1.5;               /* separación entre líneas */
+    text-indent: 0.5em;             /* sangría primera línea */
     margin-top: 0;
-    margin-bottom: 18px;  /* 👈 separa párrafos */
+    margin-bottom: 18px;            /* separa párrafos */
     letter-spacing: 1px;
+    font-family: Arial, sans-serif; /* párrafos en Arial */
 }
