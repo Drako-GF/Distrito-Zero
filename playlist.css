@@ -1,51 +1,58 @@
-/* Estilos generales */
+/* ===== Estilos generales ===== */
 body {
-    background-color: #b0f8ee;
-    font-family: Georgia, "Times New Roman", serif; /* Fuente principal */
+    background-color: #e4e4e4;       /* gris muy claro */
+    font-family: Arial, sans-serif;  /* cuerpo en Arial */
     text-align: center;
     margin: 0;
     padding: 0;
 }
 
 h1 {
-    color: #8f0000;
-    font-family: Georgia, "Times New Roman", serif; /* Asegura consistencia */
+    font-family: Georgia, "Times New Roman", serif;  /* títulos en Georgia */
+    color: #111111;                                  /* negro elegante */
     text-align: center;
     letter-spacing: 1px;
-    margin-top: 30px;
+    margin-top: 40px;
 }
 
 p {
-    color: #000000;
+    color: #2c2c2c;                 /* gris oscuro legible */
     font-size: 18px;
-    font-family: Georgia, "Times New Roman", serif; /* Texto dentro del rectángulo */
+    font-family: Arial, sans-serif; /* párrafos en Arial */
     text-align: center;
     letter-spacing: 1px;
 }
 
-/* Rectángulo para el párrafo */
+/* ===== CUADRO DE TEXTO ===== */
 .cuadro-texto {
-    background-color: #ffffff;
+    background-color: #ffffff;       /* blanco elegante */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     width: 60%;
     margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Georgia, "Times New Roman", serif;  /* contenido en Georgia */
+    letter-spacing: 1px;
+    font-size: 20px;
 }
 
-/* Imagen centrada y tamaño flexible */
+/* ===== IMAGEN CENTRADA ===== */
 .imagen {
     display: block;
-    margin: 20px auto 0 auto; /* centrada horizontalmente y margen arriba */
-    max-width: 80%;           /* tamaño máximo */
-    height: auto;             /* mantiene proporción */
-    transition: all 0.3s ease; /* transición suave para el efecto hover */
+    margin: 20px auto 0 auto;       /* centrada horizontalmente */
+    max-width: 80%;                  /* tamaño máximo */
+    height: auto;                    /* mantiene proporción */
+    border-radius: 8px;              /* bordes consistentes con cuadros */
+    transition: all 0.3s ease;       /* transición suave */
 }
 
-/* Efecto al pasar el ratón */
+/* ===== EFECTO HOVER SOBRE IMAGEN ===== */
 a:hover .imagen {
-    border: 3px solid #1abc9c; /* borde de color para indicar clicable */
-    border-radius: 10px;        /* bordes redondeados */
+    border: 3px solid #1e8acb;      /* borde azul consistente con links */
+    border-radius: 10px;             /* bordes redondeados */
     box-shadow: 0 4px 10px rgba(0,0,0,0.3); /* sombra para resaltar */
-    transform: scale(1.05);     /* pequeño zoom */
+    transform: scale(1.05);          /* pequeño zoom */
 }
