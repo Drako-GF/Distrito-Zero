@@ -7,21 +7,20 @@ body {
     padding: 0;
 }
 
-/* ===== TÍTULO ===== */
 h1 {
     font-family: Georgia, "Times New Roman", serif;
-    color: #111111;
-    letter-spacing: 1px;
+    color: #111111;           /* negro elegante */
     text-align: center;
+    letter-spacing: 1px;
     margin-top: 40px;
-    font-size: 50px;
 }
 
-/* ===== PÁRRAFOS ===== */
 p {
-    color: #2c2c2c;  /* gris oscuro legible */
+    color: #2c2c2c;           /* gris oscuro legible */
     font-size: 18px;
+    font-family: Arial, sans-serif;
     text-align: center;
+    letter-spacing: 1px;
 }
 
 /* ===== CUADRO DE TEXTO ===== */
@@ -38,39 +37,13 @@ p {
     font-family: Georgia, "Times New Roman", serif;
     letter-spacing: 1px;
     font-size: 20px;
-
-    /* Transición para hover */
-    transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.cuadro-texto:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
 /* ===== IMÁGENES DENTRO DEL CUADRO ===== */
 .cuadro-texto img {
-    width: 50%;          /* como en el contenido principal */
-    max-width: 300px;
-    height: auto;
+    max-width: 100%;   /* nunca excede el ancho del cuadro */
+    height: auto;      /* mantiene proporción */
     display: block;
     margin: 10px 0;
-    border-radius: 8px;
-    transition: transform 0.3s;
-}
-
-.cuadro-texto img:hover {
-    transform: scale(1.05);
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .cuadro-texto {
-        width: 90%;
-        font-size: 18px;
-    }
-    .cuadro-texto img {
-        width: 80%;
-        max-width: 300px;
-    }
+    border-radius: 8px; /* como en tu CSS principal */
 }
