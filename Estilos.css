@@ -135,3 +135,47 @@ p {
         max-width: 300px;
     }
 }
+/* ===== CONTENIDO CENTRAL EN FILA ===== */
+.contenido {
+    display: flex;
+    flex-direction: row;       /* imagen a la izquierda, cuadros a la derecha */
+    align-items: stretch;      /* cuadros igualan altura de la imagen */
+    gap: 20px;                 /* separación entre imagen y cuadros */
+    width: 90%;
+    margin: 10px auto;
+}
+
+/* ===== IMAGEN ===== */
+.imagen {
+    max-width: 40%;            /* imagen ocupa hasta 40% del contenedor */
+    height: auto;
+    border-radius: 8px;
+    display: block;
+}
+
+/* ===== CONTENEDOR DE CUADROS ===== */
+.subpaginas, .rectangulo-texto {
+    flex: 1;                   /* ocupan todo el espacio restante */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;    /* centra el contenido verticalmente */
+    font-size: 18px;           /* ajustable para que encaje con la altura de la imagen */
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .contenido {
+        flex-direction: column; /* apilar imagen encima de cuadros en móviles */
+        align-items: center;
+    }
+
+    .imagen {
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .subpaginas, .rectangulo-texto {
+        width: 100%;
+        font-size: 16px;       /* texto más pequeño en móviles */
+    }
+}
