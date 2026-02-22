@@ -8,17 +8,48 @@
       margin: 0;
       overflow: hidden;
       background: black;
+      font-family: Arial, sans-serif;
     }
+
     canvas {
       display: block;
+    }
+
+    /* Mensaje inicial Teseracto activado */
+    #mensaje-teseracto {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 50px;
+      font-weight: bold;
+      color: red;
+      opacity: 1;
+      transition: opacity 3s ease-out;
+      pointer-events: none; /* no interfiere con la interacción */
+      white-space: nowrap;
+    }
+
+    /* Mensajes aleatorios */
+    .mensaje-aleatorio {
+      position: absolute;
+      font-size: 24px;
+      font-weight: bold;
+      color: #00ffff;
+      opacity: 0;
+      pointer-events: none;
+      white-space: nowrap;
+      transition: opacity 1s ease-in-out;
     }
   </style>
 </head>
 <body>
+  <div id="mensaje-teseracto">Teseracto activado</div>
+
 <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
 <script>
+  // ======= TESSERACT =======
   const scene = new THREE.Scene();
-
   const camera = new THREE.PerspectiveCamera(
     75,
     window.innerWidth / window.innerHeight,
@@ -31,7 +62,7 @@
   renderer.setSize(window.innerWidth, window.innerHeight);
   document.body.appendChild(renderer.domElement);
 
-  // Tesseract (hipercubo simulado con dos cubos)
+  // Dos cubos para simular teseracto
   const geometry = new THREE.BoxGeometry(1, 1, 1);
   const material = new THREE.MeshBasicMaterial({
     color: 0x00aaff,
@@ -39,15 +70,13 @@
   });
 
   const cubeOuter = new THREE.Mesh(geometry, material);
-  const cubeInner = new THREE.Mesh(
-    geometry.clone(),
-    material.clone()
-  );
+  const cubeInner = new THREE.Mesh(geometry.clone(), material.clone());
   cubeInner.scale.set(0.6, 0.6, 0.6);
 
   scene.add(cubeOuter);
   scene.add(cubeInner);
 
+  // Animación tesseract
   function animate() {
     requestAnimationFrame(animate);
 
@@ -67,6 +96,72 @@
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
   });
+
+  // ======= MENSAJE "Teseracto activado" =======
+  const mensaje = document.getElementById("mensaje-teseracto");
+  let grow = true;
+  let size = 50; // tamaño inicial en px
+  let colorToggle = true;
+
+  function animarMensaje() {
+    // tamaño oscilante
+    if(grow) size += 0.5;
+    else size -= 0.5;
+    if(size > 60) grow = false;
+    if(size < 45) grow = true;
+    mensaje.style.fontSize = size + "px";
+
+    // color alternante
+    mensaje.style.color = colorToggle ? "red" : "blue";
+    colorToggle = !colorToggle;
+
+    requestAnimationFrame(animarMensaje);
+  }
+
+  animarMensaje();
+
+  // Desvanecer después de 3 segundos
+  setTimeout(() => {
+    mensaje.style.opacity = 0;
+  }, 3000);
+
+  // ======= MENSAJES ALEATORIOS =======
+  const mensajes = [
+    "El tiempo se distorsiona...",
+    "¿Ves más allá?",
+    "Dimensiones colapsando",
+    "Código secreto activado",
+    "No mires directamente..."
+  ];
+
+  function mostrarMensajeAleatorio() {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = "mensaje-aleatorio";
+    msgDiv.textContent = mensajes[Math.floor(Math.random() * mensajes.length)];
+
+    // posición aleatoria
+    const x = Math.random() * (window.innerWidth - 200);
+    const y = Math.random() * (window.innerHeight - 50);
+    msgDiv.style.left = x + "px";
+    msgDiv.style.top = y + "px";
+
+    document.body.appendChild(msgDiv);
+
+    // hacer visible
+    requestAnimationFrame(() => {
+      msgDiv.style.opacity = 1;
+    });
+
+    // desaparecer después de 5 segundos
+    setTimeout(() => {
+      msgDiv.style.opacity = 0;
+      setTimeout(() => msgDiv.remove(), 1000); // eliminar del DOM
+    }, 5000);
+  }
+
+  // mostrar un mensaje cada 5 minutos (300000ms)
+  setInterval(mostrarMensajeAleatorio, 300000);
+
 </script>
 </body>
 </html>
