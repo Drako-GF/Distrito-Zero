@@ -1,53 +1,198 @@
 <!DOCTYPE html>
+
+<!--
+==============================================================================
+    DISTRITO ZERO
+    Página principal de la web oficial del libro.
+
+    Autor: Gonzalo Fierro
+    Archivo: index.html
+    Descripción:
+    Página de inicio desde la que el lector puede acceder a todo el contenido
+    adicional relacionado con la novela.
+
+    Última actualización: Julio de 2026
+==============================================================================
+-->
+
 <html lang="es">
+
 <head>
+
+    <!-- ==========================================================
+         CONFIGURACIÓN BÁSICA DEL DOCUMENTO
+    =========================================================== -->
+
     <meta charset="UTF-8">
-    <title>Distrito Zero</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Distrito Zero | Página oficial</title>
+
+    <!-- Descripción para buscadores -->
+    <meta name="description"
+        content="Página web oficial de Distrito Zero. Descubre contenido exclusivo del libro: playlist oficial, personajes, curiosidades, reseñas, interpretaciones y mucho más.">
+
+    <!-- Color del navegador en dispositivos móviles -->
+    <meta name="theme-color" content="#000000">
+
+    <!-- Hoja de estilos principal -->
     <link rel="stylesheet" href="Estilos.css">
+
 </head>
+
 <body>
-    <!-- ===== TÍTULO ===== -->
-    <h1 class="titulo">Distrito Zero</h1>
 
-    <!-- ===== SUBTÍTULO ===== -->
-    <div class="subtitulo-contenido">
-        <p class="subtitulo">La página web oficial del libro Distrito Zero</p>
+    <!-- ==========================================================
+         CABECERA PRINCIPAL
+         Contiene el título y el subtítulo de la página.
+    =========================================================== -->
 
-        <!-- ===== CONTENIDO CENTRAL ===== -->
-        <div class="contenido">
-            <!-- Imagen centrada -->
-            <img src="portada Distrito Zero.png" alt="Portada del libro Distrito Zero" class="imagen">
+    <header>
 
-            <!-- Cuadro debajo de la imagen -->
-            <div class="subpaginas">
-                <h3>¿Te has quedado con ganas de más? Revisa esto</h3>
+        <h1 class="titulo">
+            Distrito Zero
+        </h1>
+
+        <p class="subtitulo">
+            La página web oficial del libro <em>Distrito Zero</em>
+        </p>
+
+    </header>
+
+    <!-- ==========================================================
+         CONTENIDO PRINCIPAL
+         Todo el contenido importante de la página se encuentra aquí.
+    =========================================================== -->
+
+    <main>
+
+        <!-- ======================================================
+             PORTADA DEL LIBRO
+             Imagen principal de la página.
+        ======================================================= -->
+
+        <section class="contenido">
+
+            <img
+                src="portada Distrito Zero.png"
+                alt="Portada oficial del libro Distrito Zero"
+                class="imagen">
+
+            <!-- ==================================================
+                 ENLACES PRINCIPALES
+                 Contenido recomendado tras finalizar la novela.
+            =================================================== -->
+
+            <section class="subpaginas">
+
+                <h2>
+                    ¿Te has quedado con ganas de más? Revisa esto
+                </h2>
+
+                <nav aria-label="Contenido adicional">
+
+                    <ul>
+
+                        <li>
+                            <a href="playlist.html">
+                                Playlist oficial
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="opiniones.html">
+                                Reseñas
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="significado.html">
+                                Una pequeña interpretación (contiene spoilers)
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="curiosidades.html">
+                                Curiosidades
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="SobreElAutor.html">
+                                Sobre el autor
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+
+            </section>
+
+        </section>
+
+        <!-- ======================================================
+             INFORMACIÓN DE APOYO
+             Apartado para quienes deseen profundizar en el universo
+             de la novela.
+        ======================================================= -->
+
+        <section class="rectangulo-texto">
+
+            <h2>
+                Para aquellos que se han perdido (y demás cosas)
+            </h2>
+
+            <nav aria-label="Guías de ayuda">
+
                 <ul>
-                    <li><a href="playlist.html">Playlist oficial</a></li>
-                    <li><a href="opiniones.html">Reseñas</a></li>
-                    <li><a href="significado.html">Una pequeña interpretación (contiene spóilers)</a></li>
-                    <li><a href="curiosidades.html">Curiosidades</a></li>
-                    <li><a href="SobreElAutor.html">Sobre el autor</a></li>
+
+                    <li>
+                        <a href="guíaPersonajes.html">
+                            Guía de personajes
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="dibujosExplicaciones.html">
+                            Dibujos y explicaciones
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="narraciónExplicada.html">
+                            Explicación de la narración (contiene spoilers)
+                        </a>
+                    </li>
+
                 </ul>
-            </div>
-        </div>
-    </div>
 
-    <!-- ===== RECTÁNGULO INFERIOR ===== -->
-    <div class="rectangulo-texto">
-        <h3>Para aquellos que se han perdido (y demás cosas)</h3>
-        <ul>
-            <li><a href="guíaPersonajes.html">Guía de personajes</a></li>
-            <li><a href="dibujosExplicaciones.html">Dibujos y explicaciones</a></li>
-            <li><a href="narraciónExplicada.html">Explicación de la narración (contiene spóilers)</a></li>
-        </ul>
-    </div>
-        <!-- ===== NUEVO CUADRO DE TEXTO ===== -->
-    <div class="nuevo-cuadro rectangulo-texto">
-        <p><a href="Teseracto.html">⚠️Error Code 198</a></p>
-    </div>
+            </nav>
+
+        </section>
+
+        <!-- ======================================================
+             ENLACE OCULTO
+             Acceso al contenido secreto de la página.
+        ======================================================= -->
+
+        <section class="nuevo-cuadro rectangulo-texto">
+
+            <p>
+
+                <a href="Teseracto.html">
+                    ⚠️ Error Code 198
+                </a>
+
+            </p>
+
+        </section>
+
+    </main>
+
 </body>
-</html>
 
+</html>
 
 
 
