@@ -7,15 +7,17 @@
 
     Autor: Gonzalo Fierro
     Archivo: index.html
+
     Descripción:
-    Página de inicio desde la que el lector puede acceder a todo el contenido
-    adicional relacionado con la novela.
+    Página de inicio del sitio web oficial de "Distrito Zero: Crónicas de una
+    guerra inminente". Desde aquí el lector puede acceder a contenido exclusivo
+    relacionado con la novela.
 
     Última actualización: Julio de 2026
 ==============================================================================
 -->
 
-<html lang="es">
+<html lang="es-ES">
 
 <head>
 
@@ -28,12 +30,28 @@
 
     <title>Distrito Zero: Crónicas de una guerra inminente | Página oficial</title>
 
-    <!-- Descripción para buscadores -->
+    <!-- Información para buscadores -->
     <meta name="description"
-        content="Página web oficial de Distrito Zero: Crónicas de una guerra inminente. Descubre contenido exclusivo del libro: playlist oficial, personajes, curiosidades, reseñas, interpretaciones y mucho más.">
+        content="Página web oficial de Distrito Zero: Crónicas de una guerra inminente. Descubre contenido exclusivo del libro, personajes, curiosidades, playlist oficial, reseñas y mucho más.">
 
-    <!-- Color del navegador en dispositivos móviles -->
+    <meta name="author" content="Gonzalo Fierro">
+
+    <meta name="keywords"
+        content="Distrito Zero, Crónicas de una guerra inminente, Gonzalo Fierro, novela, ciencia ficción, fantasía, libro">
+
+    <!-- Color de la barra del navegador en dispositivos móviles -->
     <meta name="theme-color" content="#000000">
+
+    <!-- Información para redes sociales (Open Graph) -->
+    <meta property="og:title" content="Distrito Zero: Crónicas de una guerra inminente">
+    <meta property="og:description"
+        content="Página web oficial del libro. Descubre contenido exclusivo sobre el universo de Distrito Zero.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="portada Distrito Zero.png">
+
+    <!-- Icono de la pestaña del navegador -->
+    <!-- Sustituir por favicon.ico o favicon.png cuando esté disponible -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
 
     <!-- Hoja de estilos principal -->
     <link rel="stylesheet" href="Estilos.css">
@@ -43,8 +61,8 @@
 <body>
 
     <!-- ==========================================================
-         CABECERA PRINCIPAL
-         Contiene el título y el subtítulo de la página.
+         CABECERA
+         Presentación principal de la página.
     =========================================================== -->
 
     <header>
@@ -61,27 +79,28 @@
 
     <!-- ==========================================================
          CONTENIDO PRINCIPAL
-         Todo el contenido importante de la página se encuentra aquí.
+         Contiene todos los apartados accesibles desde la portada.
     =========================================================== -->
 
     <main>
 
         <!-- ======================================================
-             PORTADA DEL LIBRO
-             Imagen principal de la página.
+             SECCIÓN PRINCIPAL
+             Portada del libro y enlaces al contenido adicional.
         ======================================================= -->
 
         <section class="contenido">
 
+            <!-- Portada oficial del libro -->
+
             <img
                 src="portada Distrito Zero.png"
-                alt="Portada oficial del libro Distrito Zero"
-                class="imagen">
+                alt="Portada oficial del libro Distrito Zero: Crónicas de una guerra inminente"
+                class="imagen"
+                loading="eager"
+                decoding="async">
 
-            <!-- ==================================================
-                 ENLACES PRINCIPALES
-                 Contenido recomendado tras finalizar la novela.
-            =================================================== -->
+            <!-- Enlaces principales -->
 
             <section class="subpaginas">
 
@@ -89,7 +108,7 @@
                     ¿Te has quedado con ganas de más? Revisa esto
                 </h2>
 
-                <nav aria-label="Contenido adicional">
+                <nav aria-label="Contenido adicional del libro">
 
                     <ul>
 
@@ -132,9 +151,8 @@
         </section>
 
         <!-- ======================================================
-             INFORMACIÓN DE APOYO
-             Apartado para quienes deseen profundizar en el universo
-             de la novela.
+             GUÍAS Y MATERIAL EXPLICATIVO
+             Recursos para comprender mejor la historia.
         ======================================================= -->
 
         <section class="rectangulo-texto">
@@ -143,7 +161,7 @@
                 Para aquellos que se han perdido (y demás cosas)
             </h2>
 
-            <nav aria-label="Guías de ayuda">
+            <nav aria-label="Guías y explicaciones">
 
                 <ul>
 
@@ -172,28 +190,37 @@
         </section>
 
         <!-- ======================================================
-             ENLACE OCULTO
-             Acceso al contenido secreto de la página.
+             CONTENIDO OCULTO
+             Pequeño guiño para los lectores más curiosos.
         ======================================================= -->
 
         <section class="nuevo-cuadro rectangulo-texto">
 
-            <p>
+            <a
+                href="Teseracto.html"
+                aria-label="Acceder al contenido oculto">
 
-                <a href="Teseracto.html">
-                    ⚠️ Error Code 198
-                </a>
+                ⚠️ Error Code 198
 
-            </p>
+            </a>
 
         </section>
 
     </main>
 
+    <!-- ==========================================================
+         PIE DE PÁGINA
+         Información legal del sitio.
+    =========================================================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Gonzalo Fierro · Todos los derechos reservados.
+        </p>
+
+    </footer>
+
 </body>
 
 </html>
-
-
-
-
