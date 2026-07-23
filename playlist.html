@@ -7,18 +7,12 @@
 
     Autor: Gonzalo Fierro
     Archivo: playlist.html
-
-    Contenido exclusivo de la página oficial.
 ==============================================================================
 -->
 
 <html lang="es">
 
 <head>
-
-    <!-- ==========================================================
-         CONFIGURACIÓN
-    =========================================================== -->
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +24,7 @@
 
     <meta name="theme-color" content="#000000">
 
+    <link rel="stylesheet" href="Estilos.css">
     <link rel="stylesheet" href="playlist.css">
 
 </head>
@@ -37,7 +32,7 @@
 <body>
 
     <!-- ==========================================================
-         HERO
+         CABECERA
     =========================================================== -->
 
     <header class="hero">
@@ -57,7 +52,7 @@
             <div class="linea-decorativa"></div>
 
             <p class="subtitulo">
-                La música que acompañó cada capítulo durante el proceso de escritura.
+                La música que me acompañó durante la escritura de la novela.
             </p>
 
         </div>
@@ -65,13 +60,13 @@
     </header>
 
     <!-- ==========================================================
-         CONTENIDO PRINCIPAL
+         CONTENIDO
     =========================================================== -->
 
     <main>
 
         <!-- ======================================================
-             MENSAJE DEL AUTOR
+             MENSAJE
         ======================================================= -->
 
         <section class="mensaje">
@@ -87,8 +82,8 @@
                 <p>
 
                     Durante los meses en los que escribí <strong>Distrito Zero</strong>,
-                    esta playlist estuvo presente prácticamente todos los días.
-                    Aunque no es el tipo de música que suelo escuchar habitualmente,
+                    esta playlist estuvo sonando casi todos los días.
+                    Aunque no sea el tipo de música que suelo escuchar habitualmente,
                     consiguió crear la atmósfera perfecta para escribir esta historia.
 
                 </p>
@@ -96,15 +91,14 @@
                 <p>
 
                     Me haría muchísima ilusión que vosotros también la escucharais
-                    mientras leéis la novela. Quizá así podáis experimentar algunas
-                    escenas con la misma emoción y el mismo ambiente con los que fueron
-                    escritas.
+                    mientras leéis la novela. Quizá así podáis vivir algunas escenas
+                    con la misma emoción y el mismo ambiente con los que fueron escritas.
 
                 </p>
 
                 <p>
 
-                    Gracias por formar parte de esta aventura y, especialmente,
+                    Gracias por acompañarme en esta aventura y, especialmente,
                     gracias a <strong>Eloy Moreno</strong> por inspirarme a escribir
                     y por despertar en mí la idea de compartir esta playlist con
                     todos los lectores.
@@ -123,33 +117,33 @@
 
             <div class="spotify-cuadro">
 
-                <h2>Playlist oficial</h2>
+                <h2>Escúchala directamente</h2>
 
                 <p>
-
-                    Escanea el código QR o pulsa el botón para abrir la playlist
-                    directamente en Spotify.
-
+                    Puedes reproducir la playlist sin salir de la página.
                 </p>
 
-                <a href="https://open.spotify.com/playlist/6URIzJNBryK1EhJRJcpfGX?si=5cf14b0fa3fd4e22"
+                <div class="spotify-embed">
+
+                    <iframe
+                        style="border-radius:12px"
+                        src="https://open.spotify.com/embed/playlist/6URIzJNBryK1EhJRJcpfGX?utm_source=generator"
+                        width="100%"
+                        height="352"
+                        frameborder="0"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy">
+                    </iframe>
+
+                </div>
+
+                <a class="boton-spotify"
+                   href="https://open.spotify.com/playlist/6URIzJNBryK1EhJRJcpfGX"
                    target="_blank"
                    rel="noopener noreferrer">
 
-                    <img
-                        src="Spotify.png"
-                        alt="Código QR de la playlist oficial de Distrito Zero"
-                        class="qr">
-
-                </a>
-
-                <a
-                    class="boton-spotify"
-                    href="https://open.spotify.com/playlist/6URIzJNBryK1EhJRJcpfGX?si=5cf14b0fa3fd4e22"
-                    target="_blank"
-                    rel="noopener noreferrer">
-
-                    🎵 Escuchar en Spotify
+                    🎵 Abrir en Spotify
 
                 </a>
 
@@ -158,7 +152,40 @@
         </section>
 
         <!-- ======================================================
-             FRASE FINAL
+             QR
+        ======================================================= -->
+
+        <section class="qr-section">
+
+            <div class="spotify-cuadro">
+
+                <h2>¿Estás leyendo el libro en papel?</h2>
+
+                <p>
+
+                    Escanea este código QR desde tu teléfono y accederás
+                    directamente a la playlist oficial.
+
+                </p>
+
+                <a
+                    href="https://open.spotify.com/playlist/6URIzJNBryK1EhJRJcpfGX"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    <img
+                        src="Spotify.png"
+                        alt="Código QR de la playlist oficial"
+                        class="qr">
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- ======================================================
+             DESPEDIDA
         ======================================================= -->
 
         <section class="despedida">
