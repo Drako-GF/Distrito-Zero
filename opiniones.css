@@ -1,45 +1,253 @@
-/* ===== Estilos generales ===== */
-body {
-    background-color: #e4e4e4;       /* gris muy claro */
-    font-family: Arial, sans-serif;  /* cuerpo en Arial */
-    text-align: center;
-    margin: 0;
-    padding: 0;
+/*==============================================================================
+    DISTRITO ZERO
+    RESEÑAS DE LOS LECTORES
+
+    Archivo: opiniones.css
+    Estilos exclusivos de la página de reseñas.
+==============================================================================*/
+
+
+/*==============================================================================
+    CONTENIDO PRINCIPAL
+==============================================================================*/
+
+main{
+
+    width:min(1100px,92%);
+    margin:auto;
+
 }
 
-h1 {
-    font-family: Georgia, "Times New Roman", serif;  /* títulos en Georgia */
-    color: #111111;                                  /* negro elegante */
-    text-align: center;
-    letter-spacing: 1px;
-    margin-top: 40px;
+
+
+/*==============================================================================
+    MENSAJE
+==============================================================================*/
+
+.mensaje{
+
+    margin:80px auto;
+
 }
 
-p {
-    color: #2c2c2c;                 /* gris oscuro legible */
-    font-size: 18px;
-    font-family: Arial, sans-serif; /* párrafos en Arial */
-    text-align: center;
-    letter-spacing: 1px;
+.tarjeta{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:50px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
 }
 
-/* ===== CUADRO DE TEXTO ===== */
-.cuadro-texto {
-    background-color: #ffffff;       /* blanco elegante */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    width: 60%;
-    margin: 20px auto;               /* distancia entre cuadros */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, "Times New Roman", serif;  /* contenido en Georgia */
-    letter-spacing: 1px;
-    font-size: 20px;
+.tarjeta:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
 }
 
-/* ===== CUADRO SECUNDARIO ===== */
-.cuadro-secundario {
-    margin-top: 10px;                /* separación menor respecto al cuadro anterior */
+.tarjeta h2{
+
+    margin-bottom:30px;
+
+    text-align:center;
+
+}
+
+.tarjeta p{
+
+    text-align:justify;
+
+    color:#555;
+
+    margin-bottom:25px;
+
+}
+
+
+
+/*==============================================================================
+    PANEL DE RESEÑAS
+==============================================================================*/
+
+.reseñas{
+
+    margin:90px auto;
+
+}
+
+.reseñas-cuadro{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:50px;
+
+    box-shadow:var(--sombra-suave);
+
+    text-align:center;
+
+}
+
+
+
+/*==============================================================================
+    CABECERA DEL PANEL
+==============================================================================*/
+
+.registro{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border-radius:100px;
+
+    background:#edf3ff;
+
+    color:var(--color-azul);
+
+    font-size:.9rem;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    margin-bottom:25px;
+
+}
+
+.reseñas-cuadro h2{
+
+    margin-bottom:20px;
+
+}
+
+.reseñas-cuadro p{
+
+    max-width:700px;
+
+    margin:0 auto 20px;
+
+    color:#666;
+
+}
+
+
+
+/*==============================================================================
+    ESTADO VACÍO
+==============================================================================*/
+
+.estado-vacio{
+
+    margin-top:45px;
+
+    padding:35px;
+
+    border:2px dashed #d7dce4;
+
+    border-radius:18px;
+
+    background:#fafafa;
+
+}
+
+.estado-vacio h3{
+
+    margin-bottom:15px;
+
+    color:#222;
+
+}
+
+.estado-vacio p{
+
+    margin:0;
+
+    color:#666;
+
+}
+
+
+
+/*==============================================================================
+    DESPEDIDA
+==============================================================================*/
+
+.despedida{
+
+    margin:120px auto;
+
+    max-width:850px;
+
+    text-align:center;
+
+}
+
+.despedida blockquote{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+}
+
+
+
+/*==============================================================================
+    FOOTER
+==============================================================================*/
+
+footer{
+
+    margin:100px 0 60px;
+
+    text-align:center;
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:768px){
+
+    .tarjeta{
+
+        padding:35px;
+
+    }
+
+    .reseñas-cuadro{
+
+        padding:35px;
+
+    }
+
+    .tarjeta p{
+
+        text-align:left;
+
+    }
+
+    .despedida blockquote{
+
+        font-size:1.6rem;
+
+    }
+
 }
