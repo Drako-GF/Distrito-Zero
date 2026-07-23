@@ -1,40 +1,213 @@
-/* ===== Estilos generales ===== */
-body {
-    background-color: #e4e4e4;   /* gris muy claro */
-    font-family: Arial, sans-serif; /* cuerpo en Arial */
-    text-align: center;
-    margin: 0;
-    padding: 0;
+/*==============================================================================
+    DISTRITO ZERO
+    DETRÁS DE LA NOVELA
+
+    Archivo: curiosidades.css
+    Estilos exclusivos de la página de curiosidades.
+==============================================================================*/
+
+
+/*==============================================================================
+    CONTENIDO PRINCIPAL
+==============================================================================*/
+
+main{
+
+    width:min(1100px,92%);
+    margin:auto;
+
 }
 
-h1 {
-    font-family: Georgia, "Times New Roman", serif; /* títulos en Georgia */
-    color: #111111;            /* negro elegante */
-    text-align: center;
-    letter-spacing: 1px;
-    margin-top: 40px;
+
+
+/*==============================================================================
+    CONTENEDOR DE CURIOSIDADES
+==============================================================================*/
+
+.curiosidades{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:45px;
+
+    margin:80px auto 100px;
+
 }
 
-p {
-    color: #2c2c2c;            /* gris oscuro legible */
-    font-size: 18px;
-    font-family: Arial, sans-serif; /* cuerpo en Arial */
-    text-align: center;
-    letter-spacing: 1px;
+
+
+/*==============================================================================
+    TARJETAS
+==============================================================================*/
+
+.curiosidad{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:45px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
+    overflow:hidden;
+
 }
 
-/* ===== CUADRO DE TEXTO ===== */
-.cuadro-texto {
-    background-color: #ffffff;  /* blanco elegante */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    width: 60%;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, "Times New Roman", serif; /* contenido del cuadro en Georgia */
-    letter-spacing: 1px;
-    font-size: 20px;
+.curiosidad:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
+
+
+/*==============================================================================
+    NÚMERO DECORATIVO
+==============================================================================*/
+
+.numero{
+
+    position:absolute;
+
+    top:15px;
+
+    right:30px;
+
+    font-size:4rem;
+
+    font-family:Georgia, serif;
+
+    font-weight:bold;
+
+    color:rgba(30,138,203,.12);
+
+    user-select:none;
+
+}
+
+
+
+/*==============================================================================
+    TÍTULOS
+==============================================================================*/
+
+.curiosidad h2{
+
+    margin-bottom:20px;
+
+    color:#111;
+
+    text-align:left;
+
+}
+
+
+
+/*==============================================================================
+    TEXTO
+==============================================================================*/
+
+.curiosidad p{
+
+    text-align:justify;
+
+    color:#555;
+
+    line-height:1.8;
+
+}
+
+
+
+/*==============================================================================
+    DESPEDIDA
+==============================================================================*/
+
+.despedida{
+
+    margin:120px auto;
+
+    max-width:850px;
+
+    text-align:center;
+
+}
+
+.despedida blockquote{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+}
+
+
+
+/*==============================================================================
+    FOOTER
+==============================================================================*/
+
+footer{
+
+    margin:100px 0 60px;
+
+    text-align:center;
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:768px){
+
+    .curiosidad{
+
+        padding:35px;
+
+    }
+
+    .numero{
+
+        font-size:3rem;
+
+        top:20px;
+
+        right:20px;
+
+    }
+
+    .curiosidad h2{
+
+        text-align:center;
+
+    }
+
+    .curiosidad p{
+
+        text-align:left;
+
+    }
+
+    .despedida blockquote{
+
+        font-size:1.6rem;
+
+    }
+
 }
