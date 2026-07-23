@@ -14,6 +14,7 @@
 main{
 
     width:min(1100px,92%);
+
     margin:auto;
 
 }
@@ -30,6 +31,8 @@ main{
 
 }
 
+
+
 .tarjeta{
 
     background:white;
@@ -44,6 +47,8 @@ main{
 
 }
 
+
+
 .tarjeta:hover{
 
     transform:translateY(-6px);
@@ -52,6 +57,8 @@ main{
 
 }
 
+
+
 .tarjeta h2{
 
     margin-bottom:30px;
@@ -59,6 +66,8 @@ main{
     text-align:center;
 
 }
+
+
 
 .tarjeta p{
 
@@ -72,6 +81,8 @@ main{
 
 
 
+
+
 /*==============================================================================
     PANEL DE RESEÑAS
 ==============================================================================*/
@@ -81,6 +92,8 @@ main{
     margin:90px auto;
 
 }
+
+
 
 .reseñas-cuadro{
 
@@ -94,7 +107,21 @@ main{
 
     text-align:center;
 
+    transition:var(--transicion);
+
 }
+
+
+
+.reseñas-cuadro:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
+
 
 
 
@@ -124,11 +151,15 @@ main{
 
 }
 
+
+
 .reseñas-cuadro h2{
 
     margin-bottom:20px;
 
 }
+
+
 
 .reseñas-cuadro p{
 
@@ -139,6 +170,8 @@ main{
     color:#666;
 
 }
+
+
 
 
 
@@ -160,6 +193,8 @@ main{
 
 }
 
+
+
 .estado-vacio h3{
 
     margin-bottom:15px;
@@ -168,6 +203,8 @@ main{
 
 }
 
+
+
 .estado-vacio p{
 
     margin:0;
@@ -175,6 +212,8 @@ main{
     color:#666;
 
 }
+
+
 
 
 
@@ -192,6 +231,8 @@ main{
 
 }
 
+
+
 .despedida blockquote{
 
     font-family:"Cormorant Garamond",serif;
@@ -203,6 +244,8 @@ main{
     color:#333;
 
 }
+
+
 
 
 
@@ -220,11 +263,14 @@ footer{
 
 
 
+
+
 /*==============================================================================
     RESPONSIVE
 ==============================================================================*/
 
 @media(max-width:768px){
+
 
     .tarjeta{
 
@@ -232,11 +278,15 @@ footer{
 
     }
 
+
+
     .reseñas-cuadro{
 
         padding:35px;
 
     }
+
+
 
     .tarjeta p{
 
@@ -244,10 +294,13 @@ footer{
 
     }
 
+
+
     .despedida blockquote{
 
         font-size:1.6rem;
 
     }
+
 
 }
