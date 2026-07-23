@@ -3,329 +3,1751 @@
     Hoja de estilos principal
 
     Autor: Gonzalo Fierro
-    Archivo: Estilos.css
+    Diseño y estructura CSS
 
-    Descripción:
-    Esta hoja de estilos controla la apariencia visual de la página principal
-    de la web oficial de Distrito Zero.
+    FASE 1
+    --------------------------------------------------------------------------
+    • Reset global
+    • Variables
+    • Configuración general
+    • Tipografía
+    • Hero
+    • Animaciones básicas
 
-    Organización:
-    1. Variables globales
-    2. Estilos generales
-    3. Cabecera
-    4. Contenido principal
-    5. Tarjetas y cuadros
-    6. Listas y enlaces
-    7. Responsive
 ==============================================================================*/
+
 
 
 /*==============================================================================
-    VARIABLES GLOBALES
-    Todos los colores, sombras y valores reutilizables se almacenan aquí.
-    De esta forma es mucho más sencillo modificar el diseño en el futuro.
+    RESET
 ==============================================================================*/
 
-:root {
-
-    /* Colores */
-
-    --color-fondo: #e4e4e4;
-    --color-blanco: #ffffff;
-
-    --color-texto: #1c1c1c;
-    --color-texto-secundario: #2c2c2c;
-    --color-titulo: #111111;
-
-    --color-subtitulo: #2b2f34;
-    --color-subtitulo-texto: #f5f5f5;
-
-    --color-enlace: #1e8acb;
-    --color-enlace-hover: #0f5c8d;
-
-    /* Tipografías */
-
-    --fuente-principal: Arial, sans-serif;
-    --fuente-titulos: Georgia, "Times New Roman", serif;
-
-    /* Bordes y sombras */
-
-    --radio-pequeno: 8px;
-    --radio-grande: 10px;
-
-    --sombra: 0 2px 5px rgba(0, 0, 0, 0.25);
-    --sombra-hover: 0 5px 15px rgba(0, 0, 0, 0.30);
-
+*,
+*::before,
+*::after{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
 
 /*==============================================================================
-    ESTILOS GENERALES
+    VARIABLES DEL SITIO
 ==============================================================================*/
 
-body {
-    background-color: var(--color-fondo);
-    font-family: var(--fuente-principal);
-    text-align: center;
-    margin: 0;
-    padding: 0;
+:root{
+
+    /* Paleta */
+
+    --color-fondo:#ececec;
+    --color-superficie:#ffffff;
+
+    --color-texto:#222222;
+    --color-titulo:#111111;
+
+    --color-azul:#2f69d9;
+    --color-azul-hover:#1d54bc;
+
+    --color-linea:#d7d7d7;
+
+    --sombra-suave:0 12px 35px rgba(0,0,0,.08);
+    --sombra-media:0 18px 45px rgba(0,0,0,.12);
+
+    --radio:18px;
+
+    --transicion:.35s ease;
+
+    --ancho-maximo:1300px;
+
 }
 
-p {
-    color: var(--color-texto-secundario);
-    font-size: 18px;
-}
 
 
 /*==============================================================================
-    CABECERA
+    CONFIGURACIÓN GENERAL
 ==============================================================================*/
 
-.titulo {
+html{
 
-    font-family: var(--fuente-titulos);
-    font-size: 50px;
-
-    color: var(--color-titulo);
-
-    letter-spacing: 1px;
-
-    margin-top: 40px;
-    margin-bottom: 20px;
+    scroll-behavior:smooth;
 
 }
 
-.subtitulo {
+body{
 
-    width: 60%;
+    background:
+    linear-gradient(
+        180deg,
+        #f5f5f5 0%,
+        #ececec 40%,
+        #e7e7e7 100%
+    );
 
-    margin: 0 auto 30px;
+    color:var(--color-texto);
 
-    padding: 15px;
+    font-family:"Inter",sans-serif;
 
-    background-color: var(--color-subtitulo);
-    color: var(--color-subtitulo-texto);
+    line-height:1.7;
 
-    border-radius: var(--radio-pequeno);
-
-    font-family: var(--fuente-titulos);
-    letter-spacing: 1px;
+    overflow-x:hidden;
 
 }
+
 
 
 /*==============================================================================
-    CONTENIDO PRINCIPAL
+    TIPOGRAFÍA
 ==============================================================================*/
 
-.contenido {
+h1,h2,h3,h4{
 
-    display: flex;
+    font-family:"Cormorant Garamond",serif;
 
-    flex-direction: row;
+    color:var(--color-titulo);
 
-    align-items: stretch;
+    font-weight:700;
 
-    gap: 20px;
-
-    width: 90%;
-
-    margin: 10px auto;
+    letter-spacing:.6px;
 
 }
+
+p{
+
+    font-size:1.05rem;
+
+}
+
 
 
 /*==============================================================================
-    PORTADA DEL LIBRO
+    IMÁGENES
 ==============================================================================*/
 
-.imagen {
+img{
 
-    max-width: 40%;
+    display:block;
 
-    height: auto;
-
-    display: block;
-
-    border-radius: var(--radio-pequeno);
+    max-width:100%;
 
 }
 
-
-/*==============================================================================
-    TARJETAS Y CUADROS
-==============================================================================*/
-
-.subpaginas,
-.rectangulo-texto {
-
-    background-color: var(--color-blanco);
-
-    color: var(--color-texto);
-
-    flex: 1;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 20px;
-
-    font-family: var(--fuente-titulos);
-
-    font-size: 18px;
-
-    letter-spacing: 1px;
-
-    border-radius: var(--radio-grande);
-
-    box-shadow: var(--sombra);
-
-    transition:
-        transform .25s ease,
-        box-shadow .25s ease;
-
-}
-
-
-/*------------------------------------------------------------------------------
-    Animación al pasar el cursor.
-    Produce un pequeño efecto de elevación para dar sensación de profundidad.
-------------------------------------------------------------------------------*/
-
-.subpaginas:hover,
-.rectangulo-texto:hover {
-
-    transform: translateY(-5px);
-
-    box-shadow: var(--sombra-hover);
-
-}
-
-
-/*==============================================================================
-    TÍTULOS DE LAS TARJETAS
-==============================================================================*/
-
-.subpaginas h2,
-.rectangulo-texto h2 {
-
-    color: var(--color-titulo);
-
-    font-size: 24px;
-
-    margin-bottom: 15px;
-
-}
-
-
-/*==============================================================================
-    LISTAS
-==============================================================================*/
-
-.subpaginas ul,
-.rectangulo-texto ul {
-
-    list-style: none;
-
-    padding: 0;
-
-    margin: 0;
-
-}
-
-.subpaginas li,
-.rectangulo-texto li {
-
-    margin-bottom: 10px;
-
-}
 
 
 /*==============================================================================
     ENLACES
 ==============================================================================*/
 
-.subpaginas a,
-.rectangulo-texto a {
+a{
 
-    color: var(--color-enlace);
+    color:inherit;
 
-    text-decoration: none;
-
-    font-size: 20px;
-
-    font-weight: bold;
-
-    transition: color .2s ease;
+    text-decoration:none;
 
 }
 
-.subpaginas a:hover,
-.rectangulo-texto a:hover {
-
-    color: var(--color-enlace-hover);
-
-    text-decoration: underline;
-
-}
 
 
 /*==============================================================================
-    CUADRO INFERIOR
+    HERO
 ==============================================================================*/
 
-.rectangulo-texto {
+.hero{
 
-    width: 60%;
+    position:relative;
 
-    margin: 20px auto;
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:70px 25px;
+
+    overflow:hidden;
 
 }
 
 
-/*==============================================================================
-    DISEÑO RESPONSIVE
 
-    Ajustes automáticos para tablets y teléfonos móviles.
+/*------------------------------------------------------------------------------
+    Halo luminoso del fondo
+------------------------------------------------------------------------------*/
+
+.hero-fondo{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(47,105,217,.12),
+            transparent 60%
+        );
+
+    pointer-events:none;
+
+}
+
+
+
+/*------------------------------------------------------------------------------
+    Contenido
+------------------------------------------------------------------------------*/
+
+.hero-contenido{
+
+    position:relative;
+
+    width:min(900px,100%);
+
+    text-align:center;
+
+    z-index:2;
+
+}
+
+
+
+/*==============================================================================
+    TÍTULO
 ==============================================================================*/
 
-@media (max-width: 768px) {
+.titulo{
 
-    .contenido {
+    font-size:clamp(4rem,8vw,6.5rem);
 
-        flex-direction: column;
+    margin-bottom:10px;
 
-        align-items: center;
+    animation:aparecer 1.2s ease;
 
-        width: 90%;
+}
+
+
+
+/*==============================================================================
+    SUBTÍTULO
+==============================================================================*/
+
+.subtitulo{
+
+    font-size:clamp(1.25rem,2vw,1.6rem);
+
+    color:#555;
+
+    letter-spacing:2px;
+
+    margin-bottom:40px;
+
+}
+
+
+
+/*==============================================================================
+    LÍNEA DECORATIVA
+==============================================================================*/
+
+.linea-decorativa{
+
+    width:120px;
+
+    height:2px;
+
+    margin:0 auto 40px;
+
+    background:var(--color-azul);
+
+}
+
+
+
+/*==============================================================================
+    INTRODUCCIÓN
+==============================================================================*/
+
+.introduccion{
+
+    max-width:760px;
+
+    margin:0 auto;
+
+    font-size:1.15rem;
+
+    color:#444;
+
+}
+
+
+
+/*==============================================================================
+    CITA
+==============================================================================*/
+
+.cita{
+
+    margin:70px auto;
+
+    max-width:700px;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:1.8rem;
+
+    font-style:italic;
+
+    color:#2d2d2d;
+
+}
+
+.cita footer{
+
+    margin-top:20px;
+
+    font-size:1.1rem;
+
+    color:#666;
+
+}
+
+
+
+/*==============================================================================
+    BOTÓN
+==============================================================================*/
+
+.boton-explorar{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    margin-top:15px;
+
+    padding:16px 34px;
+
+    border-radius:100px;
+
+    background:var(--color-azul);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:var(--transicion);
+
+    box-shadow:var(--sombra-suave);
+
+}
+
+.boton-explorar:hover{
+
+    background:var(--color-azul-hover);
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
+
+
+/*==============================================================================
+    ANIMACIONES
+==============================================================================*/
+
+@keyframes aparecer{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
 
     }
 
-    .subtitulo {
+    to{
 
-        width: 90%;
+        opacity:1;
 
-    }
-
-    .imagen {
-
-        max-width: 80%;
-
-        margin-bottom: 20px;
+        transform:translateY(0);
 
     }
 
-    .subpaginas,
-    .rectangulo-texto {
+}
 
-        width: 100%;
 
-        font-size: 16px;
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:768px){
+
+    .hero{
+
+        min-height:90vh;
+
+        padding:60px 20px;
+
+    }
+
+    .cita{
+
+        font-size:1.45rem;
+
+    }
+
+}
+/*==============================================================================
+    FASE 2
+    COMPONENTES PRINCIPALES
+    --------------------------------------------------------------------------
+    • Presentación del libro
+    • Portada
+    • Tarjetas
+    • Enlaces
+==============================================================================*/
+
+
+
+/*==============================================================================
+    CONTENEDOR PRINCIPAL
+==============================================================================*/
+
+main{
+
+    width:min(var(--ancho-maximo),92%);
+    margin:0 auto;
+
+}
+
+
+
+/*==============================================================================
+    PRESENTACIÓN DEL LIBRO
+==============================================================================*/
+
+.presentacion-libro{
+
+    display:grid;
+
+    grid-template-columns:380px 1fr;
+
+    gap:70px;
+
+    align-items:center;
+
+    margin:120px auto;
+
+}
+
+
+
+/*==============================================================================
+    PORTADA
+==============================================================================*/
+
+.contenedor-portada{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+}
+
+.portada-libro{
+
+    width:100%;
+    border-radius:var(--radio);
+
+    box-shadow:
+        0 30px 60px rgba(0,0,0,.18);
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease;
+
+}
+
+.portada-libro:hover{
+
+    transform:
+        translateY(-10px)
+        rotate(-1deg)
+        scale(1.02);
+
+    box-shadow:
+        0 45px 90px rgba(0,0,0,.22);
+
+}
+
+.contenedor-portada figcaption{
+
+    margin-top:25px;
+
+    color:#666;
+
+    font-size:.95rem;
+
+    text-align:center;
+
+}
+
+
+
+/*==============================================================================
+    TARJETA PRINCIPAL
+==============================================================================*/
+
+.tarjeta-principal{
+
+    background:var(--color-superficie);
+
+    border-radius:24px;
+
+    padding:45px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
+}
+
+.tarjeta-principal:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
+
+
+/*==============================================================================
+    CABECERA TARJETA
+==============================================================================*/
+
+.tarjeta-principal h2{
+
+    font-size:2.5rem;
+
+    margin-bottom:12px;
+
+}
+
+.tarjeta-principal header p{
+
+    color:#555;
+
+    margin-bottom:35px;
+
+}
+
+
+
+/*==============================================================================
+    LISTA
+==============================================================================*/
+
+.lista-enlaces{
+
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+
+/*==============================================================================
+    ENLACES
+==============================================================================*/
+
+.lista-enlaces li a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    padding:18px 20px;
+
+    border-radius:16px;
+
+    transition:var(--transicion);
+
+}
+
+.lista-enlaces li a:hover{
+
+    background:#f5f8ff;
+
+    transform:translateX(8px);
+
+}
+
+
+
+/*==============================================================================
+    ICONOS
+==============================================================================*/
+
+.icono{
+
+    width:56px;
+    height:56px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:1.4rem;
+
+    background:#edf3ff;
+
+    border-radius:50%;
+
+    flex-shrink:0;
+
+}
+
+
+
+/*==============================================================================
+    TEXTO DE LOS ENLACES
+==============================================================================*/
+
+.lista-enlaces strong{
+
+    display:block;
+
+    font-size:1.08rem;
+
+    color:#222;
+
+    margin-bottom:3px;
+
+}
+
+.lista-enlaces small{
+
+    color:#777;
+
+}
+
+
+
+/*==============================================================================
+    FRASE DESTACADA
+==============================================================================*/
+
+.frase-destacada{
+
+    width:min(850px,90%);
+
+    margin:120px auto;
+
+    text-align:center;
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+}
+
+
+
+/*==============================================================================
+    SEPARADOR
+==============================================================================*/
+
+.separador{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:100px auto;
+
+    font-size:1.4rem;
+
+    letter-spacing:14px;
+
+    color:#9b9b9b;
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:1000px){
+
+    .presentacion-libro{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .contenedor-portada{
+
+        max-width:420px;
+
+        margin:auto;
+
+    }
+
+    .tarjeta-principal{
+
+        padding:35px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .tarjeta-principal h2{
+
+        font-size:2rem;
+
+    }
+
+    .lista-enlaces li a{
+
+        padding:16px;
+
+    }
+
+    .icono{
+
+        width:48px;
+        height:48px;
+
+    }
+
+}
+/*==============================================================================
+    FASE 3
+    ARCHIVO DEL DISTRITO
+    --------------------------------------------------------------------------
+    • Encabezado
+    • Expedientes
+    • Transición
+==============================================================================*/
+
+
+
+/*==============================================================================
+    ARCHIVO DEL DISTRITO
+==============================================================================*/
+
+.archivo-distrito{
+
+    margin:160px auto;
+
+}
+
+
+
+/*------------------------------------------------------------------------------
+    Cabecera
+------------------------------------------------------------------------------*/
+
+.encabezado-seccion{
+
+    max-width:850px;
+
+    margin:0 auto 70px;
+
+    text-align:center;
+
+}
+
+.etiqueta{
+
+    display:inline-block;
+
+    padding:8px 18px;
+
+    border:1px solid var(--color-linea);
+
+    border-radius:100px;
+
+    background:white;
+
+    font-size:.85rem;
+
+    letter-spacing:3px;
+
+    color:#666;
+
+    margin-bottom:25px;
+
+}
+
+.encabezado-seccion h2{
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+}
+
+.encabezado-seccion p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:#666;
+
+}
+
+
+
+/*==============================================================================
+    CONTENEDOR DE EXPEDIENTES
+==============================================================================*/
+
+.contenedor-archivos{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(300px,1fr)
+        );
+
+    gap:35px;
+
+}
+
+
+
+/*==============================================================================
+    TARJETAS
+==============================================================================*/
+
+.archivo{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    border:1px solid #e3e3e3;
+
+    overflow:hidden;
+
+    transition:.35s ease;
+
+}
+
+
+
+/*------------------------------------------------------------------------------
+    Línea superior
+------------------------------------------------------------------------------*/
+
+.archivo::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:5px;
+
+    background:var(--color-azul);
+
+    transform:scaleX(0);
+
+    transform-origin:left;
+
+    transition:.35s;
+
+}
+
+.archivo:hover::before{
+
+    transform:scaleX(1);
+
+}
+
+
+
+/*------------------------------------------------------------------------------
+    Hover
+------------------------------------------------------------------------------*/
+
+.archivo:hover{
+
+    transform:
+
+        translateY(-8px);
+
+    box-shadow:
+
+        0 25px 45px rgba(0,0,0,.12);
+
+}
+
+
+
+/*==============================================================================
+    NÚMERO
+==============================================================================*/
+
+.numero{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:52px;
+    height:52px;
+
+    border-radius:50%;
+
+    background:#edf3ff;
+
+    color:var(--color-azul);
+
+    font-weight:700;
+
+    margin-bottom:22px;
+
+}
+
+
+
+/*==============================================================================
+    TÍTULO
+==============================================================================*/
+
+.archivo h3{
+
+    font-size:2rem;
+
+    margin-bottom:18px;
+
+}
+
+
+
+/*==============================================================================
+    TEXTO
+==============================================================================*/
+
+.archivo p{
+
+    color:#666;
+
+    margin-bottom:30px;
+
+}
+
+
+
+/*==============================================================================
+    ENLACE
+==============================================================================*/
+
+.archivo a{
+
+    font-weight:600;
+
+    color:var(--color-azul);
+
+    transition:.3s;
+
+}
+
+.archivo a:hover{
+
+    letter-spacing:.5px;
+
+    color:var(--color-azul-hover);
+
+}
+
+
+
+/*==============================================================================
+    TRANSICIÓN
+==============================================================================*/
+
+.transicion{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:35px;
+
+    margin:130px auto;
+
+}
+
+.transicion .linea{
+
+    flex:1;
+
+    max-width:220px;
+
+    height:1px;
+
+    background:#d7d7d7;
+
+}
+
+.transicion p{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-style:italic;
+
+    font-size:1.4rem;
+
+    color:#666;
+
+    text-align:center;
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:768px){
+
+    .encabezado-seccion h2{
+
+        font-size:2.3rem;
+
+    }
+
+    .archivo{
+
+        padding:28px;
+
+    }
+
+    .archivo h3{
+
+        font-size:1.7rem;
+
+    }
+
+    .transicion{
+
+        flex-direction:column;
+
+    }
+
+    .transicion .linea{
+
+        width:150px;
+
+    }
+
+}
+/*==============================================================================
+    FASE 4
+    --------------------------------------------------------------------------
+    • Archivo restringido
+    • Error Code 198
+    • Despedida
+    • Footer
+==============================================================================*/
+
+
+
+/*==============================================================================
+    ZONA RESTRINGIDA
+==============================================================================*/
+
+.zona-restringida{
+
+    margin:180px auto;
+
+    max-width:900px;
+
+}
+
+
+
+/*------------------------------------------------------------------------------
+    Cabecera
+------------------------------------------------------------------------------*/
+
+.zona-restringida header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+.etiqueta-alerta{
+
+    display:inline-block;
+
+    padding:10px 20px;
+
+    background:#1b1b1b;
+
+    color:#ffffff;
+
+    border-radius:100px;
+
+    letter-spacing:3px;
+
+    font-size:.85rem;
+
+    margin-bottom:20px;
+
+}
+
+.zona-restringida h2{
+
+    font-size:3rem;
+
+}
+
+
+
+/*==============================================================================
+    ARCHIVO CORRUPTO
+==============================================================================*/
+
+.archivo-corrupto{
+
+    position:relative;
+
+    background:#161616;
+
+    color:#d7d7d7;
+
+    border-radius:22px;
+
+    padding:50px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:0 30px 70px rgba(0,0,0,.25);
+
+}
+
+
+
+/*------------------------------------------------------------------------------
+    Línea azul superior
+------------------------------------------------------------------------------*/
+
+.archivo-corrupto::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    top:0;
+
+    width:100%;
+    height:4px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        var(--color-azul),
+        transparent
+    );
+
+}
+
+
+
+/*------------------------------------------------------------------------------
+    Estado
+------------------------------------------------------------------------------*/
+
+.estado{
+
+    color:#9cbcff;
+
+    margin-bottom:25px;
+
+    font-weight:600;
+
+}
+
+
+
+/*==============================================================================
+    DATOS
+==============================================================================*/
+
+.datos{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin:45px 0;
+
+    padding:20px 0;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+}
+
+.datos span{
+
+    font-size:.95rem;
+
+    color:#bfbfbf;
+
+    letter-spacing:1px;
+
+}
+
+
+
+/*==============================================================================
+    BOTÓN
+==============================================================================*/
+
+.boton-restringido{
+
+    display:inline-block;
+
+    margin-top:10px;
+
+    padding:15px 30px;
+
+    border-radius:100px;
+
+    background:var(--color-azul);
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.boton-restringido:hover{
+
+    background:var(--color-azul-hover);
+
+    transform:translateY(-4px);
+
+}
+
+
+
+/*==============================================================================
+    DESPEDIDA
+==============================================================================*/
+
+.despedida{
+
+    margin:180px auto;
+
+    max-width:850px;
+
+    text-align:center;
+
+}
+
+.despedida h2{
+
+    font-size:3rem;
+
+    margin-bottom:20px;
+
+}
+
+.despedida p{
+
+    color:#666;
+
+}
+
+
+
+/*==============================================================================
+    SEPARADOR FINAL
+==============================================================================*/
+
+.separador-final{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:35px;
+
+    margin:120px auto 80px;
+
+}
+
+.separador-final .linea{
+
+    flex:1;
+
+    max-width:240px;
+
+    height:1px;
+
+    background:#d4d4d4;
+
+}
+
+.estrellas{
+
+    letter-spacing:10px;
+
+    color:#8f8f8f;
+
+}
+
+
+
+/*==============================================================================
+    EPÍLOGO
+==============================================================================*/
+
+.epilogo{
+
+    max-width:800px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.epilogo blockquote{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+    margin-bottom:35px;
+
+}
+
+.epilogo p{
+
+    color:#666;
+
+}
+
+
+
+/*==============================================================================
+    FOOTER
+==============================================================================*/
+
+footer{
+
+    margin-top:140px;
+
+    padding:60px 20px;
+
+    border-top:1px solid #dcdcdc;
+
+}
+
+.footer-contenido{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+}
+
+.footer-contenido h2{
+
+    font-size:2.4rem;
+
+}
+
+.footer-contenido hr{
+
+    width:120px;
+
+    margin:30px auto;
+
+    border:none;
+
+    height:1px;
+
+    background:#d5d5d5;
+
+}
+
+.footer-contenido p{
+
+    color:#666;
+
+    margin:12px 0;
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:768px){
+
+    .archivo-corrupto{
+
+        padding:35px;
+
+    }
+
+    .datos{
+
+        flex-direction:column;
+
+        gap:12px;
+
+    }
+
+    .zona-restringida h2{
+
+        font-size:2.3rem;
+
+    }
+
+    .despedida h2{
+
+        font-size:2.4rem;
+
+    }
+
+    .epilogo blockquote{
+
+        font-size:1.6rem;
+
+    }
+
+}
+/*==============================================================================
+    FASE 5
+    ACABADO PROFESIONAL
+    --------------------------------------------------------------------------
+    • Scrollbar
+    • Selección de texto
+    • Focus accesible
+    • Microanimaciones
+    • Optimización visual
+==============================================================================*/
+
+
+
+/*==============================================================================
+    SCROLL SUAVE
+==============================================================================*/
+
+section{
+
+    scroll-margin-top:80px;
+
+}
+
+
+
+/*==============================================================================
+    SELECCIÓN DE TEXTO
+==============================================================================*/
+
+::selection{
+
+    background:var(--color-azul);
+
+    color:white;
+
+}
+
+
+
+/*==============================================================================
+    SCROLLBAR
+==============================================================================*/
+
+::-webkit-scrollbar{
+
+    width:11px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececec;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#b8b8b8;
+
+    border-radius:100px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#8d8d8d;
+
+}
+
+
+
+/*==============================================================================
+    FOCUS (ACCESIBILIDAD)
+==============================================================================*/
+
+a:focus-visible,
+button:focus-visible{
+
+    outline:3px solid rgba(47,105,217,.45);
+
+    outline-offset:4px;
+
+    border-radius:8px;
+
+}
+
+
+
+/*==============================================================================
+    TRANSICIONES GENERALES
+==============================================================================*/
+
+a,
+button,
+article,
+img{
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease,
+        background .35s ease,
+        color .35s ease,
+        border-color .35s ease;
+
+}
+
+
+
+/*==============================================================================
+    SOMBRAS MÁS NATURALES
+==============================================================================*/
+
+.tarjeta-principal,
+.archivo,
+.archivo-corrupto{
+
+    will-change:transform;
+
+}
+
+
+
+/*==============================================================================
+    LECTURA
+==============================================================================*/
+
+.introduccion,
+.encabezado-seccion p,
+.archivo p,
+.tarjeta-principal header p,
+.despedida p,
+.epilogo p{
+
+    max-width:70ch;
+
+}
+
+
+
+/*==============================================================================
+    LÍMITES DEL CONTENIDO
+==============================================================================*/
+
+main section{
+
+    width:100%;
+
+}
+
+
+
+/*==============================================================================
+    EFECTO SUAVE EN LOS TÍTULOS
+==============================================================================*/
+
+h1,
+h2{
+
+    text-wrap:balance;
+
+}
+
+
+
+/*==============================================================================
+    ENLACES
+==============================================================================*/
+
+.lista-enlaces a strong,
+.archivo a{
+
+    position:relative;
+
+}
+
+.archivo a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    bottom:-4px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--color-azul);
+
+    transition:.35s;
+
+}
+
+.archivo:hover a::after{
+
+    width:100%;
+
+}
+
+
+
+/*==============================================================================
+    HOVER DE BOTONES
+==============================================================================*/
+
+.boton-explorar:active,
+.boton-restringido:active{
+
+    transform:scale(.97);
+
+}
+
+
+
+/*==============================================================================
+    IMAGEN
+==============================================================================*/
+
+.portada-libro{
+
+    image-rendering:auto;
+
+}
+
+
+
+/*==============================================================================
+    IMPRESIÓN
+==============================================================================*/
+
+@media print{
+
+    .boton-explorar,
+    .boton-restringido{
+
+        display:none;
+
+    }
+
+}
+
+
+
+/*==============================================================================
+    MOVIMIENTO REDUCIDO
+==============================================================================*/
+
+@media(prefers-reduced-motion:reduce){
+
+    *{
+
+        animation:none!important;
+
+        transition:none!important;
+
+        scroll-behavior:auto!important;
 
     }
 
