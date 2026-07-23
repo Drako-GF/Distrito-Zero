@@ -1,225 +1,630 @@
-<!DOCTYPE html>
-
-<!--
-==============================================================================
-    DISTRITO ZERO
-    Página principal de la web oficial del libro.
-
-    Autor: Gonzalo Fierro
-    Archivo: index.html
-
-    Descripción:
-    Página de inicio del sitio web oficial de "Distrito Zero: Crónicas de una
-    guerra inminente". Desde aquí el lector puede acceder a contenido exclusivo
-    relacionado con la novela.
-
-    Última actualización: Julio de 2026
-==============================================================================
--->
-
-<html lang="es-ES">
-
-<head>
-
-    <!-- ==========================================================
-         CONFIGURACIÓN BÁSICA DEL DOCUMENTO
-    =========================================================== -->
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Distrito Zero: Crónicas de una guerra inminente | Página oficial</title>
-
-    <!-- Información para buscadores -->
-    <meta name="description"
-        content="Página web oficial de Distrito Zero: Crónicas de una guerra inminente. Descubre contenido exclusivo del libro, personajes, curiosidades, playlist oficial, reseñas y mucho más.">
-
-    <meta name="author" content="Gonzalo Fierro">
-
-    <meta name="keywords"
-        content="Distrito Zero, Crónicas de una guerra inminente, Gonzalo Fierro, novela, ciencia ficción, fantasía, libro">
-
-    <!-- Color de la barra del navegador en dispositivos móviles -->
-    <meta name="theme-color" content="#000000">
-
-    <!-- Información para redes sociales (Open Graph) -->
-    <meta property="og:title" content="Distrito Zero: Crónicas de una guerra inminente">
-    <meta property="og:description"
-        content="Página web oficial del libro. Descubre contenido exclusivo sobre el universo de Distrito Zero.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="portada Distrito Zero.png">
-
-    <!-- Icono de la pestaña del navegador -->
-    <!-- Sustituir por favicon.ico o favicon.png cuando esté disponible -->
-    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
-
-    <!-- Hoja de estilos principal -->
-    <link rel="stylesheet" href="Estilos.css">
-
-</head>
-
 <body>
 
     <!-- ==========================================================
-         CABECERA
-         Presentación principal de la página.
+         CABECERA PRINCIPAL
+         Primer contacto del lector con el universo de Distrito Zero.
+         Esta sección actúa como presentación de la novela y de la
+         página web oficial.
     =========================================================== -->
 
-    <header>
+    <header class="hero">
 
-        <h1 class="titulo">
-            Distrito Zero
-        </h1>
+        <!-- Fondo decorativo (se utilizará más adelante desde CSS) -->
+        <div class="hero-fondo"></div>
 
-        <p class="subtitulo">
-            La página web oficial del libro <em>Distrito Zero</em>
+        <!-- Contenido principal -->
+        <div class="hero-contenido">
+
+            <!-- ==================================================
+                 TÍTULO PRINCIPAL
+            =================================================== -->
+
+            <h1 class="titulo">
+
+                Distrito Zero
+
+            </h1>
+
+            <!-- ==================================================
+                 SUBTÍTULO
+            =================================================== -->
+
+            <p class="subtitulo">
+
+                Crónicas de una guerra inminente
+
+            </p>
+
+            <!-- Línea decorativa -->
+
+            <div class="linea-decorativa"></div>
+
+            <!-- ==================================================
+                 PRESENTACIÓN
+            =================================================== -->
+
+            <p class="introduccion">
+
+                Bienvenido a la página web oficial de <em>Distrito Zero</em>.
+
+                Aquí encontrarás contenido exclusivo diseñado para ampliar la
+                experiencia de la novela: personajes, documentos, curiosidades,
+                explicaciones, material adicional y otros secretos que quedaron
+                fuera de sus páginas.
+
+            </p>
+
+            <!-- ==================================================
+                 CITA
+                 Refuerza la identidad de la obra antes de acceder
+                 al contenido.
+            =================================================== -->
+
+            <blockquote class="cita">
+
+                «El destino conduce a quien lo acepta, y arrastra al que rehúsa admitirlo.»
+
+                <footer>
+
+                    — Séneca
+
+                </footer>
+
+            </blockquote>
+
+            <!-- ==================================================
+                 INDICADOR DE DESPLAZAMIENTO
+
+                 Hace que la página invite al usuario a seguir
+                 explorando el contenido.
+            =================================================== -->
+
+            <a href="#contenido-principal"
+               class="boton-explorar"
+               aria-label="Explorar el contenido de la página">
+
+                Explorar el universo ↓
+
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- ==========================================================
+         CONTENIDO PRINCIPAL
+         Todo lo relacionado con el libro comienza aquí.
+    =========================================================== -->
+
+    <main id="contenido-principal">
+        <!-- ==========================================================
+     SECCIÓN PRINCIPAL
+     Presenta la portada del libro y el contenido exclusivo.
+=========================================================== -->
+
+<section class="presentacion-libro">
+
+    <!-- ======================================================
+         PORTADA
+    ======================================================= -->
+
+    <figure class="contenedor-portada">
+
+        <img
+            src="portada Distrito Zero.png"
+            alt="Portada oficial de Distrito Zero: Crónicas de una guerra inminente"
+            class="portada-libro"
+            loading="eager"
+            decoding="async">
+
+        <figcaption>
+
+            Primera novela de la saga <strong>Distrito Zero</strong>.
+
+        </figcaption>
+
+    </figure>
+
+
+
+    <!-- ======================================================
+         CONTENIDO EXCLUSIVO
+    ======================================================= -->
+
+    <section class="tarjeta-principal">
+
+        <header>
+
+            <h2>
+
+                Explora el contenido exclusivo
+
+            </h2>
+
+            <p>
+
+                Si ya has terminado la novela, aquí encontrarás material
+                adicional pensado para ampliar la experiencia de lectura.
+
+            </p>
+
+        </header>
+
+
+
+        <nav aria-label="Contenido adicional">
+
+            <ul class="lista-enlaces">
+
+                <li>
+
+                    <a href="playlist.html">
+
+                        <span class="icono">🎵</span>
+
+                        <div>
+
+                            <strong>Playlist oficial</strong>
+
+                            <small>La banda sonora que acompaña la novela.</small>
+
+                        </div>
+
+                    </a>
+
+                </li>
+
+
+
+                <li>
+
+                    <a href="opiniones.html">
+
+                        <span class="icono">⭐</span>
+
+                        <div>
+
+                            <strong>Reseñas</strong>
+
+                            <small>Opiniones de los lectores.</small>
+
+                        </div>
+
+                    </a>
+
+                </li>
+
+
+
+                <li>
+
+                    <a href="curiosidades.html">
+
+                        <span class="icono">📖</span>
+
+                        <div>
+
+                            <strong>Curiosidades</strong>
+
+                            <small>Detalles ocultos y datos sobre la creación de la obra.</small>
+
+                        </div>
+
+                    </a>
+
+                </li>
+
+
+
+                <li>
+
+                    <a href="significado.html">
+
+                        <span class="icono">🧠</span>
+
+                        <div>
+
+                            <strong>Interpretación</strong>
+
+                            <small>Una lectura más profunda de la historia. (Spoilers)</small>
+
+                        </div>
+
+                    </a>
+
+                </li>
+
+
+
+                <li>
+
+                    <a href="SobreElAutor.html">
+
+                        <span class="icono">👤</span>
+
+                        <div>
+
+                            <strong>Sobre el autor</strong>
+
+                            <small>Conoce quién está detrás de Distrito Zero.</small>
+
+                        </div>
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </section>
+
+</section>
+
+
+
+<!-- ==========================================================
+     FRASE DESTACADA
+=========================================================== -->
+
+<section class="frase-destacada">
+
+    <p>
+
+        "Toda historia deja preguntas sin responder.
+        Algunas simplemente necesitan el lugar adecuado para ser encontradas."
+
+    </p>
+
+</section>
+
+
+
+<!-- ==========================================================
+     SEPARADOR
+=========================================================== -->
+
+<div class="separador">
+
+    ✦ ✦ ✦
+
+</div>
+<!-- ==========================================================
+     ARCHIVO DEL DISTRITO
+     Documentación complementaria para comprender el universo
+     de la novela.
+=========================================================== -->
+
+<section class="archivo-distrito">
+
+    <header class="encabezado-seccion">
+
+        <span class="etiqueta">
+
+            ARCHIVO DEL DISTRITO
+
+        </span>
+
+        <h2>
+
+            Documentación clasificada
+
+        </h2>
+
+        <p>
+
+            Los siguientes archivos contienen información complementaria
+            destinada a profundizar en los acontecimientos narrados en la novela.
+
+            <strong>Algunos apartados contienen spoilers.</strong>
+
         </p>
 
     </header>
 
-    <!-- ==========================================================
-         CONTENIDO PRINCIPAL
-         Contiene todos los apartados accesibles desde la portada.
-    =========================================================== -->
 
-    <main>
 
-        <!-- ======================================================
-             SECCIÓN PRINCIPAL
-             Portada del libro y enlaces al contenido adicional.
-        ======================================================= -->
+    <div class="contenedor-archivos">
 
-        <section class="contenido">
+        <!-- ============================================== -->
 
-            <!-- Portada oficial del libro -->
+        <article class="archivo">
 
-            <img
-                src="portada Distrito Zero.png"
-                alt="Portada oficial del libro Distrito Zero: Crónicas de una guerra inminente"
-                class="imagen"
-                loading="eager"
-                decoding="async">
+            <span class="numero">
 
-            <!-- Enlaces principales -->
+                01
 
-            <section class="subpaginas">
+            </span>
 
-                <h2>
-                    ¿Te has quedado con ganas de más? Revisa esto
-                </h2>
+            <h3>
 
-                <nav aria-label="Contenido adicional del libro">
+                Guía de personajes
 
-                    <ul>
+            </h3>
 
-                        <li>
-                            <a href="playlist.html">
-                                Playlist oficial
-                            </a>
-                        </li>
+            <p>
 
-                        <li>
-                            <a href="opiniones.html">
-                                Reseñas
-                            </a>
-                        </li>
+                Descubre quién es cada personaje, sus relaciones,
+                motivaciones y el papel que desempeñan dentro de la historia.
 
-                        <li>
-                            <a href="significado.html">
-                                Una pequeña interpretación (contiene spoilers)
-                            </a>
-                        </li>
+            </p>
 
-                        <li>
-                            <a href="curiosidades.html">
-                                Curiosidades
-                            </a>
-                        </li>
+            <a href="guíaPersonajes.html">
 
-                        <li>
-                            <a href="SobreElAutor.html">
-                                Sobre el autor
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </nav>
-
-            </section>
-
-        </section>
-
-        <!-- ======================================================
-             GUÍAS Y MATERIAL EXPLICATIVO
-             Recursos para comprender mejor la historia.
-        ======================================================= -->
-
-        <section class="rectangulo-texto">
-
-            <h2>
-                Para aquellos que se han perdido (y demás cosas)
-            </h2>
-
-            <nav aria-label="Guías y explicaciones">
-
-                <ul>
-
-                    <li>
-                        <a href="guíaPersonajes.html">
-                            Guía de personajes
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="dibujosExplicaciones.html">
-                            Dibujos y explicaciones
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="narraciónExplicada.html">
-                            Explicación de la narración (contiene spoilers)
-                        </a>
-                    </li>
-
-                </ul>
-
-            </nav>
-
-        </section>
-
-        <!-- ======================================================
-             CONTENIDO OCULTO
-             Pequeño guiño para los lectores más curiosos.
-        ======================================================= -->
-
-        <section class="nuevo-cuadro rectangulo-texto">
-
-            <a
-                href="Teseracto.html"
-                aria-label="Acceder al contenido oculto">
-
-                ⚠️ Error Code 198
+                Abrir expediente →
 
             </a>
 
-        </section>
+        </article>
 
-    </main>
 
-    <!-- ==========================================================
-         PIE DE PÁGINA
-         Información legal del sitio.
-    =========================================================== -->
 
-    <footer>
+        <!-- ============================================== -->
 
-        <p>
-            © 2026 Gonzalo Fierro · Todos los derechos reservados.
+        <article class="archivo">
+
+            <span class="numero">
+
+                02
+
+            </span>
+
+            <h3>
+
+                Dibujos y explicaciones
+
+            </h3>
+
+            <p>
+
+                Esquemas, mapas e ilustraciones para comprender mejor
+                el funcionamiento del universo de Distrito Zero.
+
+            </p>
+
+            <a href="dibujosExplicaciones.html">
+
+                Consultar documentos →
+
+            </a>
+
+        </article>
+
+
+
+        <!-- ============================================== -->
+
+        <article class="archivo">
+
+            <span class="numero">
+
+                03
+
+            </span>
+
+            <h3>
+
+                Explicación de la narración
+
+            </h3>
+
+            <p>
+
+                Una explicación detallada de la estructura narrativa,
+                las líneas temporales y otros aspectos de la historia.
+
+            </p>
+
+            <a href="narraciónExplicada.html">
+
+                Acceder al análisis →
+
+            </a>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     TRANSICIÓN
+=========================================================== -->
+
+<section class="transicion">
+
+    <div class="linea"></div>
+
+    <p>
+
+        No toda la información fue escrita para ser encontrada.
+
+    </p>
+
+    <div class="linea"></div>
+
+</section>
+<!-- ==========================================================
+     ARCHIVO RESTRINGIDO
+     Contenido oculto para los lectores más observadores.
+=========================================================== -->
+
+<section class="zona-restringida">
+
+    <header>
+
+        <span class="etiqueta-alerta">
+
+            ACCESO RESTRINGIDO
+
+        </span>
+
+        <h2>
+
+            Archivo no indexado
+
+        </h2>
+
+    </header>
+
+    <div class="archivo-corrupto">
+
+        <p class="estado">
+
+            Estado del archivo:
+            <strong>Corrupto</strong>
+
         </p>
 
-    </footer>
+        <p>
+
+            Se ha detectado un fragmento de información cuya existencia no
+            figura en los registros oficiales del Distrito.
+
+        </p>
+
+        <p>
+
+            Su origen es desconocido.
+
+        </p>
+
+        <div class="datos">
+
+            <span>ID: 198</span>
+
+            <span>Integridad: 3%</span>
+
+            <span>Clasificación: Desconocida</span>
+
+        </div>
+
+        <a
+            href="Teseracto.html"
+            class="boton-restringido"
+            aria-label="Abrir archivo clasificado">
+
+            ► Recuperar archivo
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     PEQUEÑA DESPEDIDA
+=========================================================== -->
+
+<section class="despedida">
+
+    <h2>
+
+        Gracias por visitar Distrito Zero
+
+    </h2>
+
+    <p>
+
+        Esta página continuará creciendo con nuevos documentos,
+        contenido adicional y futuras entregas de la saga.
+
+    </p>
+
+</section>
+<!-- ==========================================================
+     SEPARADOR FINAL
+=========================================================== -->
+
+<section class="separador-final">
+
+    <div class="linea"></div>
+
+    <div class="estrellas">
+
+        ✦ ✦ ✦
+
+    </div>
+
+    <div class="linea"></div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     EPÍLOGO
+=========================================================== -->
+
+<section class="epilogo">
+
+    <blockquote>
+
+        «Toda historia termina dos veces:
+        una cuando se escribe su última página
+        y otra cuando deja de ser recordada.»
+
+    </blockquote>
+
+    <p>
+
+        Gracias por formar parte del universo de
+        <strong>Distrito Zero</strong>.
+
+    </p>
+
+</section>
+
+
+
+<!-- ==========================================================
+     PIE DE PÁGINA
+=========================================================== -->
+
+<footer>
+
+    <div class="footer-contenido">
+
+        <h2>
+
+            Distrito Zero
+
+        </h2>
+
+        <p>
+
+            Crónicas de una guerra inminente
+
+        </p>
+
+        <hr>
+
+        <p>
+
+            Página web oficial de la novela.
+
+        </p>
+
+        <p>
+
+            © 2026 Gonzalo Fierro · Todos los derechos reservados.
+
+        </p>
+
+    </div>
+
+</footer>
+
+
+
+</main>
 
 </body>
 
