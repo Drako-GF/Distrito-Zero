@@ -1,181 +1,332 @@
+/*==============================================================================
+    DISTRITO ZERO
+    Hoja de estilos principal
+
+    Autor: Gonzalo Fierro
+    Archivo: Estilos.css
+
+    Descripción:
+    Esta hoja de estilos controla la apariencia visual de la página principal
+    de la web oficial de Distrito Zero.
+
+    Organización:
+    1. Variables globales
+    2. Estilos generales
+    3. Cabecera
+    4. Contenido principal
+    5. Tarjetas y cuadros
+    6. Listas y enlaces
+    7. Responsive
+==============================================================================*/
+
+
+/*==============================================================================
+    VARIABLES GLOBALES
+    Todos los colores, sombras y valores reutilizables se almacenan aquí.
+    De esta forma es mucho más sencillo modificar el diseño en el futuro.
+==============================================================================*/
+
+:root {
+
+    /* Colores */
+
+    --color-fondo: #e4e4e4;
+    --color-blanco: #ffffff;
+
+    --color-texto: #1c1c1c;
+    --color-texto-secundario: #2c2c2c;
+    --color-titulo: #111111;
+
+    --color-subtitulo: #2b2f34;
+    --color-subtitulo-texto: #f5f5f5;
+
+    --color-enlace: #1e8acb;
+    --color-enlace-hover: #0f5c8d;
+
+    /* Tipografías */
+
+    --fuente-principal: Arial, sans-serif;
+    --fuente-titulos: Georgia, "Times New Roman", serif;
+
+    /* Bordes y sombras */
+
+    --radio-pequeno: 8px;
+    --radio-grande: 10px;
+
+    --sombra: 0 2px 5px rgba(0, 0, 0, 0.25);
+    --sombra-hover: 0 5px 15px rgba(0, 0, 0, 0.30);
+
+}
+
+
+/*==============================================================================
+    ESTILOS GENERALES
+==============================================================================*/
+
 body {
-    background-color: #e4e4e4;   /* gris muy claro */
-    font-family: Arial, sans-serif;
+    background-color: var(--color-fondo);
+    font-family: var(--fuente-principal);
     text-align: center;
+    margin: 0;
+    padding: 0;
 }
 
-/* ===== TÍTULO ===== */
-.titulo {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #111111;
-    letter-spacing: 1px;
-    margin-top: 40px;
-    font-size: 50px;
-}
-
-/* ===== SUBTÍTULO ===== */
 p {
-    color: #2c2c2c;   /* gris oscuro legible */
+    color: var(--color-texto-secundario);
     font-size: 18px;
 }
 
-.subtitulo-contenido {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+/*==============================================================================
+    CABECERA
+==============================================================================*/
+
+.titulo {
+
+    font-family: var(--fuente-titulos);
+    font-size: 50px;
+
+    color: var(--color-titulo);
+
+    letter-spacing: 1px;
+
+    margin-top: 40px;
+    margin-bottom: 20px;
+
 }
 
 .subtitulo {
-    background-color: #2b2f34;   /* gris oscuro elegante */
-    color: #f5f5f5;              /* blanco suave */
+
+    width: 60%;
+
+    margin: 0 auto 30px;
+
     padding: 15px;
-    border-radius: 8px;
-    width: 60%;
-    font-family: Georgia, "Times New Roman", serif;
+
+    background-color: var(--color-subtitulo);
+    color: var(--color-subtitulo-texto);
+
+    border-radius: var(--radio-pequeno);
+
+    font-family: var(--fuente-titulos);
     letter-spacing: 1px;
-    margin-bottom: 10px;
+
 }
 
-/* ===== CONTENIDO CENTRAL ===== */
+
+/*==============================================================================
+    CONTENIDO PRINCIPAL
+==============================================================================*/
+
 .contenido {
+
     display: flex;
-    flex-direction: column; /* Imagen arriba, cuadro abajo */
-    align-items: center;    /* Centra la imagen y el cuadro */
-    gap: 20px;              /* Separación entre imagen y cuadro */
-    width: 60%;
+
+    flex-direction: row;
+
+    align-items: stretch;
+
+    gap: 20px;
+
+    width: 90%;
+
     margin: 10px auto;
+
 }
 
-/* ===== IMAGEN ===== */
+
+/*==============================================================================
+    PORTADA DEL LIBRO
+==============================================================================*/
+
 .imagen {
-    width: 50%;             /* La mitad del ancho del cuadro de texto */
-    max-width: 300px;       /* Ajuste para pantallas pequeñas */
+
+    max-width: 40%;
+
     height: auto;
-    border-radius: 8px;
+
     display: block;
-    margin: 0 auto;         /* Centrado */
+
+    border-radius: var(--radio-pequeno);
+
 }
 
-/* ===== CUADROS ===== */
-.subpaginas, .rectangulo-texto {
-    background-color: #ffffff;
-    color: #1c1c1c;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    font-family: Georgia, "Times New Roman", serif;
-    letter-spacing: 1px;
+
+/*==============================================================================
+    TARJETAS Y CUADROS
+==============================================================================*/
+
+.subpaginas,
+.rectangulo-texto {
+
+    background-color: var(--color-blanco);
+
+    color: var(--color-texto);
+
+    flex: 1;
+
     display: flex;
+
     flex-direction: column;
+
+    justify-content: center;
+
     align-items: center;
-    font-size: 20px;
-    width: 100%;            /* Cuadro ocupa todo el contenedor */
-    
-    /* ===== TRANSICIÓN DE HOVER ===== */
-    transition: transform 0.2s, box-shadow 0.2s;
+
+    padding: 20px;
+
+    font-family: var(--fuente-titulos);
+
+    font-size: 18px;
+
+    letter-spacing: 1px;
+
+    border-radius: var(--radio-grande);
+
+    box-shadow: var(--sombra);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
 }
 
-.subpaginas:hover, .rectangulo-texto:hover {
+
+/*------------------------------------------------------------------------------
+    Animación al pasar el cursor.
+    Produce un pequeño efecto de elevación para dar sensación de profundidad.
+------------------------------------------------------------------------------*/
+
+.subpaginas:hover,
+.rectangulo-texto:hover {
+
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+
+    box-shadow: var(--sombra-hover);
+
 }
 
-/* ===== TÍTULOS ===== */
-.subpaginas h3, .rectangulo-texto h3 {
+
+/*==============================================================================
+    TÍTULOS DE LAS TARJETAS
+==============================================================================*/
+
+.subpaginas h2,
+.rectangulo-texto h2 {
+
+    color: var(--color-titulo);
+
     font-size: 24px;
+
     margin-bottom: 15px;
-    color: #000000;
+
 }
 
-/* ===== LISTAS ===== */
+
+/*==============================================================================
+    LISTAS
+==============================================================================*/
+
 .subpaginas ul,
 .rectangulo-texto ul {
-    list-style-type: none;
+
+    list-style: none;
+
     padding: 0;
+
+    margin: 0;
+
 }
 
 .subpaginas li,
 .rectangulo-texto li {
+
     margin-bottom: 10px;
+
 }
 
-/* ===== ENLACES ===== */
-.subpaginas a, .rectangulo-texto a {
+
+/*==============================================================================
+    ENLACES
+==============================================================================*/
+
+.subpaginas a,
+.rectangulo-texto a {
+
+    color: var(--color-enlace);
+
     text-decoration: none;
-    color: #1e8acb;
+
     font-size: 20px;
+
     font-weight: bold;
+
+    transition: color .2s ease;
+
 }
 
 .subpaginas a:hover,
 .rectangulo-texto a:hover {
+
+    color: var(--color-enlace-hover);
+
     text-decoration: underline;
-    color: #0f5c8d;
+
 }
 
-/* ===== RECTÁNGULO INFERIOR ===== */
+
+/*==============================================================================
+    CUADRO INFERIOR
+==============================================================================*/
+
 .rectangulo-texto {
+
     width: 60%;
-    margin: 20px auto;  /* Separación del cuadro de arriba */
+
+    margin: 20px auto;
+
 }
 
-/* ===== RESPONSIVE ===== */
+
+/*==============================================================================
+    DISEÑO RESPONSIVE
+
+    Ajustes automáticos para tablets y teléfonos móviles.
+==============================================================================*/
+
 @media (max-width: 768px) {
 
     .contenido {
-        width: 90%;
-    }
 
-    .subtitulo, .rectangulo-texto {
-        width: 90%;
-    }
+        flex-direction: column;
 
-    .imagen {
-        width: 80%; /* Imagen más grande en móviles */
-        max-width: 300px;
-    }
-}
-/* ===== CONTENIDO CENTRAL EN FILA ===== */
-.contenido {
-    display: flex;
-    flex-direction: row;       /* imagen a la izquierda, cuadros a la derecha */
-    align-items: stretch;      /* cuadros igualan altura de la imagen */
-    gap: 20px;                 /* separación entre imagen y cuadros */
-    width: 90%;
-    margin: 10px auto;
-}
-
-/* ===== IMAGEN ===== */
-.imagen {
-    max-width: 40%;            /* imagen ocupa hasta 40% del contenedor */
-    height: auto;
-    border-radius: 8px;
-    display: block;
-}
-
-/* ===== CONTENEDOR DE CUADROS ===== */
-.subpaginas, .rectangulo-texto {
-    flex: 1;                   /* ocupan todo el espacio restante */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;    /* centra el contenido verticalmente */
-    font-size: 18px;           /* ajustable para que encaje con la altura de la imagen */
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .contenido {
-        flex-direction: column; /* apilar imagen encima de cuadros en móviles */
         align-items: center;
+
+        width: 90%;
+
+    }
+
+    .subtitulo {
+
+        width: 90%;
+
     }
 
     .imagen {
+
         max-width: 80%;
+
         margin-bottom: 20px;
+
     }
 
-    .subpaginas, .rectangulo-texto {
+    .subpaginas,
+    .rectangulo-texto {
+
         width: 100%;
-        font-size: 16px;       /* texto más pequeño en móviles */
+
+        font-size: 16px;
+
     }
+
 }
