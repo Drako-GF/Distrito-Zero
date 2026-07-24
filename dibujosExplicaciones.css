@@ -1,49 +1,96 @@
 /* ===== Estilos generales ===== */
+
 body {
-    background-color: #e4e4e4;       /* gris muy claro */
-    font-family: Arial, sans-serif;  /* cuerpo en Arial */
-    text-align: center;
+    background-color: #e4e4e4;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
 h1 {
-    font-family: Georgia, "Times New Roman", serif;  /* títulos en Georgia */
-    color: #111111;                                  /* negro elegante */
-    text-align: center;
+    font-family: Georgia, "Times New Roman", serif;
+    color: #111111;
     letter-spacing: 1px;
     margin-top: 40px;
+    margin-bottom: 10px;
 }
 
-p {
-    color: #2c2c2c;                 /* gris oscuro legible */
+/* ===== SUBTÍTULO ===== */
+
+.subtitulo {
+    width: 75%;
+    margin: 0 auto 35px;
+    color: #555;
     font-size: 18px;
-    font-family: Arial, sans-serif; /* párrafos en Arial */
-    text-align: center;
+    line-height: 1.6;
+}
+
+/* ===== INTRODUCCIÓN ===== */
+
+.introduccion {
+    width: 70%;
+}
+
+.introduccion p {
+    text-align: justify;
+    line-height: 1.7;
+}
+
+/* ===== FICHAS ===== */
+
+.explicacion {
+    background: #ffffff;
+    width: 70%;
+    margin: 35px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+}
+
+.explicacion h2 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: #111;
+    margin-top: 0;
+    margin-bottom: 20px;
     letter-spacing: 1px;
 }
 
-/* ===== CUADRO DE TEXTO ===== */
-.cuadro-texto {
-    background-color: #ffffff;       /* blanco elegante */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    width: 60%;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, "Times New Roman", serif;  /* contenido en Georgia */
-    letter-spacing: 1px;
-    font-size: 20px;
+.explicacion p {
+    text-align: justify;
+    color: #2c2c2c;
+    line-height: 1.7;
+    font-size: 18px;
 }
 
-/* ===== IMÁGENES DENTRO DEL CUADRO ===== */
-.cuadro-texto img {
-    max-width: 100%;     /* no excede el ancho del cuadro */
-    height: auto;        /* mantiene proporción */
-    border-radius: 8px;  /* borde consistente con estilo principal */
-    margin: 10px 0;
+/* ===== IMÁGENES ===== */
+
+.imagen {
     display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 25px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,.18);
+    transition: .3s;
+}
+
+.imagen:hover {
+    transform: scale(1.02);
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+    .introduccion,
+    .explicacion {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .subtitulo {
+        width: 90%;
+    }
+
 }
