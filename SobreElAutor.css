@@ -1,49 +1,274 @@
-/* ===== Estilos generales ===== */
-body {
-    background-color: #e4e4e4;   /* gris muy claro */
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 0;
+/*==============================================================================
+    DISTRITO ZERO
+    SOBRE EL AUTOR
+
+    Archivo: SobreElAutor.css
+==============================================================================*/
+
+
+/*==============================================================================
+    CONTENIDO PRINCIPAL
+==============================================================================*/
+
+main{
+
+    width:min(1150px,92%);
+    margin:auto;
+
 }
 
-h1 {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #111111;           /* negro elegante */
-    text-align: center;
-    letter-spacing: 1px;
-    margin-top: 40px;
+
+
+/*==============================================================================
+    PERFIL
+==============================================================================*/
+
+.perfil{
+
+    display:grid;
+
+    grid-template-columns:320px 1fr;
+
+    gap:50px;
+
+    align-items:center;
+
+    margin:80px auto;
+
 }
 
-p {
-    color: #2c2c2c;           /* gris oscuro legible */
-    font-size: 18px;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    letter-spacing: 1px;
+
+
+/*==============================================================================
+    TARJETAS
+==============================================================================*/
+
+.tarjeta{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:45px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
 }
 
-/* ===== CUADRO DE TEXTO ===== */
-.cuadro-texto {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    width: 60%;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, "Times New Roman", serif;
-    letter-spacing: 1px;
-    font-size: 20px;
+.tarjeta:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
 }
 
-/* ===== IMÁGENES DENTRO DEL CUADRO ===== */
-.cuadro-texto img {
-    max-width: 100%;   /* nunca excede el ancho del cuadro */
-    height: auto;      /* mantiene proporción */
-    display: block;
-    margin: 10px 0;
-    border-radius: 8px; /* como en tu CSS principal */
+
+
+/*==============================================================================
+    FOTOGRAFÍA
+==============================================================================*/
+
+.foto{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.foto img{
+
+    width:100%;
+
+    max-width:300px;
+
+    aspect-ratio:4/5;
+
+    object-fit:cover;
+
+    border-radius:20px;
+
+    border:5px solid white;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+
+}
+
+
+
+/*==============================================================================
+    BIOGRAFÍA
+==============================================================================*/
+
+.biografia h2{
+
+    margin-bottom:25px;
+
+    text-align:left;
+
+    color:#111;
+
+    font-size:2.1rem;
+
+}
+
+.biografia p{
+
+    text-align:justify;
+
+    line-height:1.9;
+
+    color:#555;
+
+    margin-bottom:22px;
+
+    text-indent:1.5em;
+
+}
+
+
+
+/*==============================================================================
+    DATOS
+==============================================================================*/
+
+.datos{
+
+    margin:90px auto;
+
+}
+
+.datos h2{
+
+    margin-bottom:40px;
+
+}
+
+
+
+.datos-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+}
+
+
+
+.dato{
+
+    background:#f7f7f7;
+
+    border-radius:16px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.25s;
+
+    line-height:1.8;
+
+}
+
+.dato:hover{
+
+    transform:translateY(-5px);
+
+    background:white;
+
+}
+
+
+
+/*==============================================================================
+    CITA FINAL
+==============================================================================*/
+
+.despedida{
+
+    margin:120px auto;
+
+    max-width:850px;
+
+}
+
+.despedida blockquote{
+
+    font-family:"Cormorant Garamond", serif;
+
+    font-size:2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+}
+
+
+
+/*==============================================================================
+    FOOTER
+==============================================================================*/
+
+footer{
+
+    margin:100px 0 60px;
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:900px){
+
+    .perfil{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+    }
+
+    .biografia h2{
+
+        text-align:center;
+
+    }
+
+}
+
+
+
+@media(max-width:768px){
+
+    .tarjeta{
+
+        padding:35px;
+
+    }
+
+    .biografia p{
+
+        text-align:left;
+
+        text-indent:0;
+
+    }
+
+    .despedida blockquote{
+
+        font-size:1.6rem;
+
+    }
+
 }
