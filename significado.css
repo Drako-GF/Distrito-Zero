@@ -1,42 +1,229 @@
-/* ===== Estilos generales ===== */
-body {
-    background-color: #e4e4e4;       /* gris muy claro */
-    font-family: Arial, sans-serif;  /* cuerpo en Arial */
-    text-align: center;
-    margin: 0;
-    padding: 0;
+/*==============================================================================
+    DISTRITO ZERO
+    UNA INTERPRETACIÓN
+
+    Archivo: significado.css
+    Estilos exclusivos de la página de interpretación.
+==============================================================================*/
+
+
+/*==============================================================================
+    CONTENIDO PRINCIPAL
+==============================================================================*/
+
+main{
+
+    width:min(1100px,92%);
+    margin:auto;
+
 }
 
-h1 {
-    font-family: Georgia, "Times New Roman", serif;  /* títulos en Georgia */
-    color: #111111;                                  /* negro elegante */
-    text-align: center;
-    letter-spacing: 1px;
-    margin-top: 40px;
+
+
+/*==============================================================================
+    AVISO DE SPOILERS
+==============================================================================*/
+
+.aviso{
+
+    margin:70px auto;
+
 }
 
-/* ===== CUADRO DE TEXTO ===== */
-.cuadro-texto {
-    background-color: #ffffff;       /* blanco elegante */
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    width: 60%;
-    margin: 20px auto;
-    text-align: justify;             /* mantiene justificado */
-    font-family: Georgia, "Times New Roman", serif;  /* contenido en Georgia */
-    letter-spacing: 1px;
-    font-size: 20px;
+.aviso-spoiler{
+
+    background:#fff8e6;
+
+    border-left:6px solid #d6a300;
+
+    border-radius:18px;
+
+    padding:30px 35px;
+
+    box-shadow:var(--sombra-suave);
+
 }
 
-/* ===== TEXTO DENTRO DEL CUADRO ===== */
-.cuadro-texto p {
-    color: #2c2c2c;                 /* gris oscuro legible */
-    font-size: 18px;
-    line-height: 1.5;               /* separación entre líneas */
-    text-indent: 0.5em;             /* sangría primera línea */
-    margin-top: 0;
-    margin-bottom: 18px;            /* separa párrafos */
-    letter-spacing: 1px;
-    font-family: Arial, sans-serif; /* párrafos en Arial */
+.aviso-spoiler h2{
+
+    margin-bottom:15px;
+
+    color:#7d5d00;
+
+    text-align:left;
+
+}
+
+.aviso-spoiler p{
+
+    margin:0;
+
+    color:#555;
+
+    text-align:left;
+
+}
+
+
+
+/*==============================================================================
+    INTERPRETACIÓN
+==============================================================================*/
+
+.interpretacion{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:45px;
+
+    margin-bottom:100px;
+
+}
+
+
+
+/*==============================================================================
+    TARJETAS
+==============================================================================*/
+
+.tarjeta{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:50px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
+}
+
+.tarjeta:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
+
+
+/*==============================================================================
+    TÍTULOS
+==============================================================================*/
+
+.tarjeta h2{
+
+    margin-bottom:30px;
+
+    color:#111;
+
+    text-align:left;
+
+    font-size:2rem;
+
+}
+
+
+
+/*==============================================================================
+    PÁRRAFOS
+==============================================================================*/
+
+.tarjeta p{
+
+    text-align:justify;
+
+    line-height:1.9;
+
+    color:#555;
+
+    margin-bottom:22px;
+
+    text-indent:1.5em;
+
+}
+
+
+
+/*==============================================================================
+    CITA FINAL
+==============================================================================*/
+
+.despedida{
+
+    margin:120px auto;
+
+    max-width:850px;
+
+    text-align:center;
+
+}
+
+.despedida blockquote{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2.2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+}
+
+
+
+/*==============================================================================
+    FOOTER
+==============================================================================*/
+
+footer{
+
+    margin:100px 0 60px;
+
+    text-align:center;
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:768px){
+
+    .tarjeta{
+
+        padding:35px;
+
+    }
+
+    .tarjeta h2{
+
+        font-size:1.6rem;
+
+        text-align:center;
+
+    }
+
+    .tarjeta p{
+
+        text-align:left;
+
+        text-indent:0;
+
+    }
+
+    .despedida blockquote{
+
+        font-size:1.7rem;
+
+    }
+
 }
