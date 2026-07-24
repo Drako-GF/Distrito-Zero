@@ -272,3 +272,38 @@ footer{
     }
 
 }
+/*==============================================================================
+    INFORMACIÓN DEL AUTOR
+==============================================================================*/
+
+.autor-info{
+
+    margin-top:25px;
+
+    text-align:center;
+
+}
+
+.autor-info h3{
+
+    margin-bottom:8px;
+
+    font-size:1.7rem;
+
+    color:#111;
+
+    font-family:Georgia,"Times New Roman",serif;
+
+}
+
+.autor-info p{
+
+    margin:0;
+
+    color:#666;
+
+    font-style:italic;
+
+    line-height:1.6;
+
+}
