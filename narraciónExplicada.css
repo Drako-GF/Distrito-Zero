@@ -1,40 +1,307 @@
-/* ===== Estilos generales ===== */
-body {
-    background-color: #e4e4e4;       /* gris muy claro */
-    font-family: Arial, sans-serif;  /* cuerpo en Arial */
-    text-align: center;
-    margin: 0;
-    padding: 0;
+/*==============================================================================
+    DISTRITO ZERO
+    EXPLICACIÓN DE LA NARRACIÓN
+
+    Estilos exclusivos de Explicación de la narración
+==============================================================================*/
+
+
+
+/*==============================================================================
+    INTRODUCCIÓN
+==============================================================================*/
+
+.mensaje{
+
+    margin-bottom:100px;
+
 }
 
-h1 {
-    font-family: Georgia, "Times New Roman", serif;  /* títulos en Georgia */
-    color: #111111;                                  /* negro elegante */
-    text-align: center;
-    letter-spacing: 1px;
-    margin-top: 40px;
+.tarjeta{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:50px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
 }
 
-p {
-    color: #2c2c2c;                 /* gris oscuro legible */
-    font-size: 18px;
-    font-family: Arial, sans-serif; /* párrafos en Arial */
-    text-align: center;
-    letter-spacing: 1px;
+.tarjeta:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
 }
 
-/* ===== CUADRO DE TEXTO ===== */
-.cuadro-texto {
-    background-color: #ffffff;       /* blanco elegante */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
-    width: 60%;
-    margin: 20px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Georgia, "Times New Roman", serif;  /* contenido en Georgia */
-    letter-spacing: 1px;
-    font-size: 20px;
+.tarjeta h2{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.tarjeta p{
+
+    color:#555;
+
+    margin-bottom:25px;
+
+    text-align:justify;
+
+}
+
+
+
+/*==============================================================================
+    ANÁLISIS
+==============================================================================*/
+
+.analisis{
+
+    margin:120px auto;
+
+}
+
+
+
+/*==============================================================================
+    BLOQUES
+==============================================================================*/
+
+.bloque{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:45px;
+
+    margin-bottom:45px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
+    overflow:hidden;
+
+}
+
+.bloque::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    background:var(--color-azul);
+
+    transform:scaleX(0);
+
+    transform-origin:left;
+
+    transition:.35s;
+
+}
+
+.bloque:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
+.bloque:hover::before{
+
+    transform:scaleX(1);
+
+}
+
+
+
+/*==============================================================================
+    NÚMERO
+==============================================================================*/
+
+.numero{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:54px;
+
+    height:54px;
+
+    margin-bottom:25px;
+
+    border-radius:50%;
+
+    background:#edf3ff;
+
+    color:var(--color-azul);
+
+    font-weight:700;
+
+}
+
+
+
+/*==============================================================================
+    TÍTULOS
+==============================================================================*/
+
+.bloque h3{
+
+    margin-bottom:25px;
+
+    font-size:2rem;
+
+}
+
+
+
+/*==============================================================================
+    TEXTO
+==============================================================================*/
+
+.bloque p{
+
+    color:#555;
+
+    line-height:1.9;
+
+    text-align:justify;
+
+}
+
+
+
+/*==============================================================================
+    DESPEDIDA
+==============================================================================*/
+
+.despedida{
+
+    margin:120px auto;
+
+    max-width:850px;
+
+    text-align:center;
+
+}
+
+.despedida blockquote{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2.2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+}
+
+
+
+/*==============================================================================
+    FOOTER
+==============================================================================*/
+
+footer{
+
+    margin:120px 0 70px;
+
+    text-align:center;
+
+}
+
+.volver{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:100px;
+
+    background:white;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:.35s;
+
+}
+
+.volver:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:900px){
+
+    .tarjeta{
+
+        padding:35px;
+
+    }
+
+    .bloque{
+
+        padding:35px;
+
+    }
+
+    .tarjeta p,
+    .bloque p{
+
+        text-align:left;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .bloque h3{
+
+        font-size:1.8rem;
+
+    }
+
+    .despedida blockquote{
+
+        font-size:1.7rem;
+
+    }
+
 }
