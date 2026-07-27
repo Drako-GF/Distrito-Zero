@@ -618,9 +618,9 @@ function animate(){
         FLOTACIÓN
     ----------------------------------------------------------*/
 
-    teseracto.position.y =
-
-        Math.sin(tiempo*0.65)*0.18;
+   teseracto.position.y =
+    -0.9 +
+    Math.sin(tiempo*0.65)*0.18;
 
 
     /*----------------------------------------------------------
