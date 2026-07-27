@@ -1,96 +1,392 @@
-/* ===== Estilos generales ===== */
+/*==============================================================================
+    DISTRITO ZERO
+    DIBUJOS Y EXPLICACIONES
 
-body {
-    background-color: #e4e4e4;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+    Estilos exclusivos de Dibujos y explicaciones
+==============================================================================*/
+
+
+
+/*==============================================================================
+    INTRODUCCIÓN
+==============================================================================*/
+
+.mensaje{
+
+    margin-bottom:100px;
+
 }
 
-h1 {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #111111;
-    letter-spacing: 1px;
-    margin-top: 40px;
-    margin-bottom: 10px;
+.tarjeta{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:50px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
 }
 
-/* ===== SUBTÍTULO ===== */
+.tarjeta:hover{
 
-.subtitulo {
-    width: 75%;
-    margin: 0 auto 35px;
-    color: #555;
-    font-size: 18px;
-    line-height: 1.6;
+    transform:translateY(-6px);
+
+    box-shadow:var(--sombra-media);
+
 }
 
-/* ===== INTRODUCCIÓN ===== */
+.tarjeta h2{
 
-.introduccion {
-    width: 70%;
+    text-align:center;
+
+    margin-bottom:35px;
+
 }
 
-.introduccion p {
-    text-align: justify;
-    line-height: 1.7;
+.tarjeta p{
+
+    color:#555;
+
+    margin-bottom:25px;
+
+    text-align:justify;
+
 }
 
-/* ===== FICHAS ===== */
 
-.explicacion {
-    background: #ffffff;
-    width: 70%;
-    margin: 35px auto;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,.15);
+
+/*==============================================================================
+    DOCUMENTACIÓN
+==============================================================================*/
+
+.documentacion{
+
+    margin:120px auto;
+
 }
 
-.explicacion h2 {
-    font-family: Georgia, "Times New Roman", serif;
-    color: #111;
-    margin-top: 0;
-    margin-bottom: 20px;
-    letter-spacing: 1px;
+
+
+/*==============================================================================
+    LÁMINAS
+==============================================================================*/
+
+.lamina{
+
+    position:relative;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:45px;
+
+    margin-bottom:70px;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:var(--transicion);
+
+    overflow:hidden;
+
 }
 
-.explicacion p {
-    text-align: justify;
-    color: #2c2c2c;
-    line-height: 1.7;
-    font-size: 18px;
+.lamina::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    background:var(--color-azul);
+
+    transform:scaleX(0);
+
+    transform-origin:left;
+
+    transition:.35s;
+
 }
 
-/* ===== IMÁGENES ===== */
+.lamina:hover{
 
-.imagen {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 25px auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,.18);
-    transition: .3s;
+    transform:translateY(-8px);
+
+    box-shadow:var(--sombra-media);
+
 }
 
-.imagen:hover {
-    transform: scale(1.02);
+.lamina:hover::before{
+
+    transform:scaleX(1);
+
 }
 
-/* ===== RESPONSIVE ===== */
 
-@media (max-width: 768px) {
 
-    .introduccion,
-    .explicacion {
-        width: 90%;
-        padding: 20px;
+/*==============================================================================
+    NÚMERO
+==============================================================================*/
+
+.numero{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:54px;
+
+    height:54px;
+
+    margin-bottom:25px;
+
+    border-radius:50%;
+
+    background:#edf3ff;
+
+    color:var(--color-azul);
+
+    font-weight:700;
+
+}
+
+
+
+/*==============================================================================
+    TÍTULO
+==============================================================================*/
+
+.lamina h3{
+
+    font-size:2.3rem;
+
+    margin-bottom:35px;
+
+}
+
+
+
+/*==============================================================================
+    CONTENIDO
+==============================================================================*/
+
+.contenido-lamina{
+
+    display:grid;
+
+    grid-template-columns:420px 1fr;
+
+    gap:50px;
+
+    align-items:center;
+
+}
+
+.contenido-lamina.inverso{
+
+    grid-template-columns:1fr 420px;
+
+}
+
+
+
+/*==============================================================================
+    IMAGEN
+==============================================================================*/
+
+.imagen{
+
+    display:flex;
+
+    justify-content:center;
+
+}
+
+.imagen img{
+
+    width:100%;
+
+    border-radius:18px;
+
+    box-shadow:
+
+        0 20px 45px rgba(0,0,0,.15);
+
+    transition:.35s;
+
+}
+
+.imagen img:hover{
+
+    transform:
+
+        translateY(-6px)
+        scale(1.02);
+
+}
+
+
+
+/*==============================================================================
+    EXPLICACIÓN
+==============================================================================*/
+
+.explicacion p{
+
+    color:#555;
+
+    text-align:justify;
+
+    line-height:1.8;
+
+}
+
+
+
+/*==============================================================================
+    DESPEDIDA
+==============================================================================*/
+
+.despedida{
+
+    margin:120px auto;
+
+    max-width:850px;
+
+    text-align:center;
+
+}
+
+.despedida blockquote{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2.2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+}
+
+
+
+/*==============================================================================
+    FOOTER
+==============================================================================*/
+
+footer{
+
+    margin:120px 0 70px;
+
+    text-align:center;
+
+}
+
+.volver{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:100px;
+
+    background:white;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:.35s;
+
+}
+
+.volver:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
+
+
+/*==============================================================================
+    RESPONSIVE
+==============================================================================*/
+
+@media(max-width:900px){
+
+    .tarjeta{
+
+        padding:35px;
+
     }
 
-    .subtitulo {
-        width: 90%;
+    .lamina{
+
+        padding:35px;
+
+    }
+
+    .contenido-lamina,
+    .contenido-lamina.inverso{
+
+        grid-template-columns:1fr;
+
+        gap:30px;
+
+        text-align:center;
+
+    }
+
+    .contenido-lamina.inverso .imagen{
+
+        order:-1;
+
+    }
+
+    .imagen{
+
+        max-width:420px;
+
+        margin:auto;
+
+    }
+
+    .explicacion p{
+
+        text-align:left;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .lamina h3{
+
+        font-size:2rem;
+
+    }
+
+    .despedida blockquote{
+
+        font-size:1.7rem;
+
     }
 
 }
