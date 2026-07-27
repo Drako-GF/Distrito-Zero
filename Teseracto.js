@@ -842,7 +842,7 @@ function escribirTexto(texto){
 
             texto.substring(0,i) +
 
-            ((i%2===0) ? "▋" : "");
+         
 
         i++;
 
