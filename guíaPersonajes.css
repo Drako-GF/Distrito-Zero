@@ -1,116 +1,74 @@
 /*==============================================================================
+    DISTRITO ZERO
     GUÍA DE PERSONAJES
+
+    Estilos exclusivos de la Guía de personajes
 ==============================================================================*/
+
 
 
 /*==============================================================================
-    VARIABLES
+    INTRODUCCIÓN
 ==============================================================================*/
 
-:root{
+.mensaje{
 
-    --color-fondo:#ececec;
-    --color-superficie:#ffffff;
-
-    --color-texto:#222222;
-    --color-titulo:#111111;
-
-    --color-azul:#2f69d9;
-
-    --color-linea:#d7d7d7;
-
-    --radio:22px;
-
-    --sombra-suave:0 12px 35px rgba(0,0,0,.08);
-    --sombra-media:0 18px 45px rgba(0,0,0,.12);
-
-    --transicion:.35s ease;
-
-    --ancho-maximo:1100px;
+    margin-bottom:100px;
 
 }
 
+.tarjeta{
 
-/*==============================================================================
-    RESET
-==============================================================================*/
+    background:white;
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    border-radius:22px;
 
+    padding:50px;
 
-/*==============================================================================
-    BODY
-==============================================================================*/
+    box-shadow:var(--sombra-suave);
 
-body{
-
-    background:
-    linear-gradient(
-        180deg,
-        #f5f5f5 0%,
-        #ececec 40%,
-        #e7e7e7 100%
-    );
-
-    color:var(--color-texto);
-
-    font-family:Arial,sans-serif;
-
-    line-height:1.7;
+    transition:var(--transicion);
 
 }
 
+.tarjeta:hover{
 
-/*==============================================================================
-    CABECERA
-==============================================================================*/
+    transform:translateY(-6px);
 
-.cabecera{
+    box-shadow:var(--sombra-media);
 
-    width:min(850px,92%);
+}
 
-    margin:80px auto 70px;
+.tarjeta h2{
 
     text-align:center;
 
+    margin-bottom:35px;
+
 }
 
-.cabecera h1{
+.tarjeta p{
 
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:4rem;
-
-    color:var(--color-titulo);
+    color:#555;
 
     margin-bottom:25px;
 
-}
-
-.descripcion{
-
-    color:#666;
-
-    font-size:1.08rem;
+    text-align:justify;
 
 }
+
 
 
 /*==============================================================================
-    CONTENEDOR
+    PERSONAJES
 ==============================================================================*/
 
-main{
+.personajes{
 
-    width:min(var(--ancho-maximo),92%);
-
-    margin:auto;
+    margin:120px auto;
 
 }
+
 
 
 /*==============================================================================
@@ -119,48 +77,104 @@ main{
 
 .expediente{
 
-    background:var(--color-superficie);
+    position:relative;
 
-    border-radius:var(--radio);
+    background:white;
+
+    border-radius:22px;
 
     padding:45px;
 
-    margin-bottom:60px;
+    margin-bottom:70px;
 
     box-shadow:var(--sombra-suave);
 
     transition:var(--transicion);
 
+    overflow:hidden;
+
+}
+
+.expediente::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:4px;
+
+    background:var(--color-azul);
+
+    transform:scaleX(0);
+
+    transform-origin:left;
+
+    transition:.35s;
+
 }
 
 .expediente:hover{
 
-    transform:translateY(-6px);
+    transform:translateY(-8px);
 
     box-shadow:var(--sombra-media);
 
 }
+
+.expediente:hover::before{
+
+    transform:scaleX(1);
+
+}
+
+
+
+/*==============================================================================
+    NÚMERO
+==============================================================================*/
+
+.numero{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:54px;
+
+    height:54px;
+
+    margin-bottom:25px;
+
+    border-radius:50%;
+
+    background:#edf3ff;
+
+    color:var(--color-azul);
+
+    font-weight:700;
+
+}
+
 
 
 /*==============================================================================
     TÍTULO
 ==============================================================================*/
 
-.expediente h2{
+.expediente h3{
 
-    font-family:"Cormorant Garamond",serif;
-
-    font-size:2.7rem;
-
-    text-align:center;
+    font-size:2.3rem;
 
     margin-bottom:35px;
 
-    padding-bottom:18px;
-
-    border-bottom:1px solid var(--color-linea);
-
 }
+
 
 
 /*==============================================================================
@@ -178,6 +192,13 @@ main{
     align-items:center;
 
 }
+
+.contenido-expediente.inverso{
+
+    grid-template-columns:1fr 280px;
+
+}
+
 
 
 /*==============================================================================
@@ -198,17 +219,23 @@ main{
 
     border-radius:18px;
 
-    box-shadow:0 12px 28px rgba(0,0,0,.15);
+    box-shadow:
 
-    transition:var(--transicion);
+        0 20px 45px rgba(0,0,0,.15);
+
+    transition:.35s;
 
 }
 
 .imagen img:hover{
 
-    transform:scale(1.02);
+    transform:
+
+        translateY(-6px)
+        scale(1.02);
 
 }
+
 
 
 /*==============================================================================
@@ -221,23 +248,28 @@ main{
 
     flex-direction:column;
 
-    gap:18px;
+    gap:22px;
 
 }
 
 .datos p{
 
-    font-size:1.05rem;
+    color:#555;
 
-    color:#444;
+    line-height:1.7;
 
 }
 
 .datos strong{
 
+    display:block;
+
+    margin-bottom:4px;
+
     color:#111;
 
 }
+
 
 
 /*==============================================================================
@@ -250,38 +282,122 @@ main{
 
     padding-top:30px;
 
-    border-top:1px solid var(--color-linea);
+    border-top:1px solid #e3e3e3;
 
 }
 
 .descripcion-personaje p{
 
+    color:#555;
+
     text-align:justify;
 
-    color:#444;
+}
+
+
+
+/*==============================================================================
+    DESPEDIDA
+==============================================================================*/
+
+.despedida{
+
+    margin:120px auto;
+
+    max-width:850px;
+
+    text-align:center;
 
 }
+
+.despedida blockquote{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:2.2rem;
+
+    font-style:italic;
+
+    color:#333;
+
+}
+
+
+
+/*==============================================================================
+    FOOTER
+==============================================================================*/
+
+footer{
+
+    margin:120px 0 70px;
+
+    text-align:center;
+
+}
+
+.volver{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:16px 34px;
+
+    border-radius:100px;
+
+    background:white;
+
+    box-shadow:var(--sombra-suave);
+
+    transition:.35s;
+
+}
+
+.volver:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:var(--sombra-media);
+
+}
+
 
 
 /*==============================================================================
     RESPONSIVE
 ==============================================================================*/
 
-@media(max-width:850px){
+@media(max-width:900px){
 
-    .cabecera h1{
+    .tarjeta{
 
-        font-size:3rem;
+        padding:35px;
 
     }
 
-    .contenido-expediente{
+    .expediente{
+
+        padding:35px;
+
+    }
+
+    .contenido-expediente,
+    .contenido-expediente.inverso{
 
         grid-template-columns:1fr;
 
         gap:30px;
 
         text-align:center;
+
+    }
+
+    .contenido-expediente.inverso .imagen{
+
+        order:-1;
 
     }
 
@@ -305,9 +421,19 @@ main{
 
     }
 
-    .expediente{
+}
 
-        padding:30px;
+@media(max-width:768px){
+
+    .expediente h3{
+
+        font-size:2rem;
+
+    }
+
+    .despedida blockquote{
+
+        font-size:1.7rem;
 
     }
 
