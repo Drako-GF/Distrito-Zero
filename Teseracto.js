@@ -1,56 +1,52 @@
 /******************************************************************************
- ==============================================================================
-    DISTRITO ZERO
-    ERROR CODE 198
+==============================================================================
+                            DISTRITO ZERO
+                            ERROR CODE 198
 
-    Archivo: Teseracto.js
-    FASE 1
-    - Inicialización del teseracto
-    - Animaciones principales
-    - Brillo dinámico
-    - Movimiento flotante
- ==============================================================================
-******************************************************************************/
+                            Teseracto.js
+                            BLOQUE 1 / 7
 
-/******************************************************************************
-    IMPORTANTE
+    • Inicialización de Three.js
+    • Escena
+    • Cámara
+    • Renderer
+    • Luces
+    • Grupo principal del teseracto
+    • Materiales
+==============================================================================/
 
-    Este archivo necesita Three.js cargado previamente desde el HTML.
-
-******************************************************************************/
-
-//======================================================================
-// ESCENA
-//======================================================================
+/*===========================================================================
+    ESCENA
+===========================================================================*/
 
 const scene = new THREE.Scene();
-
 scene.background = new THREE.Color(0x000000);
 
-//======================================================================
-// CÁMARA
-//======================================================================
+
+/*===========================================================================
+    CÁMARA
+===========================================================================*/
 
 const camera = new THREE.PerspectiveCamera(
 
-    75,
+    60,
     window.innerWidth / window.innerHeight,
     0.1,
     1000
 
 );
 
-camera.position.z = 4;
+camera.position.set(0,0,5.5);
 
 
-//======================================================================
-// RENDERER
-//======================================================================
+/*===========================================================================
+    RENDERER
+===========================================================================*/
 
 const renderer = new THREE.WebGLRenderer({
 
-    antialias: true,
-    alpha: false
+    antialias:true,
+    alpha:false
 
 });
 
@@ -63,78 +59,508 @@ renderer.setSize(
 
 );
 
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
 document.body.appendChild(renderer.domElement);
 
 
-//======================================================================
-// GEOMETRÍA
-//======================================================================
+/*===========================================================================
+    LUCES
+===========================================================================*/
 
-const geometry = new THREE.BoxGeometry(1,1,1);
+// Luz ambiental
+
+const ambientLight = new THREE.AmbientLight(
+
+    0x88ccff,
+    0.35
+
+);
+
+scene.add(ambientLight);
 
 
-//======================================================================
-// MATERIALES
-//======================================================================
+// Luz principal
+
+const pointLight = new THREE.PointLight(
+
+    0x7eeeff,
+    2.2,
+    25
+
+);
+
+pointLight.position.set(
+
+    0,
+    0,
+    4
+
+);
+
+scene.add(pointLight);
+
+
+// Luz trasera
+
+const backLight = new THREE.PointLight(
+
+    0x3355ff,
+    1.4,
+    20
+
+);
+
+backLight.position.set(
+
+    0,
+    0,
+    -5
+
+);
+
+scene.add(backLight);
+
+
+/*===========================================================================
+    GRUPO PRINCIPAL
+===========================================================================*/
+
+const teseracto = new THREE.Group();
+
+scene.add(teseracto);
+
+
+/*===========================================================================
+    GEOMETRÍAS
+===========================================================================*/
+
+const geometriaExterior = new THREE.BoxGeometry(
+
+    1.8,
+    1.8,
+    1.8
+
+);
+
+const geometriaInterior = new THREE.BoxGeometry(
+
+    1.1,
+    1.1,
+    1.1
+
+);
+
+const geometriaNucleo = new THREE.BoxGeometry(
+
+    0.45,
+    0.45,
+    0.45
+
+);
+
+
+/*===========================================================================
+    MATERIALES
+===========================================================================*/
 
 const materialExterior = new THREE.MeshBasicMaterial({
 
-    color:0x00bfff,
-    wireframe:true
+    color:0x7fefff,
+    wireframe:true,
+    transparent:true,
+    opacity:0.95
 
 });
 
 const materialInterior = new THREE.MeshBasicMaterial({
 
-    color:0x00e5ff,
-    wireframe:true
+    color:0x6acbff,
+    wireframe:true,
+    transparent:true,
+    opacity:0.85
+
+});
+
+const materialNucleo = new THREE.MeshBasicMaterial({
+
+    color:0xffffff,
+    wireframe:true,
+    transparent:true,
+    opacity:1
 
 });
 
 
-//======================================================================
-// CUBOS
-//======================================================================
+/*===========================================================================
+    CUBOS
+===========================================================================*/
 
 const cuboExterior = new THREE.Mesh(
 
-    geometry,
+    geometriaExterior,
     materialExterior
 
 );
 
 const cuboInterior = new THREE.Mesh(
 
-    geometry.clone(),
+    geometriaInterior,
     materialInterior
 
 );
 
-cuboInterior.scale.set(
+const cuboNucleo = new THREE.Mesh(
 
-    0.6,
-    0.6,
-    0.6
+    geometriaNucleo,
+    materialNucleo
 
 );
 
-scene.add(cuboExterior);
+teseracto.add(cuboExterior);
+teseracto.add(cuboInterior);
+teseracto.add(cuboNucleo);
 
-scene.add(cuboInterior);
 
-
-//======================================================================
-// VARIABLES DE ANIMACIÓN
-//======================================================================
+/*===========================================================================
+    VARIABLES GLOBALES
+===========================================================================*/
 
 const reloj = new THREE.Clock();
 
 let tiempo = 0;
 
+let intensidadEnergia = 1;
 
-//======================================================================
-// BUCLE PRINCIPAL
-//======================================================================
+let vibracion = 0;
+
+const objetosBrillantes = [];
+
+const particulas = [];
+/******************************************************************************
+==============================================================================
+                            DISTRITO ZERO
+                            ERROR CODE 198
+
+                            Teseracto.js
+                            BLOQUE 2 / 7
+
+    • Aristas del teseracto
+    • Conexiones entre cubos
+    • Halo energético
+    • Partículas orbitales
+==============================================================================
+******************************************************************************/
+
+/*===========================================================================
+    ARISTAS DEL TESERACTO
+===========================================================================*/
+
+const aristas = new THREE.EdgesGeometry(geometriaExterior);
+
+const lineasExterior = new THREE.LineSegments(
+
+    aristas,
+
+    new THREE.LineBasicMaterial({
+
+        color:0xb8ffff,
+        transparent:true,
+        opacity:0.95
+
+    })
+
+);
+
+teseracto.add(lineasExterior);
+
+
+const aristasInterior = new THREE.EdgesGeometry(geometriaInterior);
+
+const lineasInterior = new THREE.LineSegments(
+
+    aristasInterior,
+
+    new THREE.LineBasicMaterial({
+
+        color:0x6fdcff,
+        transparent:true,
+        opacity:0.8
+
+    })
+
+);
+
+teseracto.add(lineasInterior);
+
+
+/*===========================================================================
+    UNIONES ENTRE LOS DOS CUBOS
+===========================================================================*/
+
+const verticesExterior = [
+
+    [-0.9,-0.9,-0.9],
+    [ 0.9,-0.9,-0.9],
+    [ 0.9, 0.9,-0.9],
+    [-0.9, 0.9,-0.9],
+
+    [-0.9,-0.9, 0.9],
+    [ 0.9,-0.9, 0.9],
+    [ 0.9, 0.9, 0.9],
+    [-0.9, 0.9, 0.9]
+
+];
+
+const verticesInterior = [
+
+    [-0.55,-0.55,-0.55],
+    [ 0.55,-0.55,-0.55],
+    [ 0.55, 0.55,-0.55],
+    [-0.55, 0.55,-0.55],
+
+    [-0.55,-0.55, 0.55],
+    [ 0.55,-0.55, 0.55],
+    [ 0.55, 0.55, 0.55],
+    [-0.55, 0.55, 0.55]
+
+];
+
+for(let i=0;i<8;i++){
+
+    const puntos=[];
+
+    puntos.push(
+
+        new THREE.Vector3(...verticesExterior[i]),
+        new THREE.Vector3(...verticesInterior[i])
+
+    );
+
+    const geometriaLinea = new THREE.BufferGeometry().setFromPoints(puntos);
+
+    const linea = new THREE.Line(
+
+        geometriaLinea,
+
+        new THREE.LineBasicMaterial({
+
+            color:0xffffff,
+            transparent:true,
+            opacity:0.75
+
+        })
+
+    );
+
+    objetosBrillantes.push(linea);
+
+    teseracto.add(linea);
+
+}
+
+
+/*===========================================================================
+    HALO ENERGÉTICO
+===========================================================================*/
+
+const halo = new THREE.Sprite(
+
+    new THREE.SpriteMaterial({
+
+        color:0x6fefff,
+
+        transparent:true,
+
+        opacity:0.16,
+
+        blending:THREE.AdditiveBlending,
+
+        depthWrite:false
+
+    })
+
+);
+
+halo.scale.set(
+
+    3.6,
+    3.6,
+    3.6
+
+);
+
+teseracto.add(halo);
+
+
+/*===========================================================================
+    PARTÍCULAS
+===========================================================================*/
+
+const geometriaParticula = new THREE.SphereGeometry(
+
+    0.015,
+    8,
+    8
+
+);
+
+for(let i=0;i<45;i++){
+
+    const material = new THREE.MeshBasicMaterial({
+
+        color:0xb8ffff,
+
+        transparent:true,
+
+        opacity:0.75
+
+    });
+
+    const particula = new THREE.Mesh(
+
+        geometriaParticula,
+
+        material
+
+    );
+
+    const radio =
+
+        1.6 + Math.random()*1.2;
+
+    const angulo =
+
+        Math.random()*Math.PI*2;
+
+    const altura =
+
+        (Math.random()-0.5)*2;
+
+    particula.position.set(
+
+        Math.cos(angulo)*radio,
+
+        altura,
+
+        Math.sin(angulo)*radio
+
+    );
+
+    particula.userData={
+
+        radio,
+
+        angulo,
+
+        velocidad:
+
+            0.002 + Math.random()*0.006,
+
+        altura,
+
+        desfase:
+
+            Math.random()*Math.PI*2
+
+    };
+
+    particulas.push(particula);
+
+    teseracto.add(particula);
+
+}
+
+
+/*===========================================================================
+    RESPLANDOR CENTRAL
+===========================================================================*/
+
+const luzNucleo = new THREE.PointLight(
+
+    0xa8ffff,
+
+    2.5,
+
+    10
+
+);
+
+teseracto.add(luzNucleo);
+
+
+/*===========================================================================
+    POSICIÓN INICIAL
+===========================================================================*/
+
+teseracto.position.set(
+
+    0,
+    0,
+    0
+
+);
+/******************************************************************************
+==============================================================================
+                            DISTRITO ZERO
+                            ERROR CODE 198
+
+                            Teseracto.js
+                            BLOQUE 3 / 7
+
+    • Animación principal
+    • Rotación orgánica
+    • Respiración
+    • Órbita de partículas
+    • Pulso energético
+    • Destellos
+==============================================================================
+******************************************************************************/
+
+/*===========================================================================
+    DESTELLOS EN LAS ARISTAS
+===========================================================================*/
+
+let aristaActiva = -1;
+
+function actualizarDestellos(){
+
+    if(Math.random()<0.025){
+
+        aristaActiva = Math.floor(
+
+            Math.random()*objetosBrillantes.length
+
+        );
+
+    }
+
+    objetosBrillantes.forEach((linea,i)=>{
+
+        if(i===aristaActiva){
+
+            linea.material.opacity=1;
+
+            linea.material.color.set(0xffffff);
+
+        }
+
+        else{
+
+            linea.material.opacity=0.45;
+
+            linea.material.color.set(0x8fdfff);
+
+        }
+
+    });
+
+}
+
+
+/*===========================================================================
+    ANIMACIÓN
+===========================================================================*/
 
 function animate(){
 
@@ -143,121 +569,219 @@ function animate(){
     tiempo = reloj.getElapsedTime();
 
 
-    //----------------------------------------------------------
-    // ROTACIÓN
-    //----------------------------------------------------------
+    /*----------------------------------------------------------
+        ROTACIÓN ORGÁNICA
+    ----------------------------------------------------------*/
 
-    cuboExterior.rotation.x += 0.003;
+    teseracto.rotation.y += 0.0045;
 
-    cuboExterior.rotation.y += 0.004;
+    teseracto.rotation.x =
 
-    cuboExterior.rotation.z += 0.0015;
+        Math.sin(tiempo*0.45)*0.22;
 
-    cuboInterior.rotation.x -= 0.004;
+    teseracto.rotation.z =
 
-    cuboInterior.rotation.y -= 0.003;
-
-    cuboInterior.rotation.z -= 0.002;
+        Math.cos(tiempo*0.33)*0.12;
 
 
-    //----------------------------------------------------------
-    // RESPIRACIÓN
-    //----------------------------------------------------------
+    cuboInterior.rotation.x -=0.006;
+
+    cuboInterior.rotation.y +=0.004;
+
+    cuboNucleo.rotation.x +=0.015;
+
+    cuboNucleo.rotation.y -=0.012;
+
+    cuboNucleo.rotation.z +=0.010;
+
+
+    /*----------------------------------------------------------
+        RESPIRACIÓN
+    ----------------------------------------------------------*/
 
     const respiracion =
 
-        1 + Math.sin(tiempo * 1.2) * 0.12;
+        1 + Math.sin(tiempo*1.15)*0.05;
 
-    cuboExterior.scale.set(
+    teseracto.scale.set(
 
         respiracion,
+
         respiracion,
+
         respiracion
 
     );
 
-    cuboInterior.scale.set(
 
-        respiracion * 0.6,
-        respiracion * 0.6,
-        respiracion * 0.6
+    /*----------------------------------------------------------
+        FLOTACIÓN
+    ----------------------------------------------------------*/
+
+    teseracto.position.y =
+
+        Math.sin(tiempo*0.65)*0.18;
+
+
+    /*----------------------------------------------------------
+        PULSO DEL HALO
+    ----------------------------------------------------------*/
+
+    halo.material.opacity =
+
+        0.10 +
+
+        Math.sin(tiempo*2)*0.05;
+
+    halo.scale.setScalar(
+
+        3.5 +
+
+        Math.sin(tiempo*1.4)*0.25
 
     );
 
 
-    //----------------------------------------------------------
-    // MOVIMIENTO FLOTANTE
-    //----------------------------------------------------------
+    /*----------------------------------------------------------
+        COLOR DINÁMICO
+    ----------------------------------------------------------*/
 
-    const flotacion =
+    intensidadEnergia =
 
-        Math.sin(tiempo * 0.7) * 0.12;
-
-    cuboExterior.position.y = flotacion;
-
-    cuboInterior.position.y = flotacion;
-
-
-    //----------------------------------------------------------
-    // CAMBIO SUAVE DE COLOR
-    //----------------------------------------------------------
-
-    const intensidad =
-
-        (Math.sin(tiempo * 2) + 1) / 2;
+        (Math.sin(tiempo*2)+1)/2;
 
     materialExterior.color.setHSL(
 
-        0.55,
+        0.54,
+
         1,
-        0.45 + intensidad * 0.15
+
+        0.55 + intensidadEnergia*0.12
 
     );
 
     materialInterior.color.setHSL(
 
-        0.53,
+        0.56,
+
         1,
-        0.55 + intensidad * 0.20
+
+        0.50 + intensidadEnergia*0.15
+
+    );
+
+    materialNucleo.color.setHSL(
+
+        0.57,
+
+        0.2,
+
+        0.90
 
     );
 
 
-    //----------------------------------------------------------
-    // RENDER
-    //----------------------------------------------------------
+    pointLight.intensity =
+
+        2 +
+
+        intensidadEnergia*1.2;
+
+    luzNucleo.intensity =
+
+        2 +
+
+        intensidadEnergia*2;
+
+
+    /*----------------------------------------------------------
+        PARTÍCULAS
+    ----------------------------------------------------------*/
+
+    particulas.forEach((p)=>{
+
+        p.userData.angulo +=
+
+            p.userData.velocidad;
+
+        p.position.x =
+
+            Math.cos(p.userData.angulo)
+
+            *p.userData.radio;
+
+        p.position.z =
+
+            Math.sin(p.userData.angulo)
+
+            *p.userData.radio;
+
+        p.position.y =
+
+            p.userData.altura +
+
+            Math.sin(
+
+                tiempo +
+
+                p.userData.desfase
+
+            )*0.10;
+
+    });
+
+
+    /*----------------------------------------------------------
+        DESTELLOS
+    ----------------------------------------------------------*/
+
+    actualizarDestellos();
+
+
+    /*----------------------------------------------------------
+        RENDER
+    ----------------------------------------------------------*/
 
     renderer.render(
 
         scene,
+
         camera
 
     );
 
 }
 
+
+/*===========================================================================
+    INICIO
+===========================================================================*/
+
 animate();
 
 
-//======================================================================
-// RESPONSIVE
-//======================================================================
+/*===========================================================================
+    RESPONSIVE
+===========================================================================*/
 
 window.addEventListener(
 
     "resize",
 
-    () => {
+    ()=>{
 
-        camera.aspect =
+        camera.aspect=
 
-            window.innerWidth / window.innerHeight;
+            window.innerWidth/
+
+            window.innerHeight;
 
         camera.updateProjectionMatrix();
 
         renderer.setSize(
 
             window.innerWidth,
+
             window.innerHeight
 
         );
@@ -267,196 +791,124 @@ window.addEventListener(
 );
 /******************************************************************************
 ==============================================================================
-                FASE 2
-        RECUPERACIÓN DEL ARCHIVO CLASIFICADO
+                            DISTRITO ZERO
+                            ERROR CODE 198
+
+                            Teseracto.js
+                            BLOQUE 4 / 7
+
+    • Mensaje principal
+    • Escritura progresiva
+    • Cursor
+    • Mensajes orbitando alrededor del teseracto
+    • Glitches
 ==============================================================================
 ******************************************************************************/
 
 /*===========================================================================
-    MENSAJE CENTRAL
+    MENSAJE PRINCIPAL
 ===========================================================================*/
 
 const mensajeCentral = document.getElementById("mensaje-teseracto");
-
-/*===========================================================================
-    SECUENCIA DE ARRANQUE
-===========================================================================*/
 
 const secuenciaInicio = [
 
     "RECUPERANDO ARCHIVO...",
     "ERROR CODE 198",
-    "Buscando datos...",
-    "Sincronizando...",
-    "Verificando integridad...",
-    "Acceso concedido."
+    "BUSCANDO DATOS...",
+    "DESCIFRANDO MEMORIA...",
+    "SINCRONIZANDO...",
+    "VERIFICANDO INTEGRIDAD...",
+    "ARCHIVO RECUPERADO"
 
 ];
 
-let pasoActual = 0;
+let indiceMensaje = 0;
 
 
 /*===========================================================================
-    CAMBIAR TEXTO
+    EFECTO MÁQUINA DE ESCRIBIR
 ===========================================================================*/
 
-function siguientePaso(){
+function escribirTexto(texto){
 
-    if(pasoActual < secuenciaInicio.length){
+    let i = 0;
+
+    mensajeCentral.textContent = "";
+
+    const intervalo = setInterval(()=>{
 
         mensajeCentral.textContent =
 
-            secuenciaInicio[pasoActual];
+            texto.substring(0,i) +
 
-        pasoActual++;
+            ((i%2===0) ? "▋" : "");
 
-    }
+        i++;
+
+        if(i>texto.length){
+
+            clearInterval(intervalo);
+
+            mensajeCentral.textContent = texto;
+
+        }
+
+    },45);
 
 }
 
 
 /*===========================================================================
-    EFECTO GLITCH
+    SIGUIENTE MENSAJE
 ===========================================================================*/
 
-function glitchMensaje(){
+function siguienteMensaje(){
+
+    if(indiceMensaje>=secuenciaInicio.length){
+
+        return;
+
+    }
+
+    escribirTexto(
+
+        secuenciaInicio[indiceMensaje]
+
+    );
+
+    indiceMensaje++;
+
+}
+
+
+/*===========================================================================
+    GLITCH DEL MENSAJE CENTRAL
+===========================================================================*/
+
+function glitchTexto(){
+
+    mensajeCentral.classList.add("glitch");
 
     mensajeCentral.style.transform =
 
-        `translate(
-            ${Math.random()*12-6}px,
-            ${Math.random()*12-6}px
-        )`;
-
-    mensajeCentral.style.letterSpacing =
-
-        (1 + Math.random()*6) + "px";
+        `translate(-50%,-50%)
+         translate(${Math.random()*10-5}px,
+         ${Math.random()*10-5}px)`;
 
     mensajeCentral.style.opacity =
 
         0.6 + Math.random()*0.4;
 
-}
-
-
-/*===========================================================================
-    RESTAURAR MENSAJE
-===========================================================================*/
-
-function restaurarMensaje(){
-
-    mensajeCentral.style.transform =
-
-        "translate(-50%, -50%)";
-
-    mensajeCentral.style.letterSpacing =
-
-        "2px";
-
-    mensajeCentral.style.opacity =
-
-        1;
-
-}
-
-
-/*===========================================================================
-    CAMBIAR MENSAJE CADA DOS SEGUNDOS
-===========================================================================*/
-
-const intervaloInicio = setInterval(()=>{
-
-    glitchMensaje();
-
-    setTimeout(restaurarMensaje,120);
-
-    siguientePaso();
-
-},2000);
-
-
-/*===========================================================================
-    DESAPARECER AL FINAL
-===========================================================================*/
-
-setTimeout(()=>{
-
-    clearInterval(intervaloInicio);
-
-    mensajeCentral.style.transition =
-
-        "opacity 3s ease";
-
-    mensajeCentral.style.opacity = 0;
-
-},14000);
-
-
-
-/*===========================================================================
-    DESTELLOS MUY SUAVES
-===========================================================================*/
-
-function destelloPantalla(){
-
-    document.body.style.filter =
-
-        "brightness(130%)";
-
     setTimeout(()=>{
 
-        document.body.style.filter =
+        mensajeCentral.classList.remove("glitch");
 
-            "brightness(100%)";
+        mensajeCentral.style.transform =
 
-    },80);
+            "translate(-50%,-50%)";
 
-}
-
-
-/*===========================================================================
-    INTERFERENCIAS ALEATORIAS
-===========================================================================*/
-
-setInterval(()=>{
-
-    if(Math.random()<0.15){
-
-        glitchMensaje();
-
-        destelloPantalla();
-
-        setTimeout(restaurarMensaje,120);
-
-    }
-
-},5000);
-
-
-
-/*===========================================================================
-    PEQUEÑA VIBRACIÓN DEL TESERACTO
-===========================================================================*/
-
-function vibracionTeseracto(){
-
-    const x = (Math.random()-0.5)*0.05;
-
-    const y = (Math.random()-0.5)*0.05;
-
-    cuboExterior.position.x = x;
-
-    cuboExterior.position.y += y;
-
-    cuboInterior.position.x = x;
-
-    cuboInterior.position.y += y;
-
-    setTimeout(()=>{
-
-        cuboExterior.position.x = 0;
-
-        cuboInterior.position.x = 0;
+        mensajeCentral.style.opacity = 1;
 
     },120);
 
@@ -464,186 +916,433 @@ function vibracionTeseracto(){
 
 
 /*===========================================================================
-    VIBRACIÓN MUY POCO FRECUENTE
+    INICIO
 ===========================================================================*/
 
-setInterval(()=>{
+const inicio = setInterval(()=>{
 
-    if(Math.random()<0.08){
+    glitchTexto();
 
-        vibracionTeseracto();
+    siguienteMensaje();
 
-    }
+},2200);
 
-},7000);
-/******************************************************************************
-==============================================================================
-                    FASE 3
-            SISTEMA DE MENSAJES INTELIGENTES
-==============================================================================
-******************************************************************************/
+setTimeout(()=>{
+
+    clearInterval(inicio);
+
+},16000);
+
 
 /*===========================================================================
-    MENSAJES
+    MENSAJES ORBITALES
 ===========================================================================*/
 
-const mensajesNormales = [
+const mensajes = [
 
     "Rachel...",
     "Rásek...",
-    "Lumen...",
     "Drako...",
     "Lilith...",
-    "Siempre fuimos familia.",
-    "Siempre fuiste tú.",
-    "Nos une un gran poder.",
-    "Todo comenzó aquí.",
-    "La causa siempre fue el efecto."
-
-];
-
-const mensajesAdvertencia = [
-
-    "Él viene.",
-    "No mires atrás.",
-    "Nos queda poco tiempo.",
-    "No abras la puerta.",
-    "No sigas buscando.",
-    "Demasiado tarde.",
-    "No deberías estar aquí.",
-    "El tiempo está colapsando."
-
-];
-
-const mensajesError = [
-
-    "ERROR TEMPORAL",
-    "ARCHIVO DAÑADO",
-    "SECUENCIA ALTERADA",
+    "Arthur...",
+    "Lumen...",
+    "Distrito Zero",
+    "Proyecto Nexus",
     "ERROR CODE 198",
-    "INTEGRIDAD COMPROMETIDA",
-    "SINCRONIZACIÓN FALLIDA"
+    "MEMORIA CORRUPTA",
+    "NO MIRES ATRÁS",
+    "EL CICLO CONTINÚA",
+    "YA ESTÁ AQUÍ",
+    "ARCHIVO DAÑADO",
+    "TEMPORAL ERROR",
+    "NO ABRAS ESA PUERTA",
+    "2501",
+    "2897",
+    "REDACTADO",
+    "██████████"
 
 ];
 
 
 /*===========================================================================
-    MENSAJES QUE MUTAN
+    CREAR MENSAJE ORBITAL
 ===========================================================================*/
 
-const mutaciones = {
-
-    "Rachel..." :
-    "Rachel ha desaparecido.",
-
-    "Siempre fuiste tú." :
-    "Siempre serás tú.",
-
-    "Nos une un gran poder." :
-    "...que aún no comprendemos.",
-
-    "Él viene." :
-    "Ya está aquí.",
-
-    "No mires atrás." :
-    "Demasiado tarde."
-
-};
-
-
-/*===========================================================================
-    CREAR MENSAJE
-===========================================================================*/
-
-function crearMensaje(texto,color){
+function crearMensajeOrbital(){
 
     const mensaje = document.createElement("div");
 
     mensaje.className = "mensaje-aleatorio";
 
-    mensaje.textContent = texto;
+    mensaje.textContent =
 
-    mensaje.style.color = color;
+        mensajes[
+
+            Math.floor(
+
+                Math.random()*mensajes.length
+
+            )
+
+        ];
+
+    const radio =
+
+        180 + Math.random()*180;
+
+    const angulo =
+
+        Math.random()*Math.PI*2;
+
+    const centroX =
+
+        window.innerWidth/2;
+
+    const centroY =
+
+        window.innerHeight/2;
 
     mensaje.style.left =
-        Math.random()*85 + "%";
+
+        (centroX +
+
+        Math.cos(angulo)*radio) + "px";
 
     mensaje.style.top =
-        Math.random()*85 + "%";
+
+        (centroY +
+
+        Math.sin(angulo)*radio) + "px";
 
     mensaje.style.fontSize =
-        (18 + Math.random()*16) + "px";
 
-    mensaje.style.opacity = 0;
+        (16+Math.random()*14)+"px";
+
+    const colores=[
+
+        "#7fefff",
+
+        "#ffd95a",
+
+        "#ff5555",
+
+        "#ffffff"
+
+    ];
+
+    mensaje.style.color=
+
+        colores[
+
+            Math.floor(
+
+                Math.random()*colores.length
+
+            )
+
+        ];
+
+    mensaje.style.opacity=0;
 
     document.body.appendChild(mensaje);
 
     requestAnimationFrame(()=>{
 
-        mensaje.style.opacity = 1;
+        mensaje.style.opacity=.9;
 
     });
 
 
-    //----------------------------------------------------
-    // Movimiento lento
-    //----------------------------------------------------
+    let desplazamiento=
 
-    let dx =
-        (Math.random()-0.5)*30;
+        0;
 
-    let dy =
-        (Math.random()-0.5)*30;
+    const velocidad=
 
-    mensaje.animate(
+        0.002+
 
-        [
+        Math.random()*0.003;
 
-            {
+    const animacion =
 
-                transform:"translate(0px,0px)"
+        setInterval(()=>{
 
-            },
+            desplazamiento += velocidad;
 
-            {
+            mensaje.style.left =
 
-                transform:
-                `translate(${dx}px,${dy}px)`
+                (centroX +
 
-            }
+                Math.cos(angulo+desplazamiento)
 
-        ],
+                *radio)+"px";
 
-        {
+            mensaje.style.top =
 
-            duration:5000,
-            fill:"forwards"
+                (centroY +
 
-        }
+                Math.sin(angulo+desplazamiento)
 
-    );
+                *radio)+"px";
+
+        },16);
 
 
-    //----------------------------------------------------
-    // Posible mutación
-    //----------------------------------------------------
-
-    if(mutaciones[texto] && Math.random()<0.25){
+    if(Math.random()<0.25){
 
         setTimeout(()=>{
 
-            mensaje.textContent =
+            glitchTexto();
 
-                mutaciones[texto];
-
-        },2500);
+        },1500);
 
     }
 
 
-    //----------------------------------------------------
-    // Desaparecer
-    //----------------------------------------------------
+    setTimeout(()=>{
+
+        mensaje.style.opacity=0;
+
+        clearInterval(animacion);
+
+        setTimeout(()=>{
+
+            mensaje.remove();
+
+        },800);
+
+    },6000);
+
+}
+
+
+/*===========================================================================
+    GENERADOR
+===========================================================================*/
+
+setInterval(
+
+    crearMensajeOrbital,
+
+    3500
+
+);
+
+
+/*===========================================================================
+    INTERFERENCIAS
+===========================================================================*/
+
+setInterval(()=>{
+
+    if(Math.random()<0.18){
+
+        glitchTexto();
+
+    }
+
+},6000);
+/******************************************************************************
+==============================================================================
+                            DISTRITO ZERO
+                            ERROR CODE 198
+
+                            Teseracto.js
+                            BLOQUE 5 / 7
+
+    • Anomalías visuales
+    • Corrupciones
+    • Flash
+    • Distorsiones
+    • Eventos raros
+==============================================================================
+******************************************************************************/
+
+/*===========================================================================
+    DESTELLO DE PANTALLA
+===========================================================================*/
+
+function flashPantalla(){
+
+    document.body.style.filter="brightness(170%)";
+
+    setTimeout(()=>{
+
+        document.body.style.filter="brightness(100%)";
+
+    },80);
+
+}
+
+
+/*===========================================================================
+    GLITCH GLOBAL
+===========================================================================*/
+
+function glitchPantalla(){
+
+    renderer.domElement.style.transform=
+
+        `translate(
+            ${Math.random()*12-6}px,
+            ${Math.random()*12-6}px
+        )
+        scale(${1+(Math.random()*0.02)})`;
+
+    renderer.domElement.style.filter=
+
+        "contrast(140%) brightness(130%)";
+
+    setTimeout(()=>{
+
+        renderer.domElement.style.transform="none";
+
+        renderer.domElement.style.filter="none";
+
+    },120);
+
+}
+
+
+/*===========================================================================
+    VIBRACIÓN DEL TESERACTO
+===========================================================================*/
+
+function vibrarTeseracto(){
+
+    const x=(Math.random()-0.5)*0.08;
+
+    const y=(Math.random()-0.5)*0.08;
+
+    const z=(Math.random()-0.5)*0.08;
+
+    teseracto.position.set(x,y,z);
+
+    setTimeout(()=>{
+
+        teseracto.position.set(
+
+            0,
+
+            Math.sin(tiempo*0.65)*0.18,
+
+            0
+
+        );
+
+    },120);
+
+}
+
+
+/*===========================================================================
+    PULSO ENERGÉTICO
+===========================================================================*/
+
+function pulsoEnergia(){
+
+    halo.scale.multiplyScalar(1.45);
+
+    pointLight.intensity*=1.8;
+
+    luzNucleo.intensity*=2;
+
+    setTimeout(()=>{
+
+        halo.scale.set(
+
+            3.5,
+
+            3.5,
+
+            3.5
+
+        );
+
+        pointLight.intensity=2.2;
+
+        luzNucleo.intensity=2.5;
+
+    },250);
+
+}
+
+
+/*===========================================================================
+    CORRUPCIÓN DE TEXTO
+===========================================================================*/
+
+const simbolos=[
+
+    "█",
+
+    "▓",
+
+    "▒",
+
+    "#",
+
+    "0",
+
+    "1",
+
+    "∆",
+
+    "⊗",
+
+    "⌬",
+
+    "?"
+
+];
+
+function corrupcionTexto(){
+
+    const mensaje=document.createElement("div");
+
+    mensaje.className="mensaje-aleatorio";
+
+    let texto="";
+
+    const longitud=15+Math.floor(Math.random()*20);
+
+    for(let i=0;i<longitud;i++){
+
+        texto+=
+
+            simbolos[
+
+                Math.floor(
+
+                    Math.random()*simbolos.length
+
+                )
+
+            ];
+
+    }
+
+    mensaje.textContent=texto;
+
+    mensaje.style.left=
+
+        (10+Math.random()*80)+"%";
+
+    mensaje.style.top=
+
+        (10+Math.random()*80)+"%";
+
+    mensaje.style.color="#ffffff";
+
+    mensaje.style.opacity=0;
+
+    document.body.appendChild(mensaje);
+
+    requestAnimationFrame(()=>{
+
+        mensaje.style.opacity=.35;
+
+    });
 
     setTimeout(()=>{
 
@@ -653,141 +1352,42 @@ function crearMensaje(texto,color){
 
             mensaje.remove();
 
-        },1000);
+        },500);
 
-    },5000);
-
-}
-
-
-/*===========================================================================
-    GENERADOR
-===========================================================================*/
-
-function generarMensaje(){
-
-    const tipo = Math.random();
-
-    if(tipo<0.65){
-
-        crearMensaje(
-
-            mensajesNormales[
-                Math.floor(Math.random()*mensajesNormales.length)
-            ],
-
-            "#6fdcff"
-
-        );
-
-    }
-
-    else if(tipo<0.90){
-
-        crearMensaje(
-
-            mensajesAdvertencia[
-                Math.floor(Math.random()*mensajesAdvertencia.length)
-            ],
-
-            "#ffe45a"
-
-        );
-
-    }
-
-    else{
-
-        crearMensaje(
-
-            mensajesError[
-                Math.floor(Math.random()*mensajesError.length)
-            ],
-
-            "#ff4040"
-
-        );
-
-    }
+    },900);
 
 }
 
 
 /*===========================================================================
-    FRECUENCIA
+    MENSAJE GIGANTE
 ===========================================================================*/
 
-setInterval(
+function mensajeGigante(texto,color){
 
-    generarMensaje,
-
-    9000
-
-);
-/******************************************************************************
-==============================================================================
-                            FASE 4
-              EVENTOS RAROS · ANOMALÍAS · ACABADO FINAL
-==============================================================================
-******************************************************************************/
-
-/*===========================================================================
-    TIEMPO EN LA PÁGINA
-===========================================================================*/
-
-const inicioSesion = Date.now();
-
-
-/*===========================================================================
-    MENSAJES EXCLUSIVOS
-===========================================================================*/
-
-const mensajesCincoMinutos = [
-
-    "¿Sigues aquí?",
-    "No esperaba que permanecieras tanto tiempo.",
-    "El archivo comienza a responder.",
-    "La sincronización aumenta.",
-    "Algo está cambiando."
-
-];
-
-const mensajesDiezMinutos = [
-
-    "Ahora él sabe que has entrado.",
-    "Ya no puedes deshacer esto.",
-    "El ciclo vuelve a comenzar.",
-    "No deberías haber visto esto.",
-    "Todo estaba escrito."
-
-];
-
-
-/*===========================================================================
-    MENSAJE CENTRAL GIGANTE
-===========================================================================*/
-
-function mensajeCentralGigante(texto,color){
-
-    const cartel = document.createElement("div");
+    const cartel=document.createElement("div");
 
     cartel.style.position="absolute";
+
     cartel.style.left="50%";
+
     cartel.style.top="50%";
+
     cartel.style.transform="translate(-50%,-50%)";
 
     cartel.style.fontSize="70px";
+
     cartel.style.fontWeight="bold";
-    cartel.style.fontFamily="Georgia";
 
     cartel.style.color=color;
 
-    cartel.style.opacity="0";
+    cartel.style.textShadow=
+
+        "0 0 25px "+color;
+
+    cartel.style.opacity=0;
 
     cartel.style.pointerEvents="none";
-
-    cartel.style.textShadow=
-        "0 0 20px "+color;
 
     cartel.textContent=texto;
 
@@ -795,7 +1395,7 @@ function mensajeCentralGigante(texto,color){
 
     requestAnimationFrame(()=>{
 
-        cartel.style.transition="opacity .4s";
+        cartel.style.transition="opacity .3s";
 
         cartel.style.opacity=1;
 
@@ -809,43 +1409,171 @@ function mensajeCentralGigante(texto,color){
 
             cartel.remove();
 
-        },600);
+        },500);
 
-    },1800);
+    },1700);
 
 }
 
 
 /*===========================================================================
-    GLITCH GENERAL
+    EVENTOS ALEATORIOS
 ===========================================================================*/
 
-function glitchPantalla(){
+setInterval(()=>{
 
-    renderer.domElement.style.transform=
+    const r=Math.random();
 
-        `translate(
-        ${Math.random()*10-5}px,
-        ${Math.random()*10-5}px
-        )`;
+    if(r<0.12){
 
-    renderer.domElement.style.filter=
+        glitchPantalla();
 
-        "brightness(150%)";
+    }
 
-    setTimeout(()=>{
+    if(r<0.09){
 
-        renderer.domElement.style.transform="none";
+        vibrarTeseracto();
 
-        renderer.domElement.style.filter="brightness(100%)";
+    }
 
-    },120);
+    if(r<0.08){
 
-}
+        flashPantalla();
+
+    }
+
+    if(r<0.07){
+
+        pulsoEnergia();
+
+    }
+
+    if(r<0.05){
+
+        corrupcionTexto();
+
+    }
+
+},5000);
 
 
 /*===========================================================================
-    EVENTOS MUY POCO FRECUENTES
+    EVENTOS MUY RAROS
+===========================================================================*/
+
+setInterval(()=>{
+
+    const r=Math.random();
+
+    if(r<0.020){
+
+        mensajeGigante(
+
+            "ERROR CODE 198",
+
+            "#ff2b2b"
+
+        );
+
+        flashPantalla();
+
+        glitchPantalla();
+
+        pulsoEnergia();
+
+    }
+
+    if(r<0.008){
+
+        mensajeGigante(
+
+            "ÉL YA ESTÁ AQUÍ",
+
+            "#ffe84d"
+
+        );
+
+        flashPantalla();
+
+        glitchPantalla();
+
+        vibrarTeseracto();
+
+        pulsoEnergia();
+
+    }
+
+    if(r<0.004){
+
+        mensajeGigante(
+
+            "NO DEBERÍAS HABER ENTRADO",
+
+            "#ffffff"
+
+        );
+
+        flashPantalla();
+
+        glitchPantalla();
+
+        corrupcionTexto();
+
+        vibrarTeseracto();
+
+    }
+
+},18000);
+/******************************************************************************
+==============================================================================
+                            DISTRITO ZERO
+                            ERROR CODE 198
+
+                            Teseracto.js
+                            BLOQUE 6 / 7
+
+    • Eventos dependientes del tiempo
+    • Mensajes exclusivos
+    • Aceleraciones temporales
+    • Variaciones de energía
+    • Estado inestable
+==============================================================================
+******************************************************************************/
+
+/*===========================================================================
+    TIEMPO EN LA PÁGINA
+===========================================================================*/
+
+const inicioSesion = Date.now();
+
+
+/*===========================================================================
+    MENSAJES ESPECIALES
+===========================================================================*/
+
+const mensajesCincoMinutos=[
+
+    "¿SIGUES AQUÍ?",
+    "EL ARCHIVO COMIENZA A RESPONDER.",
+    "LA SINCRONIZACIÓN HA AUMENTADO.",
+    "EL TESERACTO TE HA DETECTADO.",
+    "YA NO ERES UN SIMPLE OBSERVADOR."
+
+];
+
+const mensajesDiezMinutos=[
+
+    "YA FORMAS PARTE DEL REGISTRO.",
+    "NO EXISTE SALIDA.",
+    "EL CICLO CONTINÚA.",
+    "ÉL YA SABE QUE ESTÁS AQUÍ.",
+    "NO DEBERÍAS HABER PERMANECIDO TANTO."
+
+];
+
+
+/*===========================================================================
+    MENSAJES TEMPORALES
 ===========================================================================*/
 
 setInterval(()=>{
@@ -854,36 +1582,42 @@ setInterval(()=>{
 
         (Date.now()-inicioSesion)/1000;
 
+    if(tiempo>300 && Math.random()<0.18){
 
-    //-------------------------------------------------------
-    // Después de 5 minutos
-    //-------------------------------------------------------
+        crearMensajeOrbital();
 
-    if(tiempo>300 && Math.random()<0.20){
-
-        crearMensaje(
+        mensajeGigante(
 
             mensajesCincoMinutos[
-                Math.floor(Math.random()*mensajesCincoMinutos.length)
+                Math.floor(
+
+                    Math.random()*
+
+                    mensajesCincoMinutos.length
+
+                )
             ],
 
-            "#7df7ff"
+            "#7eeeff"
 
         );
 
     }
 
-
-    //-------------------------------------------------------
-    // Después de 10 minutos
-    //-------------------------------------------------------
-
     if(tiempo>600 && Math.random()<0.15){
 
-        crearMensaje(
+        crearMensajeOrbital();
+
+        mensajeGigante(
 
             mensajesDiezMinutos[
-                Math.floor(Math.random()*mensajesDiezMinutos.length)
+                Math.floor(
+
+                    Math.random()*
+
+                    mensajesDiezMinutos.length
+
+                )
             ],
 
             "#ff8d8d"
@@ -892,113 +1626,81 @@ setInterval(()=>{
 
     }
 
-
-    //-------------------------------------------------------
-    // Evento extremadamente raro
-    //-------------------------------------------------------
-
-    if(Math.random()<0.008){
-
-        glitchPantalla();
-
-        vibracionTeseracto();
-
-        mensajeCentralGigante(
-
-            "ERROR CODE 198",
-
-            "#ff0000"
-
-        );
-
-    }
-
-
-    //-------------------------------------------------------
-    // Evento ultra raro
-    //-------------------------------------------------------
-
-    if(Math.random()<0.003){
-
-        glitchPantalla();
-
-        vibracionTeseracto();
-
-        mensajeCentralGigante(
-
-            "ÉL YA ESTÁ AQUÍ",
-
-            "#ffe74a"
-
-        );
-
-    }
-
-},15000);
-
+},25000);
 
 
 /*===========================================================================
-    PULSO DEL TESERACTO
+    ACELERACIÓN DEL TESERACTO
+===========================================================================*/
+
+let velocidadExtra=1;
+
+function acelerarTeseracto(){
+
+    velocidadExtra=2;
+
+    pointLight.intensity=4;
+
+    luzNucleo.intensity=5;
+
+    halo.material.opacity=0.28;
+
+    setTimeout(()=>{
+
+        velocidadExtra=1;
+
+        pointLight.intensity=2.2;
+
+        luzNucleo.intensity=2.5;
+
+        halo.material.opacity=0.16;
+
+    },5000);
+
+}
+
+
+/*===========================================================================
+    ACELERACIONES ALEATORIAS
 ===========================================================================*/
 
 setInterval(()=>{
 
-    const escalaOriginal=cuboExterior.scale.x;
+    if(Math.random()<0.10){
 
-    cuboExterior.scale.multiplyScalar(1.18);
+        acelerarTeseracto();
 
-    cuboInterior.scale.multiplyScalar(1.18);
+    }
 
-    setTimeout(()=>{
-
-        cuboExterior.scale.set(
-
-            escalaOriginal,
-            escalaOriginal,
-            escalaOriginal
-
-        );
-
-        cuboInterior.scale.set(
-
-            escalaOriginal*0.6,
-            escalaOriginal*0.6,
-            escalaOriginal*0.6
-
-        );
-
-    },250);
-
-},18000);
-
+},30000);
 
 
 /*===========================================================================
-    CAMBIO NOCTURNO
+    CAMBIO SEGÚN LA HORA
 ===========================================================================*/
 
 const hora=new Date().getHours();
 
 if(hora>=22 || hora<=5){
 
-    materialExterior.color.set(0x5577ff);
+    materialExterior.color.set(0x6688ff);
 
-    materialInterior.color.set(0xaa55ff);
+    materialInterior.color.set(0xaa88ff);
+
+    halo.material.color.set(0x8888ff);
 
 }
 
 
-
 /*===========================================================================
-    MENSAJE EXCLUSIVO ENTRE LAS 03:00 Y LAS 04:00
+    EVENTO EXCLUSIVO ENTRE LAS 03:00 Y LAS 04:00
 ===========================================================================*/
 
 if(hora===3){
 
     setTimeout(()=>{
 
-        mensajeCentralGigante(
+        mensajeGigante(
 
             "YA HAS LLEGADO DEMASIADO TARDE",
 
@@ -1006,6 +1708,399 @@ if(hora===3){
 
         );
 
-    },10000);
+        flashPantalla();
+
+        pulsoEnergia();
+
+    },12000);
 
 }
+
+
+/*===========================================================================
+    EVENTOS DIMENSIONALES
+===========================================================================*/
+
+setInterval(()=>{
+
+    if(Math.random()<0.05){
+
+        particulas.forEach((p)=>{
+
+            p.userData.radio=
+
+                1.2+
+
+                Math.random()*2.3;
+
+        });
+
+    }
+
+},15000);
+
+
+/*===========================================================================
+    PARPADEO DE LUCES
+===========================================================================*/
+
+setInterval(()=>{
+
+    if(Math.random()<0.15){
+
+        const intensidadOriginal=
+
+            pointLight.intensity;
+
+        pointLight.intensity=0.5;
+
+        setTimeout(()=>{
+
+            pointLight.intensity=
+
+                intensidadOriginal;
+
+        },120);
+
+    }
+
+},7000);
+
+
+/*===========================================================================
+    MENSAJE FANTASMA
+===========================================================================*/
+
+setInterval(()=>{
+
+    if(Math.random()<0.03){
+
+        const fantasma=document.createElement("div");
+
+        fantasma.className="mensaje-aleatorio";
+
+        fantasma.textContent="ERROR-198";
+
+        fantasma.style.left="50%";
+
+        fantasma.style.top="50%";
+
+        fantasma.style.transform=
+
+            "translate(-50%,-50%) scale(3)";
+
+        fantasma.style.color="#ffffff";
+
+        fantasma.style.opacity=0;
+
+        document.body.appendChild(fantasma);
+
+        requestAnimationFrame(()=>{
+
+            fantasma.style.opacity=.12;
+
+        });
+
+        setTimeout(()=>{
+
+            fantasma.style.opacity=0;
+
+            setTimeout(()=>{
+
+                fantasma.remove();
+
+            },400);
+
+        },200);
+
+    }
+
+},20000);
+/******************************************************************************
+==============================================================================
+                            DISTRITO ZERO
+                            ERROR CODE 198
+
+                            Teseracto.js
+                            BLOQUE 7 / 7
+
+    • Acabado
+    • Optimización
+    • Detalles visuales
+    • Efectos finales
+==============================================================================
+******************************************************************************/
+
+/*===========================================================================
+    RESPIRACIÓN DEL MENSAJE PRINCIPAL
+===========================================================================*/
+
+setInterval(()=>{
+
+    mensajeCentral.animate(
+
+        [
+
+            {
+
+                transform:"translate(-50%,-50%) scale(1)"
+
+            },
+
+            {
+
+                transform:"translate(-50%,-50%) scale(1.02)"
+
+            },
+
+            {
+
+                transform:"translate(-50%,-50%) scale(1)"
+
+            }
+
+        ],
+
+        {
+
+            duration:3000,
+
+            easing:"ease-in-out"
+
+        }
+
+    );
+
+},3200);
+
+
+/*===========================================================================
+    PARPADEO MUY SUAVE DEL HALO
+===========================================================================*/
+
+setInterval(()=>{
+
+    halo.material.opacity=
+
+        0.12+
+
+        Math.random()*0.08;
+
+},1800);
+
+
+/*===========================================================================
+    CAMBIO ALEATORIO DE COLOR
+===========================================================================*/
+
+setInterval(()=>{
+
+    if(Math.random()<0.08){
+
+        materialExterior.color.offsetHSL(
+
+            0.01,
+
+            0,
+
+            0
+
+        );
+
+        materialInterior.color.offsetHSL(
+
+            -0.01,
+
+            0,
+
+            0
+
+        );
+
+    }
+
+},12000);
+
+
+/*===========================================================================
+    DESTELLO DEL NÚCLEO
+===========================================================================*/
+
+setInterval(()=>{
+
+    if(Math.random()<0.12){
+
+        cuboNucleo.scale.set(
+
+            1.35,
+
+            1.35,
+
+            1.35
+
+        );
+
+        setTimeout(()=>{
+
+            cuboNucleo.scale.set(
+
+                1,
+
+                1,
+
+                1
+
+            );
+
+        },180);
+
+    }
+
+},9000);
+
+
+/*===========================================================================
+    MICROVIBRACIÓN CONTINUA
+===========================================================================*/
+
+setInterval(()=>{
+
+    teseracto.rotation.x +=
+
+        (Math.random()-0.5)*0.002;
+
+    teseracto.rotation.z +=
+
+        (Math.random()-0.5)*0.002;
+
+},80);
+
+
+/*===========================================================================
+    MENSAJE OCULTO EXTREMADAMENTE RARO
+===========================================================================*/
+
+setInterval(()=>{
+
+    if(Math.random()<0.001){
+
+        mensajeGigante(
+
+            "TODO EMPEZÓ AQUÍ",
+
+            "#ffffff"
+
+        );
+
+    }
+
+},60000);
+
+
+/*===========================================================================
+    REORDENAR LAS ÓRBITAS
+===========================================================================*/
+
+setInterval(()=>{
+
+    particulas.forEach((p)=>{
+
+        p.userData.velocidad=
+
+            0.002+
+
+            Math.random()*0.007;
+
+        p.userData.desfase=
+
+            Math.random()*Math.PI*2;
+
+    });
+
+},25000);
+
+
+/*===========================================================================
+    CAMBIO DE INTENSIDAD GENERAL
+===========================================================================*/
+
+setInterval(()=>{
+
+    const intensidad=
+
+        0.8+
+
+        Math.random()*0.4;
+
+    renderer.toneMappingExposure=
+
+        intensidad;
+
+},7000);
+
+
+/*===========================================================================
+    EFECTO "LATIDO"
+===========================================================================*/
+
+setInterval(()=>{
+
+    if(Math.random()<0.18){
+
+        teseracto.scale.multiplyScalar(1.08);
+
+        halo.scale.multiplyScalar(1.10);
+
+        setTimeout(()=>{
+
+            teseracto.scale.set(
+
+                1,
+
+                1,
+
+                1
+
+            );
+
+            halo.scale.set(
+
+                3.5,
+
+                3.5,
+
+                3.5
+
+            );
+
+        },180);
+
+    }
+
+},16000);
+
+
+/*===========================================================================
+    MENSAJE FINAL
+===========================================================================*/
+
+console.clear();
+
+console.log(
+
+`═══════════════════════════════════════════════
+
+        DISTRITO ZERO
+
+        ERROR CODE 198
+
+        Acceso autorizado.
+
+        Archivo recuperado correctamente.
+
+        Estado:
+        █ INESTABLE
+
+═══════════════════════════════════════════════`
+
+);
