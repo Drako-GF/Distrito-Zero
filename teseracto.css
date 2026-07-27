@@ -340,3 +340,122 @@ body::after{
     }
 
 }
+/*=========================================================
+    HUD INFERIOR
+=========================================================*/
+
+#hud{
+
+    position:fixed;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:170px;
+
+    border-top:2px solid rgba(180,255,255,.65);
+
+    background:rgba(0,0,0,.82);
+
+    backdrop-filter:blur(6px);
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 40px;
+
+    z-index:300;
+
+}
+
+
+#hud::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+            to bottom,
+
+            rgba(120,255,255,.05),
+
+            transparent 30%
+
+        );
+
+    pointer-events:none;
+
+}
+
+
+#hud-izquierda,
+#hud-derecha{
+
+    width:260px;
+
+    color:#7fefff;
+
+    font-size:30px;
+
+    letter-spacing:2px;
+
+    text-shadow:
+
+        0 0 8px #7fefff;
+
+}
+
+
+#hud-centro{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+
+#mensaje-teseracto{
+
+    position:static;
+
+    transform:none;
+
+    font-size:46px;
+
+    color:#9efcff;
+
+    text-shadow:
+
+        0 0 12px #7fefff,
+        0 0 28px rgba(0,255,255,.4);
+
+}
+
+
+#cursor{
+
+    animation:cursor .9s infinite;
+
+}
+
+
+@keyframes cursor{
+
+    50%{
+
+        opacity:0;
+
+    }
+
+}
