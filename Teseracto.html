@@ -7,9 +7,9 @@
 
     Página oculta de la web oficial.
 
-    Esta página representa un archivo clasificado recuperado del universo de
-    Distrito Zero. Su comportamiento está controlado mediante JavaScript y
-    Three.js.
+    Archivo clasificado perteneciente al universo de Distrito Zero.
+    Todo el comportamiento visual está controlado mediante Three.js,
+    CSS y JavaScript.
 
     Autor: Gonzalo Fierro
 ==============================================================================
@@ -34,7 +34,7 @@
     <meta name="theme-color" content="#000000">
 
     <!-- ==========================================================
-         HOJA DE ESTILOS
+         ESTILOS
     =========================================================== -->
 
     <link rel="stylesheet" href="Teseracto.css">
@@ -44,10 +44,21 @@
 <body>
 
     <!-- ==========================================================
-         MENSAJE CENTRAL
+         FONDO DE EFECTOS
+    =========================================================== -->
 
-         Este texto cambia automáticamente durante la secuencia de
-         recuperación del archivo.
+    <div id="background-effects"></div>
+
+
+    <!-- ==========================================================
+         MENSAJES FLOTANTES
+    =========================================================== -->
+
+    <div id="contenedor-mensajes"></div>
+
+
+    <!-- ==========================================================
+         MENSAJE PRINCIPAL
     =========================================================== -->
 
     <div id="mensaje-teseracto">
@@ -58,11 +69,7 @@
 
 
     <!-- ==========================================================
-         CONTENEDOR PARA EFECTOS FUTUROS
-
-         Actualmente no contiene elementos, pero permitirá añadir
-         partículas, destellos, símbolos o cualquier otro efecto
-         visual sin modificar el resto del documento.
+         CAPA SUPERIOR
     =========================================================== -->
 
     <div id="overlay"></div>
@@ -70,8 +77,6 @@
 
     <!-- ==========================================================
          THREE.JS
-
-         Biblioteca utilizada para renderizar el teseracto.
     =========================================================== -->
 
     <script src="https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.min.js"></script>
@@ -79,9 +84,6 @@
 
     <!-- ==========================================================
          LÓGICA PRINCIPAL
-
-         Todo el comportamiento del archivo se encuentra en
-         Teseracto.js.
     =========================================================== -->
 
     <script src="Teseracto.js"></script>
